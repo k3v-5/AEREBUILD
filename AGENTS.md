@@ -35,6 +35,17 @@ Para cada una de las **10 Fases del Proyecto**, es **estrictamente obligatorio**
 
 ---
 
+## 🎨 Regla Obligatoria: Estándares de Diseño y Gustos del Usuario (USER_DESIGN_PREFERENCES.md)
+
+Toda IA o módulo generador que cree scripts de After Effects, composiciones o plantillas **debe respetar estrictamente la guía de diseño visual**:
+
+1. **Consulta Obligatoria:** Ver [`docs/USER_DESIGN_PREFERENCES.md`](file:///F:/Dev/after-effects-mcp/docs/USER_DESIGN_PREFERENCES.md).
+2. **Estilo Maestro:** **Editorial Poster / TIME Style** (Tipografía condensada gigante ultra-bold `Impact`/`Arial Black`/`Anton` estirada verticalmente al $120\%-150\%$, rojo carmesí `#FF1424` + blanco puro, interletraje negativo, animación palabra por palabra y diales/ticks vectoriales de acompañamiento).
+3. **Prohibición Total:** Prohibido el uso de fuentes Serif genéricas (`Times New Roman`), formas planas de colores primarios tipo PowerPoint y animaciones sin **Motion Blur** (`comp.motionBlur = true`).
+4. **Centrado Riguroso:** Todo texto centrado debe tener `ParagraphJustification.CENTER_JUSTIFY` y punto de anclaje coincidente.
+
+---
+
 ## 🏗️ Estructura del Repositorio de Documentación
 
 ```
@@ -46,6 +57,9 @@ Para cada una de las **10 Fases del Proyecto**, es **estrictamente obligatorio**
   └── phase-X.md                   # Requerimientos de fases subsiguientes
 
 /docs
+  ├── USER_DESIGN_PREFERENCES.md   # Guía maestra de diseño, tipografía y gustos del usuario
+  ├── AI_AGENT_MANUAL.md           # Manual operativo completo para agentes IA
+  ├── milestone-30-gold-master.md  # Certificación Gold Master v3.0.0
   ├── ROADMAP.md                   # Resumen estratégico global de fases y estado del proyecto
   └── phases/
       ├── phase-1-report.md        # Memoria técnica de lo realizado en Fase 1

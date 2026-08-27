@@ -270,3 +270,15 @@ Todos los errores del sistema heredan de clases base especializadas y contienen 
 1. **Nunca modifiques tests para forzar que pasen:** Si un test falla, la causa es una violación al contrato formal. Corrige la lógica del módulo, no la prueba.
 2. **Nunca escribas archivos sin sanitizar la ruta:** Utiliza siempre `PathSanitizer.sanitize(path, baseDir)`.
 3. **Nunca ignores diagnósticos de QA:** Si `QAReport.status === "fail"`, debes emitir una estrategia de reparación válida o detener el pipeline informando el motivo exacto.
+4. **Nunca generes diseños planos o con fuentes serif por defecto:** Consulta y obedece siempre [`docs/USER_DESIGN_PREFERENCES.md`](file:///F:/Dev/after-effects-mcp/docs/USER_DESIGN_PREFERENCES.md).
+
+---
+
+## 8. Estándares Visuales y Preferencias de Diseño del Usuario
+
+Para garantizar que el resultado visual generado en scripts de After Effects cumpla con los estándares de agencia del usuario:
+
+1. **Guía Maestra:** Leer [`docs/USER_DESIGN_PREFERENCES.md`](file:///F:/Dev/after-effects-mcp/docs/USER_DESIGN_PREFERENCES.md).
+2. **Estilo Principal Aprobado:** **Editorial Poster / TIME Style** (Tipografía gigante condensada en rojo `#FF1424` y blanco, interletraje negativo, animación palabra por palabra y diales vectoriales).
+3. **Estilo Secundario:** **Minimal Luxury / Tech** (Apple/Linear dark aesthetic).
+4. **Invariantes Visuales:** Siempre habilitar `comp.motionBlur = true`, `ParagraphJustification.CENTER_JUSTIFY` y viñeteado de contraste sobre videos reales.
