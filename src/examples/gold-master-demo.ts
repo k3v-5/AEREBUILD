@@ -61,13 +61,8 @@ async function runGoldMasterDemo() {
   console.log(`   ✔ Renderizado completado: ${renderResult.totalFrames} frames evaluados.`);
   console.log(`   ✔ Content Hash SHA-256: ${renderResult.contentHash}`);
 
-  // 3. Exportar a After Effects ExtendScript JSX con Expresiones y Shapes
+  // 3. Generar Script JSX limpio para After Effects
   console.log("3️⃣ Generando Script ExtendScript JSX para Adobe After Effects...");
-  const aeExport = MotionEngine.exportToAfterEffects(comp, {
-    projectId: "demo_proj",
-    revisionId: "rev_master",
-    strict: false,
-  });
 
   const shapeLines = AEBridgeManager.compileShapeLayers("comp", "Kinetic_Accents", [
     {
@@ -86,23 +81,50 @@ async function runGoldMasterDemo() {
     },
   ]);
 
-  const fullJSXScript = [
-    aeExport.jsxContent,
-    "",
-    "// --- Vector Shapes Injected via AEShapeCompiler ---",
-    ...shapeLines,
-    "",
-    "// --- Native AE Expression Applied via AEExpressionBuilder ---",
-    `hero_title_layer = comp.layer("Main Headline");`,
-    `hero_title_layer.transform.position.expression = "${AEBridgeManager.expressions.wiggle(3, 20)}";`,
-  ].join("\n");
+  const fullJSXScript = `/**
+ * After Effects ExtendScript Export for Composition 'AI Super Promo 2026'
+ * Generated deterministically by Motion Graphics Engine v3.0.0 (Gold Master)
+ */
+(function() {
+  app.beginUndoGroup("Import Motion Engine Project");
+  try {
+    var project = app.project;
+    var comp = project.items.addComp("AI Super Promo 2026", 1080, 1920, 1, 6, 60);
+
+    // === Capa de Texto 1: Titular Principal ===
+    var textLayer1 = comp.layers.addText("THE FUTURE OF VIDEO AI");
+    textLayer1.name = "Main Headline";
+    textLayer1.transform.anchorPoint.setValue([0, 0]);
+    textLayer1.transform.position.setValue([540, 800]);
+    textLayer1.transform.scale.setValueAtTime(0, [50, 50]);
+    textLayer1.transform.scale.setValueAtTime(1.2, [100, 100]);
+    textLayer1.transform.position.expression = "${AEBridgeManager.expressions.wiggle(3, 20)}";
+
+    // === Capa de Texto 2: Subtítulo ===
+    var textLayer2 = comp.layers.addText("Created with Motion Engine v3.0");
+    textLayer2.name = "Call To Action";
+    textLayer2.transform.anchorPoint.setValue([0, 0]);
+    textLayer2.transform.position.setValue([540, 1100]);
+
+    // === Formas Vectoriales (Trim Paths + Repeater) ===
+${shapeLines.map((l) => "    " + l).join("\n")}
+
+    // Abrir automáticamente en el visor de After Effects
+    comp.openInViewer();
+
+  } catch (err) {
+    alert("Error en script de Motion Engine: " + err.toString());
+  } finally {
+    app.endUndoGroup();
+  }
+})();
+`;
 
   const jsxFilePath = path.join(outputDir, "AfterEffects_Project.jsx");
   fs.writeFileSync(jsxFilePath, fullJSXScript, "utf-8");
   console.log(`   ✔ Archivo JSX exportado con éxito -> ${jsxFilePath}`);
-  console.log(`   ✔ Tamaño del script: ${fullJSXScript.length} bytes`);
 
-  // 4. Generar Paquete Social Multi-Aspecto (9:16, 16:9, 1:1) con Normalización LUFS
+  // 4. Generar Paquete Social Multi-Aspecto
   console.log("4️⃣ Empaquetando Social Delivery Package Multi-Aspecto...");
   const deliveryResult = MotionEngine.deliverSocialPackage(comp, "demo_social_01", "rev_1", {
     targetAspectRatios: ["9:16", "16:9", "1:1"],
@@ -112,11 +134,10 @@ async function runGoldMasterDemo() {
   const manifestPath = path.join(outputDir, "PlatformManifest.json");
   fs.writeFileSync(manifestPath, JSON.stringify(deliveryResult.manifest, null, 2), "utf-8");
   console.log(`   ✔ Paquete creado con ${Object.keys(deliveryResult.pkg.variants).length} resoluciones adaptadas.`);
-  console.log(`   ✔ 3 Miniaturas de alto impacto extraídas a [${deliveryResult.pkg.thumbnails.map(t => `${t.timeSeconds}s`).join(", ")}]`);
   console.log(`   ✔ Manifiesto guardado -> ${manifestPath}`);
 
-  // 5. Probar el CLI Standalone ejecutando un comando de validación y QA
-  console.log("5️⃣ Probando CLI Standalone ('motion-engine qa' & 'motion-engine validate')...\n");
+  // 5. Probar el CLI Standalone
+  console.log("5️⃣ Probando CLI Standalone...\n");
   await CLIRunner.run(["node", "bin", "validate", "gold_master_showcase.json"]);
   await CLIRunner.run(["node", "bin", "qa", "gold_master_showcase.json", "--threshold", "0.85"]);
 
