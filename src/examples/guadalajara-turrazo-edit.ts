@@ -4,13 +4,13 @@ import { MotionEngine } from "../sdk/MotionEngineSDK.js";
 import { AEBridgeManager } from "../exporters/ae/AEBridgeManager.js";
 import { CLIRunner } from "../cli/CLIRunner.js";
 
-async function generateGuadalajaraTurrazoMacroEdit() {
+async function generateGuadalajaraTurrazoAestheticMasterpiece() {
   console.log("\n==========================================================================");
-  console.log("🎬 GENERANDO MACRO-EDIT CREATIVO CON TRANSICIONES DINÁMICAS Y AUDIO MUTED");
-  console.log("   • Audio Master: D:/Documentos/Rolitas/turrazo.wav (Audio de los clips silenciado)");
-  console.log("   • 8 Tipos de Transiciones continuas (Whip Pan, Zoom Push, Flashes, Crossfades, Spins, Glitches)");
-  console.log("   • Rotación de Efectos de Letras, Fuentes y Colores (Rojo, Blanco, Amarillo)");
-  console.log("   • Efectos 'Texto Detrás del Sujeto' y 'Fast Blur Shift'");
+  console.log("🎨 GENERANDO MACRO-EDIT ESTILO EDITORIAL TIKTOK (PAINT BRUSH & MIXED TYPO)");
+  console.log("   • CERO ESCENAS EN NEGRO: Time Remapping + Ping-Pong Loop + Overlapping Layers");
+  console.log("   • Tipografía Mixta TikTok (Serif Italic + Ultra Bold Sans + Cursiva / Script)");
+  console.log("   • Bloques de Pintura / Color Block Brush Reveals (Mint, Crimson, Cream)");
+  console.log("   • Audio Master 'turrazo.wav' impecable (clips silenciados al 100%)");
   console.log("==========================================================================\n");
 
   const outputDir = path.resolve("./dist/guadalajara_turrazo");
@@ -22,61 +22,48 @@ async function generateGuadalajaraTurrazoMacroEdit() {
   const audioFilePath = "D:/Documentos/Rolitas/turrazo.wav";
   const compDuration = 220.8;
 
-  // Obtener la lista completa de archivos MP4 válidos (>100KB)
   const allMp4s = fs.readdirSync(videoDir)
     .filter(f => f.endsWith(".mp4") && fs.statSync(path.join(videoDir, f)).size > 100000)
     .sort();
 
   console.log(`📁 Total de videos válidos detectados: ${allMp4s.length}`);
 
-  // Clasificación temática de los clips
   const concertFileNames = [
     "20230620_205928.mp4",
     "20230620_210100.mp4",
     "20230620_210856.mp4",
-    "20230620_212618.mp4", // Key video 1 (Behind text)
+    "20230620_212618.mp4",
     "20230620_221318.mp4",
-    "20230620_224844.mp4", // Key video 2 (Behind text)
-    "20230620_231413.mp4", // Key video 3 (Behind text)
-    "20230621_001126.mp4"  // Key video 4 (Behind -> Fast Blur -> Front)
+    "20230620_224844.mp4",
+    "20230620_231413.mp4",
+    "20230621_001126.mp4"
   ].filter(f => allMp4s.includes(f));
 
   const dayNatureFiles = allMp4s.filter(f => !concertFileNames.includes(f));
-  console.log(`🌿 Clips de Día / Naturaleza / Fauna: ${dayNatureFiles.length}`);
-  console.log(`🎸 Clips de Concierto / Noche: ${concertFileNames.length}`);
-
-  // Secuencia curada de los videos
   const orderedVideos = [...dayNatureFiles, ...concertFileNames];
 
-  // Frases y palabras editoriales para los clips
-  const phrases = [
-    // Acto I: Naturaleza & Safari
-    "GUADALAJARA 2023", "INSTINTO PURO", "VIDA SALVAJE", "MIRADA FELINA", "FUERZA NATURAL",
-    "TIERRA DE GIGANTES", "REFLEJO ANCESTRAL", "LIBERTAD TOTAL", "EN SU HÁBITAT", "MAJESTUOSO",
-    "ALAS AL VIENTO", "COLORES VIVOS", "RESPIRO PROFUNDO", "NATURALEZA VIVA", "FAUNA REAL",
-    "EL REINO SALVAJE", "EN CADA RINCÓN", "SILENCIO Y PODER", "PASOS FIRMES", "SABIDURÍA ANIMAL",
-    "SINFONÍA VERDE", "ORIGEN PRIMAL", "SERES ÚNICOS", "BELLEZA CRUDA", "INSTANTES ETERNOS",
-    "EXPLORA", "DESCUBRE", "CONECTA", "VIVE", "SIENTE",
-    "EL PULSO DE LA TIERRA", "SIN ATADURAS", "LUZ NATURAL", "HORIZONTES", "DESTINO SALVAJE",
-
-    // Acto II: Aventura & Ciudad
-    "CAMINOS ABIERTOS", "RUMBO AL ATARDECER", "ESPÍRITU VIAJERO", "CIUDAD DE LUZ", "AVENTURA TOTAL",
-    "MEMORIAS DE VERANO", "UN DÍA INOLVIDABLE", "RISA Y AMIGOS", "HISTORIAS VIVAS", "HORA DORADA",
-    "CALLES CON ALMA", "VIBRA MEXICANA", "CORAZÓN TAPATÍO", "EN MOVIMIENTO", "TIEMPO DE VOLAR",
-    "SIN PRISA", "PASO A PASO", "VISTA PANORÁMICA", "ENERGÍA PURA", "CADA SEGUNDO CUENTA",
-    "VIBRACIÓN ALTA", "SOL DE JUNIO", "NUNCA PARES", "HACIA LA NOCHE", "EL VIAJE COMIENZA",
-    "LA CIUDAD DESPIERTA", "LLEGA LA FIESTA", "EXPECTATIVA", "PREPÁRATE", "LA NOCHE CAE",
-    "CAOS HERMOSO", "BAJO LAS ESTRELLAS", "RUMBO AL ESCENARIO", "AQUÍ EMPIEZA TODO",
-
-    // Acto III & IV: Concierto, Depth 3D & Clímax
-    "LA NOCHE ES NUESTRA",
-    "SUBE EL VOLUMEN",
-    "FUEGO EN LA TARIMA",
-    "EUFORIA COLECTIVA",      // 20230620_212618 (Detrás del sujeto)
-    "MILES CANTANDO",
-    "RETUMBA EL PECHO",       // 20230620_224844 (Detrás del sujeto)
-    "ALMAS CONECTADAS",       // 20230620_231413 (Detrás del sujeto)
-    "DESENFOQUE // ETERNIDAD" // 20230621_001126 (Detrás -> Fast Blur -> Delante)
+  // Datos editoriales mixtos tipo TikTok (Palabra principal, Subtítulo cursivo, Meta tag)
+  const editorialPhrases = [
+    { title: "SALVAJE", script: "Tierra & Instinto", tag: "FAUNA // 01" },
+    { title: "ORIGEN", script: "Mirada Animal", tag: "GUADALAJARA" },
+    { title: "LIBRE", script: "Alas al Viento", tag: "NATURALEZA" },
+    { title: "REFLEJO", script: "Agua & Sol", tag: "JUNIO 2023" },
+    { title: "FUERZA", script: "Espíritu Primal", tag: "HABITAT // 02" },
+    { title: "REINO", script: "Pasos Firmes", tag: "EXPEDICIÓN" },
+    { title: "PULSO", script: "Latido Verde", tag: "SELVA" },
+    { title: "BELLEZA", script: "En Cada Rincón", tag: "MOMENTO" },
+    { title: "INSTINTO", script: "Poder Ancestral", tag: "SAFARI // 03" },
+    { title: "ETERNO", script: "Luz de Tarde", tag: "EXPLORA" },
+    { title: "CAMINOS", script: "Rumbo al Sol", tag: "VIAJE // 04" },
+    { title: "AVENTURA", script: "Vibra Mexicana", tag: "TAPATÍO" },
+    { title: "HORA ORO", script: "Atardecer de Fuego", tag: "GOLDEN HOUR" },
+    { title: "MEMORIA", script: "Días de Verano", tag: "RECUERDOS" },
+    { title: "MOVIMIENTO", script: "Sin Mirar Atrás", tag: "NON-STOP" },
+    { title: "CIUDAD", script: "Luces de Noche", tag: "URBANO // 05" },
+    { title: "FESTIVAL", script: "Escenario Vivo", tag: "CONCIERTO" },
+    { title: "EUFORIA", script: "Miles Cantando", tag: "STAGE // 06" },
+    { title: "FUEGO", script: "Retumba el Pecho", tag: "TURRAZO" },
+    { title: "CLÍMAX", script: "Eternidad Total", tag: "FINAL // 2023" }
   ];
 
   let currentStartTime = 0;
@@ -85,13 +72,14 @@ async function generateGuadalajaraTurrazoMacroEdit() {
     inTime: number;
     outTime: number;
     duration: number;
-    phrase: string;
+    title: string;
+    script: string;
+    tag: string;
     isBehind: boolean;
     isBlurShift: boolean;
-    fontIndex: number;
-    colorIndex: number;
-    effectIndex: number;
-    transitionType: number; // 0..7
+    hasPaintWipe: boolean;
+    styleIndex: number;
+    transType: number;
   }> = [];
 
   for (let i = 0; i < orderedVideos.length; i++) {
@@ -115,18 +103,21 @@ async function generateGuadalajaraTurrazoMacroEdit() {
     const outTime = Math.min(inTime + dur, compDuration);
     currentStartTime = outTime;
 
+    const phraseObj = editorialPhrases[i % editorialPhrases.length];
+
     clipTimings.push({
       fileName: f,
       inTime,
       outTime,
       duration: outTime - inTime,
-      phrase: phrases[i] || `MOMENTO #${i + 1}`,
+      title: phraseObj.title,
+      script: phraseObj.script,
+      tag: phraseObj.tag,
       isBehind,
       isBlurShift,
-      fontIndex: i % 6,
-      colorIndex: i % 3,
-      effectIndex: i % 6,
-      transitionType: i % 8, // 8 transiciones rotativas
+      hasPaintWipe: (i % 3 === 0), // Pincelada artística cada 3 clips
+      styleIndex: i % 4,
+      transType: i % 7,
     });
 
     if (currentStartTime >= compDuration) break;
@@ -141,12 +132,12 @@ async function generateGuadalajaraTurrazoMacroEdit() {
 
   const fullExtendScript = `/**
  * =======================================================================
- * MOTION GRAPHICS ENGINE v3.0 — GUADALAJARA MASTER EDIT (78 CLIPS + FX)
+ * MOTION GRAPHICS ENGINE v3.0 — TIKTOK EDITORIAL MASTERPIECE
  * Features:
- *  1. Audio Master: "turrazo.wav" (All raw video audio muted!)
- *  2. 8 Creative Transitions between Scenes (Whip Pan, Zoom Push, Glitch, Spin, Flashes, Crossfades)
- *  3. Dynamic Typography Rotations (Colors: Red, White, Gold | Fonts: Impact, Arial Black, Anton, etc.)
- *  4. Special Depth Effect: Text Behind Subject & Fast Blur Shift
+ *  1. ZERO BLACK SCENES: Time Remapping + Ping-Pong Auto-Loop + Overlap
+ *  2. Mixed Editorial Typography (Serif + Ultra Bold Sans + Cursive Script + Tags)
+ *  3. Artistic Pastel Paint-Stroke Reveals & Frosted Color Blocks
+ *  4. Audio Master: "turrazo.wav" (All raw video audio muted!)
  * =======================================================================
  */
 
@@ -157,18 +148,18 @@ async function generateGuadalajaraTurrazoMacroEdit() {
       project = app.newProject();
     }
 
-    app.beginUndoGroup("Guadalajara 78 Clips Turrazo Master Edit");
+    app.beginUndoGroup("TikTok Editorial Mixed Masterpiece");
 
     var compWidth = 1080;
     var compHeight = 1920;
     var compDuration = ${compDuration};
     var compFps = 60.0;
 
-    var comp = project.items.addComp("GUADALAJARA_TURRAZO_MASTER_EDIT", compWidth, compHeight, 1.0, compDuration, compFps);
-    comp.bgColor = [0.02, 0.02, 0.03];
+    var comp = project.items.addComp("GUADALAJARA_EDITORIAL_MASTERPIECE", compWidth, compHeight, 1.0, compDuration, compFps);
+    comp.bgColor = [0.03, 0.03, 0.04];
     comp.motionBlur = true;
 
-    // 🎵 1. IMPORTAR PISTA DE AUDIO MASTER 'TURRAZO.WAV' (ÚNICO AUDIO ACTIVO)
+    // 🎵 1. IMPORTAR PISTA DE AUDIO MASTER 'TURRAZO.WAV'
     var audioFile = new File("${audioFilePath}");
     if (audioFile.exists) {
       try {
@@ -184,97 +175,147 @@ async function generateGuadalajaraTurrazoMacroEdit() {
       } catch(ae) {}
     }
 
-    // 🎨 PALETA DE COLORES OFICIAL (Rojo, Blanco, Amarillo)
-    var COLORS = [
-      [1.0, 0.08, 0.14], // 0: Rojo Carmesí #FF1424
-      [0.98, 0.98, 0.98], // 1: Blanco Puro #FAFAFA
-      [1.0, 0.78, 0.10]  // 2: Amarillo / Oro Neón #FFC71A
-    ];
+    // 🎨 PALETA DE COLORES EDITORIAL TIKTOK (Mint Pastel, Carmesí, Blanco Puro, Oro Cálido)
+    var COLOR_CRIMSON = [1.0, 0.08, 0.14]; // #FF1424
+    var COLOR_WHITE   = [0.98, 0.98, 0.98]; // #FAFAFA
+    var COLOR_MINT    = [0.55, 0.82, 0.74]; // #8CD1BC (Pastel Teal / Mint como la foto)
+    var COLOR_GOLD    = [1.0, 0.78, 0.10];  // #FFC71A
 
-    var FONTS = ["Impact", "Arial-Black", "Haettenschweiler", "Anton", "TrebuchetMS-Bold", "SegoeUI-Black"];
-
-    // Helper para crear texto responsivo con efectos de entrada dinámicos y rotativos
-    function createDynamicClipText(comp, name, text, targetSize, color, pos, inTime, outTime, fontName, effectType) {
+    // 🖌️ HELPER: BLOQUE DE PINTURA ARTÍSTICA / COLOR BLOCK REVEAL
+    function createPaintBrushWipe(comp, name, inTime, color) {
       try {
-        var layer = comp.layers.addText(text);
-        layer.name = name;
-        layer.motionBlur = true;
-        layer.inPoint = inTime;
-        layer.outPoint = outTime;
+        var brushLayer = comp.layers.addShape();
+        brushLayer.name = name;
+        brushLayer.inPoint = inTime;
+        brushLayer.outPoint = inTime + 1.2;
+        brushLayer.motionBlur = true;
 
-        var textProp = layer.property("Source Text");
-        var textDoc = textProp.value;
+        var contents = brushLayer.property("Contents");
+        var group = contents.addProperty("ADBE Vector Group");
+        var groupContents = group.property("Contents");
 
-        var maxSafeWidth = 900;
-        var charCount = text.length;
-        var calculatedSize = targetSize;
-        var estimatedWidth = charCount * (targetSize * 0.55);
-        if (estimatedWidth > maxSafeWidth) {
-          calculatedSize = Math.floor(maxSafeWidth / (charCount * 0.55));
-        }
-        calculatedSize = Math.max(calculatedSize, 45);
+        // Rectángulo con bordes redondeados y estilo orgánico
+        var rect = groupContents.addProperty("ADBE Vector Shape - Rect");
+        rect.property("Size").setValue([620, 950]);
+        rect.property("Roundness").setValue(28);
 
-        textDoc.fontSize = calculatedSize;
-        textDoc.fillColor = color;
-        textDoc.justification = ParagraphJustification.CENTER_JUSTIFY;
-        textDoc.tracking = -10;
+        var fill = groupContents.addProperty("ADBE Vector Graphic - Fill");
+        fill.property("Color").setValue(color || COLOR_MINT);
 
-        try {
-          textDoc.font = fontName;
-        } catch(e) {
-          textDoc.font = "Impact";
-        }
+        brushLayer.transform.position.setValueAtTime(inTime, [compWidth / 2 - 200, 720]);
+        brushLayer.transform.position.setValueAtTime(inTime + 0.35, [compWidth / 2, 720]);
+        brushLayer.transform.position.expression = ${bounceCode};
 
-        textProp.setValue(textDoc);
-        layer.transform.position.setValue(pos);
+        brushLayer.transform.scale.setValueAtTime(inTime, [20, 100]);
+        brushLayer.transform.scale.setValueAtTime(inTime + 0.30, [100, 100]);
 
-        // 🌀 ROTACIÓN DE 6 EFECTOS DE ENTRADA TIPOGRÁFICA
-        if (effectType === 0) {
-          // Efecto 0: Scale Slam + Rebote Físico
-          layer.transform.scale.setValueAtTime(inTime, [160, 220]);
-          layer.transform.scale.setValueAtTime(inTime + 0.18, [100, 135]);
-          layer.transform.scale.expression = ${bounceCode};
-        } else if (effectType === 1) {
-          // Efecto 1: Slide Up desde abajo con elasticidad
-          layer.transform.position.setValueAtTime(inTime, [pos[0], pos[1] + 120]);
-          layer.transform.position.setValueAtTime(inTime + 0.20, pos);
-          layer.transform.position.expression = ${bounceCode};
-        } else if (effectType === 2) {
-          // Efecto 2: Slide Left con punch
-          layer.transform.position.setValueAtTime(inTime, [pos[0] - 220, pos[1]]);
-          layer.transform.position.setValueAtTime(inTime + 0.20, pos);
-          layer.transform.position.expression = ${bounceCode};
-        } else if (effectType === 3) {
-          // Efecto 3: Slide Right con punch
-          layer.transform.position.setValueAtTime(inTime, [pos[0] + 220, pos[1]]);
-          layer.transform.position.setValueAtTime(inTime + 0.20, pos);
-          layer.transform.position.expression = ${bounceCode};
-        } else if (effectType === 4) {
-          // Efecto 4: Tracking Expansion Pop
-          layer.transform.scale.setValueAtTime(inTime, [80, 80]);
-          layer.transform.scale.setValueAtTime(inTime + 0.18, [100, 130]);
-          layer.transform.scale.expression = ${bounceCode};
-        } else {
-          // Efecto 5: Strobe / Glitch Flash
-          layer.transform.opacity.setValueAtTime(inTime, 0);
-          layer.transform.opacity.setValueAtTime(inTime + 0.05, 100);
-          layer.transform.opacity.setValueAtTime(inTime + 0.10, 20);
-          layer.transform.opacity.setValueAtTime(inTime + 0.15, 100);
-        }
+        brushLayer.transform.opacity.setValueAtTime(inTime, 0);
+        brushLayer.transform.opacity.setValueAtTime(inTime + 0.08, 88);
+        brushLayer.transform.opacity.setValueAtTime(inTime + 0.85, 88);
+        brushLayer.transform.opacity.setValueAtTime(inTime + 1.15, 0);
 
-        // Salida suave (Fade Out de 0.12s)
-        layer.transform.opacity.setValueAtTime(inTime + 0.16, 100);
-        layer.transform.opacity.setValueAtTime(outTime - 0.12, 100);
-        layer.transform.opacity.setValueAtTime(outTime, 0);
-
-        return layer;
-      } catch(te) {
+        return brushLayer;
+      } catch(be) {
         return null;
       }
     }
 
-    // Helper blindado para importar, mutear audio y aplicar transiciones creativas
-    function importAndFitVideoWithTransition(comp, filePath, inTime, outTime, name, transType) {
+    // ✍️ HELPER: TIPOGRAFÍA MIXTA TIKTOK (Serif Itálica + Sans Ultra Bold + Cursiva Script + Tag)
+    function createMixedEditorialTypography(comp, baseName, titleText, scriptText, metaTag, inTime, outTime, styleIdx) {
+      try {
+        var mainColor = (styleIdx === 0) ? COLOR_WHITE : (styleIdx === 1 ? COLOR_CRIMSON : COLOR_GOLD);
+
+        // 1. TÍTULO PRINCIPAL (Letra Inicial Serif Itálica + Resto Sans Ultra Bold)
+        var titleLayer = comp.layers.addText(titleText);
+        titleLayer.name = baseName + "_Title";
+        titleLayer.motionBlur = true;
+        titleLayer.inPoint = inTime;
+        titleLayer.outPoint = outTime;
+
+        var tProp = titleLayer.property("Source Text");
+        var tDoc = tProp.value;
+        tDoc.fontSize = (titleText.length > 8) ? 130 : 170;
+        tDoc.fillColor = mainColor;
+        tDoc.justification = ParagraphJustification.CENTER_JUSTIFY;
+        tDoc.tracking = -12;
+
+        try {
+          tDoc.font = "Impact";
+        } catch(e) {}
+        tProp.setValue(tDoc);
+        titleLayer.transform.position.setValue([540, 680]);
+
+        // Entrada elástica
+        titleLayer.transform.scale.setValueAtTime(inTime, [140, 190]);
+        titleLayer.transform.scale.setValueAtTime(inTime + 0.20, [100, 130]);
+        titleLayer.transform.scale.expression = ${bounceCode};
+
+        titleLayer.transform.opacity.setValueAtTime(inTime, 100);
+        titleLayer.transform.opacity.setValueAtTime(outTime - 0.12, 100);
+        titleLayer.transform.opacity.setValueAtTime(outTime, 0);
+
+        // 2. SUBTÍTULO CURSIVO / SCRIPT OVERLAY (Capa superpuesta artística)
+        if (scriptText) {
+          var scriptLayer = comp.layers.addText(scriptText);
+          scriptLayer.name = baseName + "_Script";
+          scriptLayer.motionBlur = true;
+          scriptLayer.inPoint = inTime + 0.08;
+          scriptLayer.outPoint = outTime;
+
+          var sProp = scriptLayer.property("Source Text");
+          var sDoc = sProp.value;
+          sDoc.fontSize = 58;
+          sDoc.fillColor = COLOR_WHITE;
+          sDoc.justification = ParagraphJustification.CENTER_JUSTIFY;
+          sDoc.tracking = 5;
+
+          var scriptFonts = ["SegoeScript", "LucidaHandwriting-Italic", "BrushScriptMT", "Georgia-Italic", "TimesNewRomanPS-ItalicMT"];
+          for (var sf = 0; sf < scriptFonts.length; sf++) {
+            try {
+              sDoc.font = scriptFonts[sf];
+              break;
+            } catch(e) {}
+          }
+
+          sProp.setValue(sDoc);
+          scriptLayer.transform.position.setValue([540, 790]);
+
+          scriptLayer.transform.position.setValueAtTime(inTime + 0.08, [540, 830]);
+          scriptLayer.transform.position.setValueAtTime(inTime + 0.28, [540, 790]);
+          scriptLayer.transform.position.expression = ${bounceCode};
+
+          scriptLayer.transform.opacity.setValueAtTime(inTime + 0.08, 0);
+          scriptLayer.transform.opacity.setValueAtTime(inTime + 0.18, 95);
+          scriptLayer.transform.opacity.setValueAtTime(outTime - 0.12, 95);
+          scriptLayer.transform.opacity.setValueAtTime(outTime, 0);
+        }
+
+        // 3. META TAG EDITORIAL EN LA ESQUINA DEL TEXTO
+        if (metaTag) {
+          var tagLayer = comp.layers.addText(metaTag);
+          tagLayer.name = baseName + "_Tag";
+          tagLayer.inPoint = inTime + 0.05;
+          tagLayer.outPoint = outTime;
+          var tagProp = tagLayer.property("Source Text");
+          var tagDoc = tagProp.value;
+          tagDoc.fontSize = 20;
+          tagDoc.fillColor = COLOR_GOLD;
+          tagDoc.justification = ParagraphJustification.CENTER_JUSTIFY;
+          tagDoc.tracking = 25;
+          tagProp.setValue(tagDoc);
+          tagLayer.transform.position.setValue([540, 560]);
+
+          tagLayer.transform.opacity.setValueAtTime(inTime + 0.05, 0);
+          tagLayer.transform.opacity.setValueAtTime(inTime + 0.15, 100);
+          tagLayer.transform.opacity.setValueAtTime(outTime - 0.12, 100);
+          tagLayer.transform.opacity.setValueAtTime(outTime, 0);
+        }
+
+      } catch(me) {}
+    }
+
+    // 🛡️ HELPER BLINDADO: CERO ESCENAS EN NEGRO (Time Remap + Ping-Pong Loop)
+    function importAndFitVideoReliable(comp, filePath, inTime, outTime, name, transType) {
       try {
         var file = new File(filePath);
         if (!file.exists) return null;
@@ -287,10 +328,17 @@ async function generateGuadalajaraTurrazoMacroEdit() {
 
         layer.name = name || file.name;
         layer.motionBlur = true;
-        layer.audioEnabled = false; // 🔇 AUDIO DEL CLIP SILENCIADO
+        layer.audioEnabled = false; // 🔇 Audio de clips silenciado
         layer.inPoint = inTime;
-        layer.outPoint = outTime;
+        // Solapamiento de +0.3s para que NUNCA se vea negro en la transición
+        layer.outPoint = Math.min(outTime + 0.35, compDuration);
         layer.startTime = inTime;
+
+        // 🔄 BLINDAJE ANTI-PANTALLA NEGRA: Time Remap con Loop Ping-Pong
+        layer.timeRemapEnabled = true;
+        try {
+          layer.timeRemap.expression = 'loopOut("pingpong");';
+        } catch(tre) {}
 
         layer.transform.anchorPoint.setValue([foot.width / 2, foot.height / 2]);
         layer.transform.position.setValue([compWidth / 2, compHeight / 2]);
@@ -300,44 +348,36 @@ async function generateGuadalajaraTurrazoMacroEdit() {
         var coverScale = Math.max(scaleX, scaleY) * 1.04;
         layer.transform.scale.setValue([coverScale, coverScale]);
 
-        var transDur = 0.22; // Duración de transición de corte
+        var transDur = 0.24;
 
-        // 🎬 8 TRANSICIONES CREATIVAS ROTATIVAS ENTRE CLIPS
+        // 🎬 TRANSICIONES CONTINUAS
         if (transType === 0) {
-          // Transición 0: Whip Zoom Push-In
-          layer.transform.scale.setValueAtTime(inTime, [coverScale * 1.25, coverScale * 1.25]);
+          // Whip Zoom Push
+          layer.transform.scale.setValueAtTime(inTime, [coverScale * 1.20, coverScale * 1.20]);
           layer.transform.scale.setValueAtTime(inTime + transDur, [coverScale, coverScale]);
         } else if (transType === 1) {
-          // Transición 1: Whip Pan Slide Left
-          layer.transform.position.setValueAtTime(inTime, [compWidth / 2 + 350, compHeight / 2]);
+          // Whip Pan Left
+          layer.transform.position.setValueAtTime(inTime, [compWidth / 2 + 300, compHeight / 2]);
           layer.transform.position.setValueAtTime(inTime + transDur, [compWidth / 2, compHeight / 2]);
         } else if (transType === 2) {
-          // Transición 2: Whip Pan Slide Right
-          layer.transform.position.setValueAtTime(inTime, [compWidth / 2 - 350, compHeight / 2]);
+          // Whip Pan Right
+          layer.transform.position.setValueAtTime(inTime, [compWidth / 2 - 300, compHeight / 2]);
           layer.transform.position.setValueAtTime(inTime + transDur, [compWidth / 2, compHeight / 2]);
         } else if (transType === 3) {
-          // Transición 3: Whip Slide Up
-          layer.transform.position.setValueAtTime(inTime, [compWidth / 2, compHeight / 2 + 400]);
+          // Whip Slide Up
+          layer.transform.position.setValueAtTime(inTime, [compWidth / 2, compHeight / 2 + 350]);
           layer.transform.position.setValueAtTime(inTime + transDur, [compWidth / 2, compHeight / 2]);
         } else if (transType === 4) {
-          // Transición 4: Spin Whip Angle (+8 deg)
-          layer.transform.rotation.setValueAtTime(inTime, 8);
-          layer.transform.rotation.setValueAtTime(inTime + transDur, 0);
-        } else if (transType === 5) {
-          // Transición 5: Spin Whip Angle (-8 deg)
-          layer.transform.rotation.setValueAtTime(inTime, -8);
-          layer.transform.rotation.setValueAtTime(inTime + transDur, 0);
-        } else if (transType === 6) {
-          // Transición 6: Soft Cinematic Crossfade Dissolve
+          // Soft Dissolve
           layer.transform.opacity.setValueAtTime(inTime, 0);
           layer.transform.opacity.setValueAtTime(inTime + transDur, 100);
         } else {
-          // Transición 7: White Flash Impact Overlay
-          var flash = comp.layers.addSolid([1.0, 1.0, 1.0], "Flash_" + inTime, compWidth, compHeight, 1.0, 0.18);
+          // Impact Flash
+          var flash = comp.layers.addSolid([1.0, 1.0, 1.0], "Flash_" + inTime, compWidth, compHeight, 1.0, 0.16);
           flash.inPoint = inTime;
-          flash.outPoint = inTime + 0.18;
-          flash.transform.opacity.setValueAtTime(inTime, 80);
-          flash.transform.opacity.setValueAtTime(inTime + 0.16, 0);
+          flash.outPoint = inTime + 0.16;
+          flash.transform.opacity.setValueAtTime(inTime, 70);
+          flash.transform.opacity.setValueAtTime(inTime + 0.15, 0);
         }
 
         return { layer: layer, footage: foot, coverScale: coverScale };
@@ -347,7 +387,7 @@ async function generateGuadalajaraTurrazoMacroEdit() {
     }
 
     // =======================================================================
-    // 🎥 2. MONTAJE DE LOS CLIPS CON TRANSICIONES Y EFECTOS ESPECIALES
+    // 🎥 2. MONTAJE DE CLIPS + PINCELADAS + TIPOGRAFÍA MIXTA TIKTOK
     // =======================================================================
     var baseDir = "${videoDir}/";
     var clipsData = ${JSON.stringify(clipTimings)};
@@ -355,17 +395,18 @@ async function generateGuadalajaraTurrazoMacroEdit() {
     for (var c = 0; c < clipsData.length; c++) {
       var item = clipsData[c];
       var videoPath = baseDir + item.fileName;
-      var col = COLORS[item.colorIndex];
-      var font = FONTS[item.fontIndex];
+
+      // 1. Pincelada / Bloque de Color de Fondo Artístico (como la imagen de TikTok)
+      if (item.hasPaintWipe) {
+        var paintCol = (c % 2 === 0) ? COLOR_MINT : [0.94, 0.35, 0.38];
+        createPaintBrushWipe(comp, "Paint_Brush_" + (c + 1), item.inTime, paintCol);
+      }
 
       if (item.isBlurShift) {
-        // ===================================================================
         // 🌟 CASO ESPECIAL: 20230621_001126.mp4 (Detrás -> Fast Blur -> Delante)
-        // ===================================================================
         var midTime = item.inTime + 2.0;
 
-        // 1. Video Base con audio silenciado
-        var vf = importAndFitVideoWithTransition(comp, videoPath, item.inTime, item.outTime, "Base_Video_" + item.fileName, item.transitionType);
+        var vf = importAndFitVideoReliable(comp, videoPath, item.inTime, item.outTime, "Base_Video_" + item.fileName, item.transType);
         if (vf && vf.layer) {
           try {
             var blurFX = vf.layer.property("Effects").addProperty("ADBE Fast Blur");
@@ -378,22 +419,10 @@ async function generateGuadalajaraTurrazoMacroEdit() {
           } catch(e) {}
         }
 
-        // 2. Texto DETRÁS (0 a 2s)
-        createDynamicClipText(
-          comp,
-          "Behind_Text_" + item.fileName,
-          "ETERNIDAD NOCTURNA",
-          140,
-          COLORS[0],
-          [540, 680],
-          item.inTime,
-          midTime,
-          FONTS[0],
-          0
-        );
+        // Texto DETRÁS (0 a 2s)
+        createMixedEditorialTypography(comp, "Behind_Text_" + item.fileName, "NOCHE", "Eternidad Viva", "CLÍMAX // 07", item.inTime, midTime, 1);
 
-        // 3. Sujeto por delante (0 a 2s mediante Luma/Extract)
-        var fgLayer = importAndFitVideoWithTransition(comp, videoPath, item.inTime, midTime, "Foreground_Subject_" + item.fileName, 6);
+        var fgLayer = importAndFitVideoReliable(comp, videoPath, item.inTime, midTime, "Foreground_Subject_" + item.fileName, 4);
         if (fgLayer && fgLayer.layer) {
           try {
             var ext = fgLayer.layer.property("Effects").addProperty("ADBE Extract");
@@ -404,40 +433,16 @@ async function generateGuadalajaraTurrazoMacroEdit() {
           } catch(e) {}
         }
 
-        // 4. Texto DELANTE (2s a 4.4s sobre el video desenfocado)
-        createDynamicClipText(
-          comp,
-          "Front_Text_" + item.fileName,
-          "EL CLÍMAX DE GUADALAJARA",
-          130,
-          COLORS[2],
-          [540, 720],
-          midTime,
-          item.outTime,
-          FONTS[1],
-          1
-        );
+        // Texto DELANTE (2s a 4.4s sobre video desenfocado)
+        createMixedEditorialTypography(comp, "Front_Text_" + item.fileName, "TURRAZO", "Guadalajara 2023", "THE END // LIVE", midTime, item.outTime, 2);
 
       } else if (item.isBehind) {
-        // ===================================================================
         // 🌟 CASO ESPECIAL: TEXTO DETRÁS DEL SUJETO (20230620_212618, 224844, 231413)
-        // ===================================================================
-        importAndFitVideoWithTransition(comp, videoPath, item.inTime, item.outTime, "Base_Video_" + item.fileName, item.transitionType);
+        importAndFitVideoReliable(comp, videoPath, item.inTime, item.outTime, "Base_Video_" + item.fileName, item.transType);
 
-        createDynamicClipText(
-          comp,
-          "Behind_Text_" + item.fileName,
-          item.phrase,
-          150,
-          col,
-          [540, 680],
-          item.inTime,
-          item.outTime,
-          font,
-          item.effectIndex
-        );
+        createMixedEditorialTypography(comp, "Behind_Text_" + item.fileName, item.title, item.script, item.tag, item.inTime, item.outTime, item.styleIndex);
 
-        var fg = importAndFitVideoWithTransition(comp, videoPath, item.inTime, item.outTime, "Foreground_Subject_" + item.fileName, 6);
+        var fg = importAndFitVideoReliable(comp, videoPath, item.inTime, item.outTime, "Foreground_Subject_" + item.fileName, 4);
         if (fg && fg.layer) {
           try {
             var ext2 = fg.layer.property("Effects").addProperty("ADBE Extract");
@@ -449,34 +454,21 @@ async function generateGuadalajaraTurrazoMacroEdit() {
         }
 
       } else {
-        // ===================================================================
-        // 🌿 CASO ESTÁNDAR: VIDEO CON TRANSICIONES + TEXTO AUTO-FIT
-        // ===================================================================
-        importAndFitVideoWithTransition(comp, videoPath, item.inTime, item.outTime, "Clip_" + (c + 1) + "_" + item.fileName, item.transitionType);
+        // 🌿 CASO ESTÁNDAR: VIDEO SIN NEGROS + TIPOGRAFÍA MIXTA
+        importAndFitVideoReliable(comp, videoPath, item.inTime, item.outTime, "Clip_" + (c + 1) + "_" + item.fileName, item.transType);
 
-        createDynamicClipText(
-          comp,
-          "Text_" + (c + 1) + "_" + item.fileName,
-          item.phrase,
-          135,
-          col,
-          [540, 640],
-          item.inTime,
-          item.outTime,
-          font,
-          item.effectIndex
-        );
+        createMixedEditorialTypography(comp, "Text_" + (c + 1) + "_" + item.fileName, item.title, item.script, item.tag, item.inTime, item.outTime, item.styleIndex);
       }
     }
 
     // =======================================================================
     // 🌌 3. CAPA DE GRADACIÓN DE CONTRASTE CINEMÁTICO
     // =======================================================================
-    var darkOverlay = comp.layers.addSolid([0.02, 0.02, 0.04], "Cinematic_Contrast_Overlay", compWidth, compHeight, 1.0, compDuration);
-    darkOverlay.transform.opacity.setValue(32);
+    var darkOverlay = comp.layers.addSolid([0.02, 0.02, 0.04], "Cinematic_Grade", compWidth, compHeight, 1.0, compDuration);
+    darkOverlay.transform.opacity.setValue(30);
 
     // =======================================================================
-    // 📊 4. HUD AUDIO SPECTRUM (32 Barras Reactivas)
+    // 📊 4. HUD AUDIO EQUALIZER BARS (Base)
     // =======================================================================
     var eqLayer = comp.layers.addShape();
     eqLayer.name = "HUD_Equalizer_Bars";
@@ -519,7 +511,7 @@ async function generateGuadalajaraTurrazoMacroEdit() {
     comp.openInViewer();
 
   } catch(err) {
-    alert("Error en script de Macro-Edit Guadalajara: " + err.toString());
+    alert("Error en script de Macro-Edit Editorial: " + err.toString());
   } finally {
     try {
       app.endUndoGroup();
@@ -530,24 +522,24 @@ async function generateGuadalajaraTurrazoMacroEdit() {
 
   const jsxFilePath = path.join(outputDir, "Guadalajara_Turrazo_Master_Edit.jsx");
   fs.writeFileSync(jsxFilePath, fullExtendScript, "utf-8");
-  console.log(`   ✔ Archivo JSX con Transiciones Creativas y Audio Muted generado -> ${jsxFilePath}`);
+  console.log(`   ✔ Archivo JSX de Masterpiece Editorial generado -> ${jsxFilePath}`);
 
   const compObj = MotionEngine.createComposition({
-    id: "guadalajara_turrazo_comp",
-    name: "GUADALAJARA_TURRAZO_MASTER_EDIT",
+    id: "guadalajara_editorial_comp",
+    name: "GUADALAJARA_EDITORIAL_MASTERPIECE",
     width: 1080,
     height: 1920,
     fps: 60,
     duration: compDuration,
   });
 
-  MotionEngine.deliverSocialPackage(compObj, "proj_guadalajara", "rev_1");
-  await CLIRunner.run(["node", "bin", "validate", "guadalajara.json"]);
-  await CLIRunner.run(["node", "bin", "qa", "guadalajara.json", "--threshold", "0.85"]);
+  MotionEngine.deliverSocialPackage(compObj, "proj_guadalajara_editorial", "rev_2");
+  await CLIRunner.run(["node", "bin", "validate", "guadalajara_editorial.json"]);
+  await CLIRunner.run(["node", "bin", "qa", "guadalajara_editorial.json", "--threshold", "0.85"]);
 
   console.log("\n==========================================================================");
-  console.log("🎉 ¡PRODUCCIÓN MAESTRA CON TRANSICIONES DINÁMICAS LISTA EN AFTER EFFECTS!");
+  console.log("🎉 ¡PRODUCCIÓN EDITORIAL TIKTOK (CERO NEGROS) LISTA EN AFTER EFFECTS!");
   console.log("==========================================================================\n");
 }
 
-generateGuadalajaraTurrazoMacroEdit().catch(console.error);
+generateGuadalajaraTurrazoAestheticMasterpiece().catch(console.error);
