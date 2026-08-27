@@ -49,7 +49,7 @@ describe("Fase 5A / 5B — MediaMetadataProbe Duration & Binary Header Extractio
 
       const imported = AssetImporter.importFromPath(tmpWav);
       assert.equal(imported.type, "audio");
-      assert.ok(Math.abs(Number(imported.metadata.duration) - 2.0) < 0.05);
+      assert.ok(imported.metadata !== undefined && Math.abs(Number(imported.metadata.duration) - 2.0) < 0.05);
     } finally {
       if (fs.existsSync(tmpWav)) fs.unlinkSync(tmpWav);
     }
@@ -73,6 +73,7 @@ describe("Fase 5A / 5B — MediaMetadataProbe Duration & Binary Header Extractio
       assert.equal(probe.format, "png");
 
       const imported = AssetImporter.importFromPath(tmpPng);
+      assert.ok(imported.metadata !== undefined);
       assert.equal(imported.metadata.width, 1080);
       assert.equal(imported.metadata.height, 1920);
     } finally {
