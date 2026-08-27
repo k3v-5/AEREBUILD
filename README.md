@@ -12,6 +12,7 @@ This project is optimized for practical automation workflows: effects, presets, 
 
 ## Highlights
 
+- **[🤖 Manual Operativo Maestro para Agentes IA (`docs/AI_AGENT_MANUAL.md`)](docs/AI_AGENT_MANUAL.md)**: Guía exhaustiva para modelos de lenguaje con arquitectura en 3 niveles, ciclo de vida de producción, recetario de código y catálogo de herramientas MCP.
 - Full composition and layer automation.
 - Deep effect inspection and property editing.
 - Advanced effect graph controls (temporal + spatial).
