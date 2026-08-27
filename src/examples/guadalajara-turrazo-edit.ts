@@ -20,7 +20,7 @@ async function generateGuadalajaraTurrazoMacroEdit() {
   }
 
   const videoDir = "E:/Respaldo/Guadalajara junio 23-20231019T123606Z-001/Guadalajara junio 23";
-  const audioFilePath = "D:/Documentos/Rolitas/turrazo.flac";
+  const audioFilePath = "D:/Documentos/Rolitas/turrazo.wav";
   const compDuration = 220.8;
 
   // Obtener la lista completa de los 78 archivos MP4 ordenados
