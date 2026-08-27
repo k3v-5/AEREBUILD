@@ -19,6 +19,20 @@ Para cada una de las **10 Fases del Proyecto**, es **estrictamente obligatorio**
 
 ---
 
+## 🚀 Regla Obligatoria: Bitácora de Mejoras Post-Fase (`docs/POST_PHASE_IMPROVEMENTS.md`)
+
+Toda mejora, optimización, parche o módulo nuevo agregado al motor **fuera del ciclo de una fase formal** debe registrarse obligatoriamente en [`docs/POST_PHASE_IMPROVEMENTS.md`](file:///F:/Dev/after-effects-mcp/docs/POST_PHASE_IMPROVEMENTS.md) documentando:
+- **Fecha y Versión:** Momento exacto de incorporación.
+- **Módulos Afectados:** Rutas en `src/`.
+- **¿Por qué se agregó? (Causa raíz / Problema detectado):** Qué limitación o bug motivó la mejora.
+- **¿Para qué se agregó? (Solución / Beneficio técnico):** Qué hace y cómo previene fallos futuros.
+- **Archivos Creados / Modificados.**
+- **Pruebas y Verificación:** Resultados de la suite de pruebas automatizadas.
+
+*Nota:* Si el usuario solicita una **fase nueva**, se continúa el flujo formal documentando `spec/phase-X.md` y `docs/phases/phase-X-report.md`.
+
+---
+
 ## 🛡️ Reglas Críticas de Testing e Integridad (Fase 1.5)
 
 1. **Prohibido Modificar Tests para Enmascarar Fallos:**

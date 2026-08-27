@@ -282,3 +282,17 @@ Para garantizar que el resultado visual generado en scripts de After Effects cum
 2. **Estilo Principal Aprobado:** **Editorial Poster / TIME Style** (Tipografía gigante condensada en rojo `#FF1424` y blanco, interletraje negativo, animación palabra por palabra y diales vectoriales).
 3. **Estilo Secundario:** **Minimal Luxury / Tech** (Apple/Linear dark aesthetic).
 4. **Invariantes Visuales:** Siempre habilitar `comp.motionBlur = true`, `ParagraphJustification.CENTER_JUSTIFY` y viñeteado de contraste sobre videos reales.
+
+---
+
+## 9. Bitácora Obligatoria de Mejoras Post-Fase
+
+Toda mejora, optimización, parche o módulo nuevo agregado al motor **fuera del ciclo de una fase formal** debe registrarse obligatoriamente en [`docs/POST_PHASE_IMPROVEMENTS.md`](file:///F:/Dev/after-effects-mcp/docs/POST_PHASE_IMPROVEMENTS.md) documentando:
+- **Fecha y Versión:** Momento exacto de incorporación.
+- **Módulos Afectados:** Rutas en `src/`.
+- **¿Por qué se agregó? (Causa raíz / Problema detectado):** Qué limitación o bug motivó la mejora.
+- **¿Para qué se agregó? (Solución / Beneficio técnico):** Qué hace y cómo previene fallos futuros.
+- **Archivos Creados / Modificados.**
+- **Pruebas y Verificación:** Resultados de la suite de pruebas automatizadas.
+
+*Nota:* Si el usuario solicita una **fase nueva**, se continúa el flujo formal documentando `spec/phase-X.md` y `docs/phases/phase-X-report.md`.
