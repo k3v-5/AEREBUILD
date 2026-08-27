@@ -1,8 +1,11 @@
 {
   "name": "after-effects-mcp",
-  "version": "1.0.0",
-  "description": "MCP server for Adobe After Effects",
+  "version": "3.0.0",
+  "description": "Motion Graphics Engine & MCP Platform for Adobe After Effects",
   "main": "build/index.js",
+  "bin": {
+    "motion-engine": "./bin/motion-engine.js"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc && copyfiles -u 1 \"src/scripts/**/*\" build && copyfiles -u 1 \"src/tests/**/*.json\" build",

@@ -37,23 +37,17 @@ Este documento define la ruta de evolución completa desde las bases matemática
 | **Orchestration & Persistence** | **18** | Agentic Video Orchestration, Project Persistence & Production Workflows | ✅ **Completado** | 557 tests | `v1.8.0` |
 | **🏆 MILESTONE 23** | **1–23** | **Autonomous Deterministic Production Platform (Consolidación Global)** | 🔒 **CONGELADO** | 557 tests | `v2.3.0` |
 | **Distributed Swarm** | **24** | Distributed Production Orchestration, Multi-Agent Swarm & Elastic Scheduling | ✅ **Completado** | 577 tests | `v2.4.0` |
+| **Multi-Aspect Delivery** | **25** | Multi-Aspect Ratio Adapter, Platform Audio Compliance & Social Delivery Packager | ✅ **Completado** | 587 tests | `v2.5.0` |
+| **Deep AE JSX Bridge** | **26** | Deep After Effects JSX Compiler, Native Expressions & Bidirectional Bridge | ✅ **Completado** | 597 tests | `v2.6.0` |
+| **CLI, SDK & Gold Master**| **27** | Standalone CLI, Public TypeScript SDK & Gold Master Certification | 🏆 **GOLD MASTER** | 610 tests | `v3.0.0` |
 
 ---
 
-## 🏆 Resumen del Milestone 23 — Autonomous Deterministic Production Platform (v2.3.0)
+## 🏆 Hito Histórico: MILESTONE 30 — GOLD MASTER (v3.0.0)
 
-El **Milestone 23** consolida la totalidad del motor y las capas superiores del sistema:
-- **Motor Determinista Puro (Fases 1–16):** IR canónica, álgebra afín 2D, cinemática, audio multicanal, subtítulos de alta precisión y directores IA.
-- **Control Plane e Interoperabilidad (Fases 17–19):** Servidor MCP, exportadores JSX/FCPXML/EDL, pipeline de render determinista.
-- **Producción Autónoma y QA Estructurado (Fase 20):** Orquestador de producción $\text{Brief} \to \text{Plan} \to \text{IR} \to \text{QA} \to \text{Repair} \to \text{Gate} \to \text{Delivery}$ con ChangeSets atómicos.
-- **Persistencia Avanzada, CAS & Replay (Fase 21):** Content-Addressed Storage con deduplicación y recuperación ante caídas sin pérdida de estado.
-- **Optimización Creativa y Experimentos A/B (Fase 22):** Espacios de parámetros multidimensionales, scoring con penalización de complejidad y frontera de Pareto.
-- **Aseguramiento Perceptual de Calidad (Fase 23):** Separación de 3 niveles (IR $\to$ Evaluación $\to$ Percepción), contraste WCAG, colisiones espaciales y análisis de fotosensibilidad.
-
----
-
-## 🚀 Próxima Frontera: Fase 24 — Distributed Production Orchestration & Swarm Coordination (v2.4.0)
-- **TaskDAG & Planificador Elástico:** Descomposición determinista de producciones en grafos de tareas concurrentes.
-- **Multi-Agent Swarm:** Coordinación de agentes especializados (`Director`, `Editor`, `MotionDesigner`, `AudioEngineer`, `QACritic`) con resolución de colisiones mediante `ThreeWayMergeArbiter`.
-- **Worker Pool & Leases Idempotentes:** Balanceo de carga y recuperación transparente ante caídas de nodos de cómputo.
+El proyecto ha completado con éxito sus **27 Fases de Desarrollo**:
+- **610 tests pasando al 100% en verde** en 289 suites.
+- **Puntos de entrada:** Servidor MCP (30+ herramientas), CLI Standalone (`motion-engine`) y SDK TypeScript público (`@motion-engine/core`).
+- **Exportación universal:** Adobe After Effects ExtendScript JSX, Final Cut Pro XML, CMX 3600 EDL y Paquete Social Multi-Aspecto (`9:16`, `16:9`, `1:1`, `4:5`, `21:9`) con normalización de audio integrada y miniaturas automáticas.
+- **Invariante central:** Determinismo estricto e inmutabilidad con verificación de 7 capas.
 - **Equivalencia Distribuida:** $\text{Run}(1\text{ worker}) \equiv \text{Run}(N\text{ workers})$.

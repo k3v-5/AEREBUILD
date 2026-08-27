@@ -12,6 +12,9 @@ export * from "./workflows/index.js";
 export * from "./agent/index.js";
 export * from "./project/index.js";
 export * from "./distributed/index.js";
+export * from "./delivery/index.js";
+export * from "./cli/index.js";
+export * from "./sdk/index.js";
 export * from "./mcp/index.js";
 
 async function main() {
