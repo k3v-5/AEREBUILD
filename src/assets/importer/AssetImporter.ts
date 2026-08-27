@@ -1,6 +1,7 @@
 import { generateDeterministicLayerId } from "../../core/id.js";
 import { Asset } from "../Asset.js";
 import { AssetType } from "../types.js";
+import { MediaMetadataProbe } from "../core/MediaMetadataProbe.js";
 
 /**
  * Importador de recursos multimedia (Fase 5A).
@@ -18,6 +19,10 @@ export class AssetImporter {
     const id = options.id ?? `asset_${generateDeterministicLayerId()}`;
     const name = options.name ?? filename;
 
+    // Extraer metadatos reales mediante inspección binaria si existe el archivo
+    const probed = MediaMetadataProbe.probe(filePath);
+    const defaultMeta = this.createDefaultMetadata(type, ext);
+
     return {
       id,
       type,
@@ -26,7 +31,11 @@ export class AssetImporter {
         path: filePath,
         ...options.source,
       },
-      metadata: options.metadata ?? this.createDefaultMetadata(type, ext),
+      metadata: {
+        ...defaultMeta,
+        ...probed,
+        ...(options.metadata ?? {}),
+      },
       status: options.status ?? "ready",
     };
   }

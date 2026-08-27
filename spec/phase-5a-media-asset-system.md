@@ -61,3 +61,16 @@ con $\text{speed} > 0$.
 - **`Frame`:** Estructura neutral de fotograma `{ width, height, format, timestamp, data }`.
 - **`FrameCache`:** Caché LRU (Least Recently Used) parametrizable por número máximo de fotogramas y memoria máxima.
 - **`ResourceManager`:** Orquestador central para la resolución de assets, carga bajo demanda y consulta de caché.
+
+---
+
+## 4. Inspección Binaria de Encabezados (`MediaMetadataProbe`)
+
+Para evitar asunciones incorrectas sobre la duración de clips de video o audio al importarlos, el motor incorpora un parser binario sin dependencias:
+- **MP4/MOV:** Decodificación de átomos ISO `moov -> mvhd` y `tkhd` para calcular duración exacta:
+  $$\text{durationSec} = \frac{\text{rawDuration}}{\text{timescale}}$$
+- **WAV (RIFF):** Decodificación del encabezado fmt y cálculo de duración por `byteRate`:
+  $$\text{durationSec} = \frac{\text{dataSize}}{\text{byteRate}}$$
+- **FLAC:** Decodificación del bloque `STREAMINFO` (frecuencia de muestreo y número total de muestras).
+- **PNG/JPG:** Extracción de dimensiones físicas de imagen sin decodificar píxeles.
+- Integrado automáticamente en `AssetImporter.importFromPath()` para poblar los metadatos reales del archivo.

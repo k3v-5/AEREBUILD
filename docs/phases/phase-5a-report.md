@@ -43,8 +43,10 @@ src/
 │   ├── Asset.ts                 # Modelo de activo audiovisual con status y name
 │   ├── AssetRegistry.ts         # Catálogo central con relinking, query y dependencias
 │   ├── AssetValidator.ts        # Validador exhaustivo de esquemas de metadatos
+│   ├── core/
+│   │   └── MediaMetadataProbe.ts # Inspector binario de metadatos reales (duración, resolución)
 │   ├── importer/
-│   │   └── AssetImporter.ts     # Detección de tipos y generación de registros
+│   │   └── AssetImporter.ts     # Detección de tipos y generación de registros con metadatos reales
 │   ├── utils/
 │   │   └── timeMapping.ts       # Conversiones matemáticas source-time / comp-time con speed
 │   └── index.ts                 # Facade público del módulo de assets
