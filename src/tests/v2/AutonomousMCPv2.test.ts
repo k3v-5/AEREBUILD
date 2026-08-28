@@ -6,9 +6,9 @@ import { CreativePlanner } from "../../ai-planner/creative/CreativePlanner.js";
 import { ProductionJobQueue } from "../../runtime/jobs/ProductionJobQueue.js";
 
 describe("Autonomous MCP v2 — Production OS, DSL & Batch Systems", () => {
-  it("retrieves and validates all 4 master StyleProfiles", () => {
+  it("retrieves and validates master StyleProfiles", () => {
     const profiles = StyleProfileManager.getAllProfiles();
-    assert.equal(profiles.length, 4);
+    assert.equal(profiles.length, 5);
 
     const timeProfile = StyleProfileManager.getProfile("time_editorial_impact");
     assert.equal(timeProfile.typography.fontFamily, "Impact");

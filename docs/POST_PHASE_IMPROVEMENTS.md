@@ -389,3 +389,20 @@ Cada mejora contiene:
   - `[NEW]` `reports/production-benchmark-100.json`
   - `[MODIFY]` `package.json`
 - **Verificación:** **100/100 proyectos completados (100% Human Acceptance Rate)** con un promedio de solo **11.2 llamadas MCP por video** y **664/664 tests automatizados en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #024: Preset #1 — The Investigative Cartographer (`InvestigativeCartographerPreset`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/styles/presets/InvestigativeCartographerPreset.ts`, `src/styles/StyleProfileManager.ts`, `src/tests/styles/InvestigativeCartographer.test.ts`, `src/tests/v2/AutonomousMCPv2.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para implementar de forma determinista y matemática el primer preset maestro para video-ensayos y documentales de YouTube estilo Johnny Harris y Vox.
+- **¿Para qué se agregó?:**
+  - Provee `InvestigativeCartographerPreset` con cámara 2.5D ($X=32^\circ, Z=-12^\circ$), resaltador analógico animado (*Trim Paths* en modo Multiply), trazador de rutas discontinuas (`[14, 8]`), rotación pseudoaleatoria determinista para recortes de periódicos y animación de impacto de chinchetas con *overshoot* inercial ($S(0) = 145\%$).
+- **Archivos:**
+  - `[NEW]` `src/styles/presets/InvestigativeCartographerPreset.ts`
+  - `[NEW]` `src/tests/styles/InvestigativeCartographer.test.ts`
+  - `[MODIFY]` `src/styles/StyleProfileManager.ts`
+  - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **668/668 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).

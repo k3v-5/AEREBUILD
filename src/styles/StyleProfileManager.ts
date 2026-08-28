@@ -4,7 +4,8 @@ export type StylePresetId =
   | "time_editorial_impact"
   | "tiktok_retention_master"
   | "cinematic_luxury"
-  | "cyberpunk_stage";
+  | "cyberpunk_stage"
+  | "johnny_harris_investigative";
 
 export interface StyleProfile {
   id: StylePresetId;
@@ -196,6 +197,44 @@ export class StyleProfileManager {
       },
       soundDesign: {
         autoDuckingDb: -4.5,
+        whooshEnabled: true,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    johnny_harris_investigative: {
+      id: "johnny_harris_investigative",
+      name: "The Investigative Cartographer (Johnny Harris / Vox)",
+      description: "Mapas 3D topográficos, recortes de documentos históricos con chinchetas, resaltadores analógicos y trazado de rutas vectoriales.",
+      typography: {
+        fontFamily: "Playfair Display",
+        fontWeight: 900,
+        primaryColor: [0.102, 0.102, 0.102], // Ink Black
+        accentColor: [1.0, 0.898, 0.0], // Highlighter Yellow
+        tracking: -5,
+        verticalStretchPct: 100,
+        allCaps: false,
+      },
+      colorGrading: {
+        preset: "clean_commercial",
+        vignetteIntensity: 20,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "whip",
+        defaultDurationSec: 0.4,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [1.0, 0.898, 0.0],
+        inactiveWordColor: [0.102, 0.102, 0.102],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -3.5,
         whooshEnabled: true,
         impactBoomEnabled: true,
         uiTicksEnabled: true,
