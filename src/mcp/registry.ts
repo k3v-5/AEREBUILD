@@ -33,6 +33,11 @@ import { handleOpenProject } from "./tools/open-project.js";
 import { handleRestoreProjectRevision } from "./tools/restore-project-revision.js";
 import { handleSaveProject } from "./tools/save-project.js";
 import { handleValidateProject } from "./tools/validate-project.js";
+import { handleTranscribeLocalAudio } from "./tools/transcribe-local-audio.js";
+import { handleDetectViralClips } from "./tools/detect-viral-clips.js";
+import { handlePackageSocialRelease } from "./tools/package-social-release.js";
+import { handleAutoReframeVideo } from "./tools/auto-reframe-video.js";
+import { z } from "zod";
 
 /**
  * Registro centralizado de herramientas y recursos del Model Context Protocol (Fase 17 y 18).
@@ -305,6 +310,83 @@ export class McpRegistry {
             content: [{ type: "text", text: JSON.stringify({ error: error.message, context: error.context }, null, 2) }],
             isError: true,
           };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE AUTOMATIZACIÓN (Autonomous Content Factory) ---
+    server.tool(
+      "transcribe_local_audio",
+      "Transcribes local video/audio phonetically word-by-word with zero API cost using local Whisper or deterministic synthesis.",
+      {
+        audioPath: z.string().optional(),
+        videoPath: z.string().optional(),
+        textFallback: z.string().optional(),
+        totalDurationSec: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleTranscribeLocalAudio(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "detect_viral_clips",
+      "Analyzes long-form transcripts and audio energy to extract top viral clips (30s-60s) with virality scoring (0-100).",
+      {
+        transcriptText: z.string().optional(),
+        totalDurationSec: z.number().optional(),
+        topK: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleDetectViralClips(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "package_social_release",
+      "Generates 3 A/B High-CTR YouTube titles, chapters description, and TikTok viral hashtags.",
+      {
+        projectName: z.string().optional(),
+        topic: z.string(),
+        keywords: z.array(z.string()).optional(),
+        viralHookText: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handlePackageSocialRelease(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "auto_reframe_video",
+      "Calculates dynamic pan-and-scan or split-screen keyframes to convert 16:9 footage into 9:16 vertical video.",
+      {
+        mode: z.enum(["dynamic_pan_and_scan", "split_screen_stacked", "blur_background_boxed"]).optional(),
+        sourceWidth: z.number().optional(),
+        sourceHeight: z.number().optional(),
+        targetWidth: z.number().optional(),
+        targetHeight: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleAutoReframeVideo(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
         }
       }
     );

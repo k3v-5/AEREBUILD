@@ -549,3 +549,35 @@ Cada mejora contiene:
   - `[MODIFY]` `src/index.ts`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **704/704 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #032: Herramientas MCP de Automatización, Pipeline CLI de 1-Clic Auto-Clip & Banco SFX WAV Procedural (`src/mcp/tools/`, `src/automation/pipeline/`, `src/audio-design/`)
+- **Fecha:** 2026-08-28
+- **Módulos Afectados:** `src/mcp/tools/transcribe-local-audio.ts`, `src/mcp/tools/detect-viral-clips.ts`, `src/mcp/tools/package-social-release.ts`, `src/mcp/tools/auto-reframe-video.ts`, `src/mcp/registry.ts`, `src/automation/pipeline/AutoClipPipelineOrchestrator.ts`, `bin/auto-clip.js`, `src/audio-design/SoundBankManager.ts`, `src/tests/automation/MCPAutomationTools.test.ts`, `src/tests/automation/AutoClipPipeline.test.ts`, `src/tests/automation/SoundBankManager.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para permitir a cualquier agente IA o usuario operar todo el ciclo de producción en 1 solo clic o llamada JSON-RPC estructurada, e incorporar efectos de sonido físicos PCM WAV reales importados a After Effects sin requerir bibliotecas externas pesadas.
+- **¿Para qué se agregó?:**
+  - Integra 4 herramientas formales en el servidor MCP:
+    - `transcribe_local_audio`: Transcripción fonética local y síntesis determinista.
+    - `detect_viral_clips`: Detección y ranking de momentos virales con scoring predictivo.
+    - `package_social_release`: Generación de títulos A/B, capítulos formateados y hashtags.
+    - `auto_reframe_video`: Reencuadre dinámico 16:9 a 9:16 con deadzones.
+  - Implementa el pipeline CLI de 1-clic `AutoClipPipelineOrchestrator` (`node bin/auto-clip.js` o `npm run auto-clip`) que toma un video crudo y produce automáticamente 3 TikToks terminados con scripts JSX listos.
+  - Implementa `SoundBankManager` con síntesis determinista de archivos WAV de 16-bit / 44.1kHz (Whoosh, Impact Boom, UI Pop, Camera Shutter, Bell Chime) y generador de fragmentos ExtendScript para importar el banco SFX a After Effects.
+- **Archivos:**
+  - `[NEW]` `src/mcp/tools/transcribe-local-audio.ts`
+  - `[NEW]` `src/mcp/tools/detect-viral-clips.ts`
+  - `[NEW]` `src/mcp/tools/package-social-release.ts`
+  - `[NEW]` `src/mcp/tools/auto-reframe-video.ts`
+  - `[NEW]` `src/automation/pipeline/AutoClipPipelineOrchestrator.ts`
+  - `[NEW]` `bin/auto-clip.js`
+  - `[NEW]` `src/audio-design/SoundBankManager.ts`
+  - `[NEW]` `src/tests/automation/MCPAutomationTools.test.ts`
+  - `[NEW]` `src/tests/automation/AutoClipPipeline.test.ts`
+  - `[NEW]` `src/tests/automation/SoundBankManager.test.ts`
+  - `[MODIFY]` `src/mcp/registry.ts`
+  - `[MODIFY]` `src/automation/index.ts`
+  - `[MODIFY]` `package.json`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **712/712 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).

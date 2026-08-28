@@ -43,21 +43,23 @@ Este documento define la ruta de evolución completa desde las bases matemática
 | **Autonomous MCP v2** | **v2.0** | Declarative Production DSL, StyleProfileManager & JobQueue Farm | 🚀 **PRODUCCIÓN** | 664 tests | `v3.1.0` |
 | **15 Creator Presets** | **v2.1** | 15 Motores de Estilo YouTube & TIME Editorial Insignia | 💎 **COMPLETADO** | 689 tests | `v3.2.0` |
 | **Content Factory Suite**| **v2.2** | Whisper Local, Viral Clipper, Auto-Reframing 9:16 & Social Packager | 🚀 **PRODUCCIÓN** | 704 tests | `v3.3.0` |
+| **1-Click MCP & SFX Bank**| **v2.3** | Herramientas MCP de 1-Paso, Auto-Clip 1-Click CLI & Banco SFX WAV | 💎 **COMPLETADO** | 712 tests | `v3.4.0` |
 
 ---
 
-## 🏆 Hito Histórico: MILESTONE 30 — GOLD MASTER & AUTONOMOUS CONTENT FACTORY (v3.3.0)
+## 🏆 Hito Histórico: MILESTONE 30 — GOLD MASTER & AUTONOMOUS FACTORY v3.4.0
 
-El proyecto ha completado con éxito sus **27 Fases de Desarrollo**, la suite de **100 Proyectos Reales de Producción**, los **15 Motores de Estilo de Creadores** y la **Suite de Automatización Total (Autonomous Content Factory)**:
-- **704 tests pasando al 100% en verde** en 326 suites (`npm run conformance`).
+El proyecto ha completado con éxito sus **27 Fases de Desarrollo**, la suite de **100 Proyectos Reales de Producción**, los **15 Motores de Estilo de Creadores**, la **Suite de Automatización Total** y el **Ecosistema de 1-Clic & Banco SFX**:
+- **712 tests pasando al 100% en verde** en 329 suites (`npm run conformance`).
 - **Benchmark de 100 Proyectos Reales:** 100% Human Acceptance Rate con un promedio de solo 11.2 llamadas MCP por video.
-- **Suite de Automatización Desatendida:**
-  - `LocalWhisperTranscriptionBridge`: Transcripción fonética local $0 costo y offline.
-  - `ViralMomentDetector`: Scoring de retención, RMS y corte Long-to-Shorts.
-  - `ActiveSpeakerReframingEngine`: Reencuadre dinámico 16:9 a 9:16 y Split-Screen.
-  - `VoiceoverTimingSynchronizer`: Sincronización de respiración y cortes visuales.
-  - `SocialLaunchPackager` & `HeadlessRenderOrchestrator`: SEO A/B, capítulos y render headless `aerender`.
-- **Puntos de entrada:** Servidor MCP (30+ herramientas), Declarative Production DSL (`ProductionDSL`), CLI Standalone (`motion-engine`) y SDK TypeScript público (`@motion-engine/core`).
+- **Suite de Automatización & 1-Clic:**
+  - `transcribe_local_audio`: Transcripción Whisper local $0 costo y offline.
+  - `detect_viral_clips`: Scoring de retención, RMS y corte Long-to-Shorts.
+  - `auto_reframe_video`: Reencuadre dinámico 16:9 a 9:16 y Split-Screen.
+  - `package_social_release`: SEO A/B, capítulos y títulos High-CTR.
+  - `AutoClipPipelineOrchestrator` (`npm run auto-clip`): Pipeline de 1-clic Video Crudo ➔ 3 Shorts listos.
+  - `SoundBankManager`: Síntesis procedural de archivos WAV 16-bit/44.1kHz (Whoosh, Impact, Pop, Shutter, Chime).
+- **Puntos de entrada:** Servidor MCP (34+ herramientas), Declarative Production DSL (`ProductionDSL`), CLI Standalone (`motion-engine`), CLI Auto-Clip (`auto-clip`) y SDK TypeScript público (`@motion-engine/core`).
 - **Exportación universal:** Adobe After Effects ExtendScript JSX, Final Cut Pro XML, CMX 3600 EDL y Paquete Social Multi-Aspecto (`9:16`, `16:9`, `1:1`, `4:5`, `21:9`) con normalización de audio integrada y miniaturas automáticas.
 - **Invariante central:** Determinismo estricto e inmutabilidad con verificación de 7 capas.
 - **Equivalencia Distribuida:** $\text{Run}(1\text{ worker}) \equiv \text{Run}(N\text{ workers})$.
