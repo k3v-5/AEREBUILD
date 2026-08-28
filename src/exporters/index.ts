@@ -14,6 +14,7 @@ export * from "./ae/expressions/AEExpressionValidator.js";
 export * from "./ae/shapes/AEShapeCompiler.js";
 export * from "./ae/importer/AEJSXParser.js";
 export * from "./ae/importer/AETemplateImporter.js";
+export * from "./ae/bridge/AELiveBridgeProtocol.js";
 export * from "./ae/AEBridgeManager.js";
 
 // Apple FCPXML Exporter

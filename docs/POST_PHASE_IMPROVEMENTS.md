@@ -124,3 +124,53 @@ Cada mejora contiene:
   - `[NEW]` `src/tests/tracking-rotoscopy/SubjectMaskingEngine.test.ts`
   - `[MODIFY]` `src/tracking-rotoscopy/index.ts`
 - **Verificación:** 613/613 pruebas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #008: Motor de Auto-Reframe Inteligente y Focal Tracking (`AutoReframeEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/camera/core/AutoReframeEngine.ts`, `src/camera/index.ts`
+- **¿Por qué se agregó?:**
+  - Al reescalar tomas horizontales ($16:9$) a formatos verticales ($9:16$) para TikTok/Reels, el escalado central dejaba a los sujetos laterales fuera de encuadre.
+- **¿Para qué se agregó?:**
+  - Calcula la transformación óptima de Pan & Scan guiada por puntos de interés o rostros (`focalPoint`), con clamping matemático estricto que previene la aparición de bordes negros y filtro de media móvil para suavizado continuo de cámara.
+- **Archivos:**
+  - `[NEW]` `src/camera/core/AutoReframeEngine.ts`
+  - `[NEW]` `src/tests/camera/AutoReframeEngine.test.ts`
+  - `[MODIFY]` `src/camera/index.ts`
+- **Verificación:** 613/613 pruebas unitarias y matemáticas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #009: Librería de Componentes y Overlays Estéticos Virales (`AestheticElementsLibrary`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/graphics-motion/core/AestheticElementsLibrary.ts`
+- **¿Por qué se agregó?:**
+  - Los gráficos vectoriales de apoyo requerían armado manual de capas complejas en ExtendScript.
+- **¿Para qué se agregó?:**
+  - Provee generadores deterministas para:
+    - **Animated Highlighter:** Subrayado de marcador con animación de escala elástica y modo *Multiply*.
+    - **Tape Sticker Overlay:** Tiras de cinta adhesiva translúcida con rotación orgánica.
+    - **Camcorder Viewfinder HUD:** Visor retro con indicador REC parpadeante y retícula.
+- **Archivos:**
+  - `[NEW]` `src/graphics-motion/core/AestheticElementsLibrary.ts`
+  - `[NEW]` `src/tests/graphics-motion/AestheticElementsLibrary.test.ts`
+- **Verificación:** 613/613 pruebas unitarias en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #010: Protocolo IPC y Puente en Tiempo Real para After Effects (`AELiveBridgeProtocol`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/exporters/ae/bridge/AELiveBridgeProtocol.ts`, `src/exporters/index.ts`
+- **¿Por qué se agregó?:**
+  - La comunicación con After Effects era unidireccional (disparar script sin retorno estructurado ni monitoreo de progreso).
+- **¿Para qué se agregó?:**
+  - Implementa un protocolo basado en JSON-RPC 2.0 para:
+    - Consultar el árbol completo de capas, duraciones y dimensiones de la composición activa (`query_comp`).
+    - Parchar propiedades de texto, opacidad y posición en vivo (`patch_property`).
+    - Monitorear el progreso y estado de la cola de procesamiento en tiempo real (`get_render_status`).
+- **Archivos:**
+  - `[NEW]` `src/exporters/ae/bridge/AELiveBridgeProtocol.ts`
+  - `[NEW]` `src/tests/exporters/AELiveBridgeProtocol.test.ts`
+  - `[MODIFY]` `src/exporters/index.ts`
+- **Verificación:** 613/613 pruebas de serialización y compatibilidad en verde (`npm test`).
