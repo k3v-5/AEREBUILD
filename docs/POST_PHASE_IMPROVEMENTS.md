@@ -292,4 +292,30 @@ Cada mejora contiene:
   - `[NEW]` `src/exporters/omni/OmniChannelMultiExporter.ts`
   - `[NEW]` `src/tests/exporters/OmniChannelMultiExporter.test.ts`
   - `[MODIFY]` `src/exporters/index.ts`
-- **Verificación:** 641/641 pruebas en verde (`npm test`).
+- **Verificación:** 649/649 pruebas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #019: Kernel del Servidor MCP Autónomo y Pipeline de Integridad de 7 Capas (`src/mcp/`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/mcp/server/MCPServerKernel.ts`, `src/mcp/transactions/TransactionManager.ts`, `src/mcp/idempotency/IdempotencyRegistry.ts`, `src/mcp/versioning/VersionController.ts`, `src/mcp/permissions/PermissionManager.ts`, `src/mcp/reconciliation/StateReconciler.ts`, `src/mcp/errors/MCPErrorCatalog.ts`, `src/mcp/index.ts`
+- **¿Por qué se agregó?:**
+  - Para transformar el motor de un conjunto de scripts en un **Runtime Transaccional Autónomo** seguro contra alucinaciones, reintentos de red y fallos de ejecución.
+- **¿Para qué se agregó?:**
+  - Implementa el pipeline estricto: `Request -> Permisos -> Versionado Optimista -> Idempotencia -> Transacción ACID -> Mutación IR -> Rollback Criptográfico -> Reconciliación de Estado`.
+- **Archivos:**
+  - `[NEW]` `src/mcp/types/index.ts`
+  - `[NEW]` `src/mcp/server/MCPServerKernel.ts`
+  - `[NEW]` `src/mcp/transactions/TransactionManager.ts`
+  - `[NEW]` `src/mcp/idempotency/IdempotencyRegistry.ts`
+  - `[NEW]` `src/mcp/versioning/VersionController.ts`
+  - `[NEW]` `src/mcp/permissions/PermissionManager.ts`
+  - `[NEW]` `src/mcp/reconciliation/StateReconciler.ts`
+  - `[NEW]` `src/mcp/errors/MCPErrorCatalog.ts`
+  - `[NEW]` `src/mcp/index.ts`
+  - `[NEW]` `src/tests/mcp/MCPServerKernel.test.ts`
+  - `[NEW]` `src/tests/mcp/Idempotency.test.ts`
+  - `[NEW]` `src/tests/mcp/Transactions.test.ts`
+  - `[NEW]` `src/tests/mcp/Versioning.test.ts`
+  - `[NEW]` `src/tests/mcp/Reconciliation.test.ts`
+- **Verificación:** 649/649 pruebas automatizadas en verde (`npm test`).
