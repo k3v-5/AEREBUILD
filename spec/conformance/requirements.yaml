@@ -1,0 +1,274 @@
+version: "1.0.0"
+standard: "Autonomous After Effects MCP Normative Specification"
+last_updated: "2026-08-27"
+
+requirements:
+  # 1. IR / SOURCE OF TRUTH
+  - id: REQ-001
+    title: "Canonical IR as Single Source of Truth"
+    category: "IR / Source of Truth"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/core/Composition.test.ts"
+      - "src/tests/schema/Serialization.test.ts"
+
+  - id: REQ-002
+    title: "Deterministic Reconstructibility"
+    category: "IR / Source of Truth"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/schema/ProjectValidator.test.ts"
+      - "src/tests/serialization/RoundTrip.test.ts"
+
+  - id: REQ-003
+    title: "Cryptographic Project Hashing"
+    category: "IR / Source of Truth"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/core/ProjectHash.test.ts"
+
+  - id: REQ-004
+    title: "Immutable Stable Object Identifiers (UUID/Stable IDs)"
+    category: "IR / Source of Truth"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/core/StableIds.test.ts"
+
+  # 2. DETERMINISM (4 LEVELS)
+  - id: REQ-005
+    title: "Level A: Logical Determinism (Same IR -> Same Hash & Plan)"
+    category: "Determinism"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/ai-planner/DeterministicPlan.test.ts"
+
+  - id: REQ-006
+    title: "Level B: Structural Determinism (Exact Layer/Keyframe Graphs)"
+    category: "Determinism"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/transform/TransformMath.test.ts"
+      - "src/tests/animation/Interpolation.test.ts"
+
+  - id: REQ-007
+    title: "Level C: Perceptual Determinism (Metric Tolerances SSIM/DeltaE)"
+    category: "Determinism"
+    severity: "MAJOR"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/qa/PerceptualQA.test.ts"
+
+  - id: REQ-008
+    title: "Level D: Binary Determinism (Bit-exact byte emission on static targets)"
+    category: "Determinism"
+    severity: "MINOR"
+    status: "PARTIAL"
+    verification:
+      - "src/tests/exporters/JSXSerializer.test.ts"
+
+  # 3. IDEMPOTENCY & VERSIONING
+  - id: REQ-009
+    title: "Operation Idempotency with Stable operation_id"
+    category: "Idempotency & Versioning"
+    severity: "CRITICAL"
+    status: "PARTIAL"
+    verification:
+      - "src/tests/agent/AgentValidator.test.ts"
+
+  - id: REQ-010
+    title: "Optimistic Concurrency Versioning (expected_version vs project_version)"
+    category: "Idempotency & Versioning"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/ai-director/RevisionEngine.test.ts"
+
+  - id: REQ-011
+    title: "Network Retry Deduplication"
+    category: "Idempotency & Versioning"
+    severity: "MAJOR"
+    status: "PARTIAL"
+    verification:
+      - "src/tests/agent/AgentSession.test.ts"
+
+  # 4. TRANSACTIONS & ROLLBACK
+  - id: REQ-012
+    title: "ACID Transaction Envelope (BEGIN -> VALIDATE -> APPLY -> VERIFY -> COMMIT)"
+    category: "Transactions"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/workflow/WorkflowEngine.test.ts"
+
+  - id: REQ-013
+    title: "Strict Cryptographic Rollback (hash_before == hash_after_rollback)"
+    category: "Transactions"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/ai-director/RevisionEngine.test.ts"
+
+  - id: REQ-014
+    title: "Transaction Abort on Unrecoverable Faults"
+    category: "Transactions"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/workflow/WorkflowRecovery.test.ts"
+
+  # 5. MCP CONTRACT & API DESIGN
+  - id: REQ-015
+    title: "Strict 6-Category MCP Interface (Discovery, Inspect, Plan, Mutate, Intelligence, Production)"
+    category: "MCP Contract"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/cli/CLIRunner.test.ts"
+
+  - id: REQ-016
+    title: "Structured Machine-Readable Error Catalog with suggested_actions"
+    category: "MCP Contract"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/errors/ErrorHierarchy.test.ts"
+
+  - id: REQ-017
+    title: "Context Budget Optimization (Pagination, Field Projections, Project Diffs)"
+    category: "MCP Contract"
+    severity: "MAJOR"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/ai-director/ChangeSetDiff.test.ts"
+
+  - id: REQ-018
+    title: "Dry-Run Simulation Mode (dry_run: true zero-mutation verification)"
+    category: "MCP Contract"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/ai-planner/PlanValidator.test.ts"
+
+  # 6. AE BRIDGE & RECONCILIATION
+  - id: REQ-019
+    title: "Bidirectional JSON-RPC 2.0 IPC Bridge Protocol"
+    category: "AE Bridge & Runtime"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/exporters/AELiveBridgeProtocol.test.ts"
+
+  - id: REQ-020
+    title: "Heartbeat and Runtime Disconnect Detection"
+    category: "AE Bridge & Runtime"
+    severity: "MAJOR"
+    status: "PARTIAL"
+    verification:
+      - "src/tests/exporters/AELiveBridgeProtocol.test.ts"
+
+  - id: REQ-021
+    title: "State Reconciliation (Expected IR vs Actual AE Layer Bounds)"
+    category: "AE Bridge & Runtime"
+    severity: "CRITICAL"
+    status: "PARTIAL"
+    verification:
+      - "src/tests/exporters/AELiveBridgeProtocol.test.ts"
+
+  - id: REQ-022
+    title: "Prohibition of Arbitrary JSX Emission from Agent Intent"
+    category: "AE Bridge & Runtime"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/exporters/AfterEffectsJSXCompiler.test.ts"
+
+  # 7. CONSTRAINTS ENGINE
+  - id: REQ-023
+    title: "Spatial & Title Safe Zones Enforcement (9:16, 16:9, 1:1)"
+    category: "Constraints"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/captions/SafeZoneResolver.test.ts"
+
+  - id: REQ-024
+    title: "Visual OCR Collision Detection and Avoidance"
+    category: "Constraints"
+    severity: "MAJOR"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/media-intelligence/VideoOCREngine.test.ts"
+
+  - id: REQ-025
+    title: "Subject Saliency & Face Protection Constraints"
+    category: "Constraints"
+    severity: "MAJOR"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/camera/AutoReframeEngine.test.ts"
+
+  # 8. QA & AUTO-REPAIR
+  - id: REQ-026
+    title: "7-Family Automated QA Suite (Black frames, Clipping, Sync, Safe-areas)"
+    category: "QA & Repair"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/qa/QAEvaluator.test.ts"
+
+  - id: REQ-027
+    title: "Bounded Auto-Repair Loop (max_repair_iterations = N)"
+    category: "QA & Repair"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/ai-planner/PlanRepairEngine.test.ts"
+
+  - id: REQ-028
+    title: "Render Manifest & Frame Signature Certification"
+    category: "QA & Repair"
+    severity: "MAJOR"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/exporters/ExportManifest.test.ts"
+
+  # 9. SECURITY & OFFLINE GUARANTEE
+  - id: REQ-029
+    title: "100% Offline Capability with Local Inference"
+    category: "Security & Environment"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/captions/SpeechRecognitionEngine.test.ts"
+      - "src/tests/audio/AudioTransientSync.test.ts"
+
+  - id: REQ-030
+    title: "Path Traversal & Filesystem Sandbox Restrictions"
+    category: "Security & Environment"
+    severity: "CRITICAL"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/common/PathSanitizer.test.ts"
+
+  - id: REQ-031
+    title: "Resource Limits (max_layers, max_keyframes, max_duration)"
+    category: "Security & Environment"
+    severity: "MAJOR"
+    status: "IMPLEMENTED"
+    verification:
+      - "src/tests/schema/ResourceLimits.test.ts"
+
+  # 10. GOLDEN E2E CERTIFICATION
+  - id: REQ-032
+    title: "E2E Macro Pipeline (Brief -> Plan -> AE -> QA -> Repair -> Export)"
+    category: "Golden E2E"
+    severity: "CRITICAL"
+    status: "PARTIAL"
+    verification:
+      - "src/tests/e2e/GoldenProject.test.ts"
