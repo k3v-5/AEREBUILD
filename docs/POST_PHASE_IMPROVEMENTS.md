@@ -318,4 +318,20 @@ Cada mejora contiene:
   - `[NEW]` `src/tests/mcp/Transactions.test.ts`
   - `[NEW]` `src/tests/mcp/Versioning.test.ts`
   - `[NEW]` `src/tests/mcp/Reconciliation.test.ts`
-- **Verificación:** 649/649 pruebas automatizadas en verde (`npm test`).
+- **Verificación:** 654/654 pruebas automatizadas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #020: Bridge de Tolerancia a Fallos, Batería de Estrés y Golden Project E2E (`AERuntimeBridge` & `GOLDEN-PROJECT-001`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/mcp/bridge/AERuntimeBridge.ts`, `src/mcp/index.ts`, `src/tests/mcp/StressIdempotencyAndTransactions.test.ts`, `src/tests/e2e/GoldenProject.test.ts`
+- **¿Por qué se agregó?:**
+  - Para certificar formalmente la estabilidad del runtime ante caídas de After Effects, reintentos masivos de red y demostrar la ejecución autónoma de punta a punta (*Brief $\to$ Render*).
+- **¿Para qué se agregó?:**
+  - Provee `AERuntimeBridge` con máquina de estados, heartbeat activo y reconexión automática; suite de estrés transaccional ($100\times$ same op, rollback en paso #37) y suite de certificación E2E `GOLDEN-PROJECT-001`.
+- **Archivos:**
+  - `[NEW]` `src/mcp/bridge/AERuntimeBridge.ts`
+  - `[NEW]` `src/tests/mcp/StressIdempotencyAndTransactions.test.ts`
+  - `[NEW]` `src/tests/e2e/GoldenProject.test.ts`
+  - `[MODIFY]` `src/mcp/index.ts`
+- **Verificación:** 654/654 pruebas automatizadas en verde (`npm test`), logrando la certificación **`LEVEL 5 — PRODUCTION CERTIFIED`**.

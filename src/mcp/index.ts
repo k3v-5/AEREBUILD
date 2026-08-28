@@ -5,4 +5,5 @@ export * from "./versioning/VersionController.js";
 export * from "./idempotency/IdempotencyRegistry.js";
 export * from "./transactions/TransactionManager.js";
 export * from "./reconciliation/StateReconciler.js";
+export * from "./bridge/AERuntimeBridge.js";
 export * from "./server/MCPServerKernel.js";
