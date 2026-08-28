@@ -480,3 +480,23 @@ Cada mejora contiene:
   - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **684/684 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #029: Presets Batch #12, #13, #14 y #15 — Finance, Sports, Retro & TIME Editorial (`WallStreetFinancePreset`, `SportsEnergyPreset`, `RetroSynthwavePreset`, `TimeEditorialPosterPreset`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/styles/presets/WallStreetFinancePreset.ts`, `src/styles/presets/SportsEnergyPreset.ts`, `src/styles/presets/RetroSynthwavePreset.ts`, `src/styles/presets/TimeEditorialPosterPreset.ts`, `src/styles/StyleProfileManager.ts`, `src/tests/styles/PresetsFinalBatch.test.ts`, `src/tests/v2/AutonomousMCPv2.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para culminar los 15 Presets de Creadores y Estilos Profesionales solicitados por el usuario, culminando con el estilo insignia maestro *TIME Editorial News Poster*.
+- **¿Para qué se agregó?:**
+  - Provee `WallStreetFinancePreset` (velas de trading japonesas alcistas/bajistas animadas y tickers bursátiles), `SportsEnergyPreset` (cronómetros deportivos continuos de milisegundos y tipografía Teko $130\%$), `RetroSynthwavePreset` (suelo 3D de rejilla en perspectiva hacia el horizonte y sol 80s con glow) y `TimeEditorialPosterPreset` (estilo insignia maestro con Impact ultra-condensada estirada al $140\%$, marco carmesí `#FF1424`, interletraje negativo, diales vectoriales y motion blur total).
+- **Archivos:**
+  - `[NEW]` `src/styles/presets/WallStreetFinancePreset.ts`
+  - `[NEW]` `src/styles/presets/SportsEnergyPreset.ts`
+  - `[NEW]` `src/styles/presets/RetroSynthwavePreset.ts`
+  - `[NEW]` `src/styles/presets/TimeEditorialPosterPreset.ts`
+  - `[NEW]` `src/tests/styles/PresetsFinalBatch.test.ts`
+  - `[MODIFY]` `src/styles/StyleProfileManager.ts`
+  - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **689/689 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).

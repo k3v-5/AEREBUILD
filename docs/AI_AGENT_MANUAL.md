@@ -296,3 +296,61 @@ Toda mejora, optimización, parche o módulo nuevo agregado al motor **fuera del
 - **Pruebas y Verificación:** Resultados de la suite de pruebas automatizadas.
 
 *Nota:* Si el usuario solicita una **fase nueva**, se continúa el flujo formal documentando `spec/phase-X.md` y `docs/phases/phase-X-report.md`.
+
+---
+
+## 10. Operación con los 15 Presets de Creadores y Declarative Production DSL
+
+Para producir videos profesionales en 1 solo paso con menos de 100 tokens, la IA debe utilizar el compilador declarativo `ProductionDSLCompiler`:
+
+```typescript
+import { ProductionDSLCompiler } from "./src/dsl/ProductionDSL.js";
+import { StyleProfileManager } from "./src/styles/StyleProfileManager.js";
+
+// Compilación declarativa en 1 paso
+const compiled = ProductionDSLCompiler.compile({
+  video: {
+    format: "16:9", // "16:9" | "9:16" | "1:1"
+    durationSec: 45.0,
+    projectName: "DocumentaryInvestigation",
+  },
+  style: {
+    preset: "johnny_harris_investigative", // Selecciona cualquiera de los 15 presets
+    title: "THE HIDDEN WAR FOR THE OCEANS",
+  },
+  editing: {
+    pacing: "balanced",
+    beatSync: true,
+    speedRamping: false,
+    depthSandwich: true,
+  },
+  captions: {
+    enabled: true,
+    text: "IN 1982 THE TREATY WAS SIGNED",
+  },
+  soundDesign: {
+    enabled: true,
+    autoDucking: true,
+  },
+});
+
+console.log(compiled.appliedProfile);
+// -> "The Investigative Cartographer (Johnny Harris / Vox)"
+```
+
+### Tabla de Selección Rápida de Presets para Agentes IA:
+1. `johnny_harris_investigative`: Mapas 3D, rutas punteadas, resaltador analógico Multiply.
+2. `magnates_business_noir`: 3D Photo Parallax Cutouts, destello dorado `CC Light Sweep`, titulares `Cinzel`.
+3. `veritasium_scientific_blueprint`: Cuadrículas milimétricas, cotas vectoriales y fórmulas matemáticas.
+4. `lemmino_minimalist_cipher`: Coordenadas GPS militares, escaneo láser vertical y misterio.
+5. `ali_abdaal_productivity`: Tarjetas flotantes Notion, texturas de papel y física de resorte.
+6. `iman_gadzhi_agency_luxury`: Marcos 16mm/35mm con grano, alta moda y titulares `Bodoni MT`.
+7. `mrbeast_hyper_retention`: Títulos 3D gigantes con borde 14px y flechas con rebote sinusoidal.
+8. `hormozi_cashflow_captions`: Cajas split-box, resaltado verde/amarillo y punch zooms súbitos.
+9. `true_crime_evidence_room`: Pizarra de corcho con fotos Polaroid, hilos rojos y sellos `CLASSIFIED`.
+10. `cinematic_flow_vlog`: Transiciones orgánicas Sky Mask, Teal & Orange y títulos en el horizonte.
+11. `saas_tech_showcase`: Glassmorphism, ondas expansivas de clic de ratón y degradados Stripe.
+12. `wall_street_finance`: Velas japonesas alcistas/bajistas animadas y tickers bursátiles.
+13. `sports_energy_fitness`: Cronómetros deportivos de milisegundos (`MM:SS.ms`) y tipografía `Teko`.
+14. `retro_synthwave_arcade`: Suelo 3D de neón en perspectiva y sol retro animado 80s.
+15. `time_editorial_poster`: Estilo insignia maestro TIME Magazine con Impact al $140\%$ y marco carmesí `#FF1424`.

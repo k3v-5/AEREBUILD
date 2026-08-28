@@ -15,7 +15,11 @@ export type StylePresetId =
   | "hormozi_cashflow_captions"
   | "true_crime_evidence_room"
   | "cinematic_flow_vlog"
-  | "saas_tech_showcase";
+  | "saas_tech_showcase"
+  | "wall_street_finance"
+  | "sports_energy_fitness"
+  | "retro_synthwave_arcade"
+  | "time_editorial_poster";
 
 export interface StyleProfile {
   id: StylePresetId;
@@ -627,6 +631,158 @@ export class StyleProfileManager {
         autoDuckingDb: -2.5,
         whooshEnabled: true,
         impactBoomEnabled: false,
+        uiTicksEnabled: true,
+      },
+    },
+
+    wall_street_finance: {
+      id: "wall_street_finance",
+      name: "Wall Street Quantum Finance",
+      description: "Velas de trading japonesas animadas, tickers bursátiles numéricos vertiginosos y beeps financieros.",
+      typography: {
+        fontFamily: "Consolas",
+        fontWeight: 700,
+        primaryColor: [0.063, 0.725, 0.506], // Bullish Green
+        accentColor: [0.937, 0.267, 0.267], // Bearish Red
+        tracking: 5,
+        verticalStretchPct: 100,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "clean_commercial",
+        vignetteIntensity: 20,
+        filmGrainEnabled: false,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: false,
+        transitionType: "cut",
+        defaultDurationSec: 0.3,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.063, 0.725, 0.506],
+        inactiveWordColor: [1.0, 1.0, 1.0],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -3.5,
+        whooshEnabled: false,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    sports_energy_fitness: {
+      id: "sports_energy_fitness",
+      name: "Sports Energy & Fitness Adrenaline",
+      description: "Cronómetros de milisegundos ardiendo, destellos anamórficos, Depth Sandwich freeze-frames y tipografía Teko ultra-pesada.",
+      typography: {
+        fontFamily: "Teko",
+        fontWeight: 700,
+        primaryColor: [0.8, 1.0, 0.0], // Volt Yellow
+        accentColor: [1.0, 0.34, 0.13], // Blaze Orange
+        tracking: 0,
+        verticalStretchPct: 130,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "cyberpunk_crimson",
+        vignetteIntensity: 30,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "whip",
+        defaultDurationSec: 0.2,
+      },
+      captions: {
+        mode: "karaoke",
+        activeWordColor: [0.8, 1.0, 0.0],
+        inactiveWordColor: [1.0, 1.0, 1.0],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -4.0,
+        whooshEnabled: true,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    retro_synthwave_arcade: {
+      id: "retro_synthwave_arcade",
+      name: "Retro Synthwave & Arcade 80s",
+      description: "Rejilla de neón en perspectiva hacia un sol retro, aberración cromática RGB Split, tracking VHS y gated reverb snare.",
+      typography: {
+        fontFamily: "Impact",
+        fontWeight: 900,
+        primaryColor: [1.0, 0.0, 0.43], // Neon Magenta
+        accentColor: [0.0, 0.95, 1.0], // Electric Cyan
+        tracking: 10,
+        verticalStretchPct: 110,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "cyberpunk_crimson",
+        vignetteIntensity: 40,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: false,
+        transitionType: "flash",
+        defaultDurationSec: 0.5,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.0, 0.95, 1.0],
+        inactiveWordColor: [1.0, 0.0, 0.43],
+        backgroundPill: false,
+      },
+      soundDesign: {
+        autoDuckingDb: -4.0,
+        whooshEnabled: true,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    time_editorial_poster: {
+      id: "time_editorial_poster",
+      name: "The TIME Editorial News Poster (Estilo Insignia Maestro)",
+      description: "Tipografía Impact ultra-condensada estirada al 140%, marco rojo carmesí #FF1424, interletraje negativo, diales vectoriales y motion blur total.",
+      typography: {
+        fontFamily: "Impact",
+        fontWeight: 900,
+        primaryColor: [1.0, 1.0, 1.0], // Pure White
+        accentColor: [1.0, 0.078, 0.141], // Crimson Red
+        tracking: -5,
+        verticalStretchPct: 140,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "kodak_35mm",
+        vignetteIntensity: 35,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "whip",
+        defaultDurationSec: 0.3,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [1.0, 0.078, 0.141],
+        inactiveWordColor: [1.0, 1.0, 1.0],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -3.5,
+        whooshEnabled: true,
+        impactBoomEnabled: true,
         uiTicksEnabled: true,
       },
     },
