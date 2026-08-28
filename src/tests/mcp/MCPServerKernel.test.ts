@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { MCPServerKernel } from "../../mcp/server/MCPServerKernel.js";
-import { Composition } from "../../core/Composition.js";
+import { Composition } from "../../core/composition.js";
 
 describe("MCP Kernel — Server Pipeline & Safety Tests", () => {
   it("processes valid mutation and advances version monotonically", async () => {

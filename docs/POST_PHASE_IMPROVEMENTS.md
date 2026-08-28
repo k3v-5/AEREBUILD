@@ -335,3 +335,22 @@ Cada mejora contiene:
   - `[NEW]` `src/tests/e2e/GoldenProject.test.ts`
   - `[MODIFY]` `src/mcp/index.ts`
 - **Verificación:** 654/654 pruebas automatizadas en verde (`npm test`), logrando la certificación **`LEVEL 5 — PRODUCTION CERTIFIED`**.
+
+---
+
+### 🛠️ Mejora #021: Bucle Autónomo de Agente, Registro Semántico y Certificación de Conformidad (`AutonomousAgentLoop`, `MCPToolRegistry`, `FailureInjection` & `run-conformance`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/mcp/agent/AutonomousAgentLoop.ts`, `src/mcp/commands/MCPToolRegistry.ts`, `src/mcp/index.ts`, `src/tests/mcp/FailureInjection.test.ts`, `scripts/run-conformance.mjs`, `reports/production-certification.json`, `package.json`
+- **¿Por qué se agregó?:**
+  - Para cerrar el hito maestro **Milestone: Autonomous MCP v1**, dotando a la IA de un bucle de decisión completo (*Observe $\to$ Plan $\to$ Dry-Run $\to$ Execute $\to$ Reconcile $\to$ QA $\to$ Auto-Repair $\to$ Export*) con pruebas de caos y emisión formal del certificado de producción.
+- **¿Para qué se agregó?:**
+  - Provee `AutonomousAgentLoop` con ejecución de briefs creativos; `MCPToolRegistry` con 20 herramientas de alto nivel; suite de caos `FailureInjection` (bloqueo de inyecciones de código, versiones obsoletas, caídas de puente) y script `npm run conformance` que genera el artefacto oficial `reports/production-certification.json`.
+- **Archivos:**
+  - `[NEW]` `src/mcp/agent/AutonomousAgentLoop.ts`
+  - `[NEW]` `src/mcp/commands/MCPToolRegistry.ts`
+  - `[NEW]` `src/tests/mcp/FailureInjection.test.ts`
+  - `[NEW]` `scripts/run-conformance.mjs`
+  - `[NEW]` `reports/production-certification.json`
+  - `[MODIFY]` `src/mcp/index.ts`
+  - `[MODIFY]` `package.json`
+- **Verificación:** **658/658 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).

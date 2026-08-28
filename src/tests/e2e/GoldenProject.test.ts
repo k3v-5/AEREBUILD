@@ -64,8 +64,7 @@ describe("Fase 6 — GOLDEN-PROJECT-001 Master End-to-End Certification (REQ-032
     // 5. Speech Recognition & Karaoke Subtitles
     const transcript = SpeechRecognitionEngine.alignTranscriptWithAudio(
       "ESTO ES GUADALAJARA EN VIVO",
-      0.0,
-      4.0
+      audioBuf
     );
     assert.equal(transcript.words.length, 5);
     const karaokeSnippet = WordKaraokeSyncEngine.generateKaraokeSegmentSnippet(

@@ -1,4 +1,4 @@
-import { Composition } from "../../core/Composition.js";
+import { Composition } from "../../core/composition.js";
 import { TransactionSnapshot, MCPStructuredError } from "../types/index.js";
 import { MCPErrorCatalog } from "../errors/MCPErrorCatalog.js";
 import { createHash } from "node:crypto";
@@ -130,6 +130,7 @@ export class TransactionManager {
    * Calcula el hash determinista SHA-256 de una composición.
    */
   public computeHash(comp: Composition): string {
+    const snapshot = comp.evaluate(0);
     const json = JSON.stringify({
       id: comp.id,
       name: comp.name,
@@ -137,14 +138,8 @@ export class TransactionManager {
       height: comp.height,
       fps: comp.fps,
       duration: comp.duration,
-      layers: comp.layers.map((l) => ({
-        id: l.id,
-        name: l.name,
-        type: l.type,
-        inPoint: l.inPoint,
-        outPoint: l.outPoint,
-        transform: l.transform.serialize(),
-      })),
+      layers: snapshot.layers,
+      elements: snapshot.elements,
     });
 
     return createHash("sha256").update(json).digest("hex");

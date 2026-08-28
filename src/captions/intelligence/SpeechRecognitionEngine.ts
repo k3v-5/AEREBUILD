@@ -148,23 +148,23 @@ export class SpeechRecognitionEngine {
       start: seg.start,
       end: seg.end,
       text: seg.text,
-      words: seg.words.map((w) => ({
+      words: seg.words.map((w, wIdx) => ({
+        id: `${seg.id}_w_${wIdx + 1}`,
         text: w.word,
         start: w.start,
         end: w.end,
         confidence: w.confidence,
-        isEmphasis: w.isEmphasis ?? false,
       })),
-      precision: "word",
-      sequence: idx + 1,
+      timingPrecision: "word",
     }));
 
     return {
       id: docId,
-      language: result.language,
-      precision: "word",
+      duration: result.duration,
       segments,
+      timingPrecision: "word",
       metadata: {
+        language: result.language,
         totalDuration: result.duration,
         totalWords: result.words.length,
         createdAt: new Date().toISOString(),

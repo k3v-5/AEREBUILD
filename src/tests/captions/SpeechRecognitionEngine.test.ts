@@ -38,7 +38,7 @@ describe("Captions — SpeechRecognitionEngine Tests", () => {
     const doc = SpeechRecognitionEngine.toCaptionDocument(result, "custom_doc_101");
 
     assert.equal(doc.id, "custom_doc_101");
-    assert.equal(doc.precision, "word");
+    assert.equal(doc.timingPrecision, "word");
     assert.equal(doc.segments.length, 1);
     assert.equal(doc.segments[0].words.length, 2);
   });

@@ -1,4 +1,4 @@
-import { Composition } from "../../core/Composition.js";
+import { Composition } from "../../core/composition.js";
 import { MCPRequestEnvelope, MCPResponseEnvelope } from "../types/index.js";
 import { PermissionManager } from "../permissions/PermissionManager.js";
 import { VersionController } from "../versioning/VersionController.js";

@@ -1,4 +1,4 @@
-import { Composition } from "../../core/Composition.js";
+import { Composition } from "../../core/composition.js";
 
 export type MCPToolCategory =
   | "discovery"

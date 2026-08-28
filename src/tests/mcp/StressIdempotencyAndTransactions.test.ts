@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { MCPServerKernel } from "../../mcp/server/MCPServerKernel.js";
 import { AERuntimeBridge } from "../../mcp/bridge/AERuntimeBridge.js";
-import { Composition } from "../../core/Composition.js";
+import { Composition } from "../../core/composition.js";
 
 describe("Fase 5 — Idempotency & Transactions Stress Battery (REQ-009, REQ-012, REQ-013)", () => {
   it("executes the exact same mutation 100 times producing exactly 1 state modification (same_op x 100)", async () => {

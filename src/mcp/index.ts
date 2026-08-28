@@ -6,4 +6,6 @@ export * from "./idempotency/IdempotencyRegistry.js";
 export * from "./transactions/TransactionManager.js";
 export * from "./reconciliation/StateReconciler.js";
 export * from "./bridge/AERuntimeBridge.js";
+export * from "./commands/MCPToolRegistry.js";
+export * from "./agent/AutonomousAgentLoop.js";
 export * from "./server/MCPServerKernel.js";
