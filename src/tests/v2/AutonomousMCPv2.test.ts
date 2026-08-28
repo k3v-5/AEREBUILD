@@ -8,7 +8,7 @@ import { ProductionJobQueue } from "../../runtime/jobs/ProductionJobQueue.js";
 describe("Autonomous MCP v2 — Production OS, DSL & Batch Systems", () => {
   it("retrieves and validates master StyleProfiles", () => {
     const profiles = StyleProfileManager.getAllProfiles();
-    assert.equal(profiles.length, 12);
+    assert.equal(profiles.length, 15);
 
     const timeProfile = StyleProfileManager.getProfile("time_editorial_impact");
     assert.equal(timeProfile.typography.fontFamily, "Impact");

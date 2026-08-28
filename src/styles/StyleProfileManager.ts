@@ -12,7 +12,10 @@ export type StylePresetId =
   | "ali_abdaal_productivity"
   | "iman_gadzhi_agency_luxury"
   | "mrbeast_hyper_retention"
-  | "hormozi_cashflow_captions";
+  | "hormozi_cashflow_captions"
+  | "true_crime_evidence_room"
+  | "cinematic_flow_vlog"
+  | "saas_tech_showcase";
 
 export interface StyleProfile {
   id: StylePresetId;
@@ -510,6 +513,120 @@ export class StyleProfileManager {
         autoDuckingDb: -3.5,
         whooshEnabled: true,
         impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    true_crime_evidence_room: {
+      id: "true_crime_evidence_room",
+      name: "True Crime & Cold Case Evidence Room",
+      description: "Pizarra de corcho con fotos Polaroid conectadas por hilos rojos, expedientes clasificados y sellos de máxima confidencialidad.",
+      typography: {
+        fontFamily: "Courier Prime",
+        fontWeight: 700,
+        primaryColor: [0.94, 0.93, 0.9], // Polaroid White
+        accentColor: [0.85, 0.12, 0.12], // Evidence Red
+        tracking: 5,
+        verticalStretchPct: 100,
+        allCaps: false,
+      },
+      colorGrading: {
+        preset: "kodak_35mm",
+        vignetteIntensity: 55,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: false,
+        transitionType: "cut",
+        defaultDurationSec: 0.6,
+      },
+      captions: {
+        mode: "static",
+        activeWordColor: [0.85, 0.12, 0.12],
+        inactiveWordColor: [0.94, 0.93, 0.9],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -4.5,
+        whooshEnabled: false,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    cinematic_flow_vlog: {
+      id: "cinematic_flow_vlog",
+      name: "Cinematic Flow Vlogging (Sam Kolder)",
+      description: "Speed ramping orgánico, transiciones de máscara de cielo (Sky Mask), Teal & Orange cinematográfico y títulos 3D en el horizonte.",
+      typography: {
+        fontFamily: "Futura",
+        fontWeight: 700,
+        primaryColor: [1.0, 1.0, 1.0],
+        accentColor: [0.98, 0.75, 0.4], // Warm Gold
+        tracking: 15,
+        verticalStretchPct: 100,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "teal_orange",
+        vignetteIntensity: 25,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "whip",
+        defaultDurationSec: 0.4,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.98, 0.75, 0.4],
+        inactiveWordColor: [1.0, 1.0, 1.0],
+        backgroundPill: false,
+      },
+      soundDesign: {
+        autoDuckingDb: -3.0,
+        whooshEnabled: true,
+        impactBoomEnabled: false,
+        uiTicksEnabled: true,
+      },
+    },
+
+    saas_tech_showcase: {
+      id: "saas_tech_showcase",
+      name: "SaaS & Tech Interface Showcase",
+      description: "Maquetas 3D con Glassmorphism, cursores interactivos con ondas de clic expansivas y degradados de software estilo Stripe.",
+      typography: {
+        fontFamily: "Inter",
+        fontWeight: 600,
+        primaryColor: [0.12, 0.16, 0.24], // Slate Text
+        accentColor: [0.545, 0.361, 0.965], // Stripe Purple
+        tracking: 0,
+        verticalStretchPct: 100,
+        allCaps: false,
+      },
+      colorGrading: {
+        preset: "clean_commercial",
+        vignetteIntensity: 8,
+        filmGrainEnabled: false,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "zoom",
+        defaultDurationSec: 0.25,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.545, 0.361, 0.965],
+        inactiveWordColor: [0.12, 0.16, 0.24],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -2.5,
+        whooshEnabled: true,
+        impactBoomEnabled: false,
         uiTicksEnabled: true,
       },
     },

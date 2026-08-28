@@ -461,3 +461,22 @@ Cada mejora contiene:
   - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **680/680 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #028: Presets Batch #9, #10 y #11 — True Crime, Cinematic Flow Vlog & SaaS Showcase (`TrueCrimeEvidencePreset`, `CinematicFlowVlogPreset`, `SaaSTechShowcasePreset`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/styles/presets/TrueCrimeEvidencePreset.ts`, `src/styles/presets/CinematicFlowVlogPreset.ts`, `src/styles/presets/SaaSTechShowcasePreset.ts`, `src/styles/StyleProfileManager.ts`, `src/tests/styles/PresetsBatch91011.test.ts`, `src/tests/v2/AutonomousMCPv2.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para dotar al motor de capacidades cinemáticas para documentales de crímenes/misterio, vlogs de viajes cinematográficos y demostraciones de productos de software / SaaS.
+- **¿Para qué se agregó?:**
+  - Provee `TrueCrimeEvidencePreset` (hilos rojos de evidencia elásticos con catenaria/sag gravitatorio y sellos `CLASSIFIED` a $-12^\circ$), `CinematicFlowVlogPreset` (transiciones de máscara de cielo *Sky Mask* con feather de $120\text{px}$ y títulos 3D en el horizonte) y `SaaSTechShowcasePreset` (ondas de clic de cursor interactivo y ventanas flotantes con Glassmorphism).
+- **Archivos:**
+  - `[NEW]` `src/styles/presets/TrueCrimeEvidencePreset.ts`
+  - `[NEW]` `src/styles/presets/CinematicFlowVlogPreset.ts`
+  - `[NEW]` `src/styles/presets/SaaSTechShowcasePreset.ts`
+  - `[NEW]` `src/tests/styles/PresetsBatch91011.test.ts`
+  - `[MODIFY]` `src/styles/StyleProfileManager.ts`
+  - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **684/684 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
