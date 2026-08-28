@@ -11,10 +11,12 @@ export * from "./safezones/SafeZoneResolver.js";
 // Backgrounds & Animations
 export * from "./backgrounds/AdaptiveBackgroundEngine.js";
 export * from "./animations/WordAnimationEngine.js";
+export * from "./animations/WordKaraokeSyncEngine.js";
 
 // Intelligence & Prosody
 export * from "./intelligence/EmphasisScorer.js";
 export * from "./intelligence/CaptionIntelligenceEngine.js";
+export * from "./intelligence/SpeechRecognitionEngine.js";
 
 // Emojis & Icons
 export * from "./icons/EmojiPlacementEngine.js";

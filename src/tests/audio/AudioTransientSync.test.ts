@@ -8,7 +8,7 @@ describe("Audio Intelligence — AudioTransientSyncEngine Tests", () => {
     const sampleRate = 44100;
     const duration = 2.5; // 2.5 seconds
     const totalFrames = Math.round(sampleRate * duration);
-    const buf = AudioBuffer.allocate(1, totalFrames, sampleRate);
+    const buf = AudioBuffer.create(1, totalFrames, sampleRate);
     const ch = buf.data[0];
 
     // Inject transient bursts (kicks/beats) at t = 0.4s, 1.0s, 1.6s, 2.2s

@@ -40,7 +40,7 @@ describe("Exporters — AELiveBridgeProtocol Tests", () => {
     assert.ok(patchPayload.includes('layer.transform.opacity.setValue(80)'));
 
     const renderPayload = AELiveBridgeProtocol.buildRenderStatusPayload();
-    assert.ok(renderPayload.includes('app.project.renderQueue'));
+    assert.ok(renderPayload.includes('p.renderQueue'));
     assert.ok(renderPayload.includes('RQItemStatus'));
   });
 });

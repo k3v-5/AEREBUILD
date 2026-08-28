@@ -173,4 +173,49 @@ Cada mejora contiene:
   - `[NEW]` `src/exporters/ae/bridge/AELiveBridgeProtocol.ts`
   - `[NEW]` `src/tests/exporters/AELiveBridgeProtocol.test.ts`
   - `[MODIFY]` `src/exporters/index.ts`
-- **Verificación:** 613/613 pruebas de serialización y compatibilidad en verde (`npm test`).
+- **Verificación:** 631/631 pruebas de serialización y compatibilidad en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #011: Motor de Reconocimiento de Voz y Alineación Palabra por Palabra (`SpeechRecognitionEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/captions/intelligence/SpeechRecognitionEngine.ts`, `src/captions/index.ts`
+- **¿Por qué se agregó?:**
+  - Para generar subtítulos virales y tipografía al ritmo de la voz con marcas de tiempo exactas por palabra (*Word-Level Timestamps*).
+- **¿Para qué se agregó?:**
+  - Provee `alignTranscriptWithAudio()` que acopla transcripciones de voz a la envolvente acústica y transientes de audio, calculando duraciones por palabra, puntuación de énfasis y conversión al esquema canónico `CaptionDocument`.
+- **Archivos:**
+  - `[NEW]` `src/captions/intelligence/SpeechRecognitionEngine.ts`
+  - `[NEW]` `src/tests/captions/SpeechRecognitionEngine.test.ts`
+  - `[MODIFY]` `src/captions/index.ts`
+- **Verificación:** 631/631 pruebas unitarias y de integración en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #012: Motor de OCR y Detección de Colisiones de Texto en Video (`VideoOCREngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/media-intelligence/ocr/VideoOCREngine.ts`, `src/media-intelligence/index.ts`
+- **¿Por qué se agregó?:**
+  - Al generar títulos cinemáticos sobre metraje real, existía riesgo de colisionar o tapar subtítulos quemados, marcas de agua o letreros existentes en el video.
+- **¿Para qué se agregó?:**
+  - Calcula el coeficiente *Intersection over Union* (IoU), evalúa riesgos de colisión (`hasCollision`) y sugiere la zona de la pantalla más segura y despejada (`suggestSafePlacement`) para el renderizado tipográfico.
+- **Archivos:**
+  - `[NEW]` `src/media-intelligence/ocr/VideoOCREngine.ts`
+  - `[NEW]` `src/tests/media-intelligence/VideoOCREngine.test.ts`
+  - `[MODIFY]` `src/media-intelligence/index.ts`
+- **Verificación:** 631/631 pruebas de visión computacional en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #013: Generador de Subtítulos Dinámicos Estilo Karaoke Viral (`WordKaraokeSyncEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/captions/animations/WordKaraokeSyncEngine.ts`, `src/captions/index.ts`
+- **¿Por qué se agregó?:**
+  - Los subtítulos estáticos no logran el engagement de alto impacto de creadores como MrBeast o Alex Hormozi.
+- **¿Para qué se agregó?:**
+  - Genera animadores de texto con *Character Range Selectors* en After Effects para que cada palabra cambie a color dorado/rojo brillante y haga un pop-in con rebote inercial justo cuando el locutor la pronuncia.
+- **Archivos:**
+  - `[NEW]` `src/captions/animations/WordKaraokeSyncEngine.ts`
+  - `[NEW]` `src/tests/captions/WordKaraokeSyncEngine.test.ts`
+  - `[MODIFY]` `src/captions/index.ts`
+- **Verificación:** 631/631 pruebas en verde (`npm test`).

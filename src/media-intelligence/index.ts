@@ -4,4 +4,5 @@ export * from "./core/ChecksumService.js";
 export * from "./core/EmbeddingService.js";
 export * from "./core/MediaInspector.js";
 export * from "./core/ShotDetector.js";
+export * from "./ocr/VideoOCREngine.js";
 export * from "./types/index.js";
