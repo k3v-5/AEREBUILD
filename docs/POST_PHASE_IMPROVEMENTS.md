@@ -423,3 +423,22 @@ Cada mejora contiene:
   - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **672/672 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #026: Presets Batch #3, #4 y #5 — Science, Cipher & Productivity (`ScientificBlueprintPreset`, `MinimalistCipherPreset`, `ProductivityPapercraftPreset`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/styles/presets/ScientificBlueprintPreset.ts`, `src/styles/presets/MinimalistCipherPreset.ts`, `src/styles/presets/ProductivityPapercraftPreset.ts`, `src/styles/StyleProfileManager.ts`, `src/tests/styles/PresetsBatch345.test.ts`, `src/tests/v2/AutonomousMCPv2.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para dotar a la IA de herramientas especializadas para videos científicos/educativos (*Veritasium*), misterio minimalista (*Lemmino*) y productividad (*Ali Abdaal*).
+- **¿Para qué se agregó?:**
+  - Provee `ScientificBlueprintPreset` (cálculo de distancias euclidianas, ángulos y cotas de medición vectorial animadas), `MinimalistCipherPreset` (formateo militar de coordenadas GPS y escaneo láser vertical) y `ProductivityPapercraftPreset` (tarjetas Notion flotantes con física de resorte inercial $S(t) = 100(1 - e^{-8t}\cos(20t))$).
+- **Archivos:**
+  - `[NEW]` `src/styles/presets/ScientificBlueprintPreset.ts`
+  - `[NEW]` `src/styles/presets/MinimalistCipherPreset.ts`
+  - `[NEW]` `src/styles/presets/ProductivityPapercraftPreset.ts`
+  - `[NEW]` `src/tests/styles/PresetsBatch345.test.ts`
+  - `[MODIFY]` `src/styles/StyleProfileManager.ts`
+  - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **676/676 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).

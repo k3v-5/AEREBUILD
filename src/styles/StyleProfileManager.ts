@@ -6,7 +6,10 @@ export type StylePresetId =
   | "cinematic_luxury"
   | "cyberpunk_stage"
   | "johnny_harris_investigative"
-  | "magnates_business_noir";
+  | "magnates_business_noir"
+  | "veritasium_scientific_blueprint"
+  | "lemmino_minimalist_cipher"
+  | "ali_abdaal_productivity";
 
 export interface StyleProfile {
   id: StylePresetId;
@@ -276,6 +279,120 @@ export class StyleProfileManager {
         autoDuckingDb: -4.0,
         whooshEnabled: false,
         impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    veritasium_scientific_blueprint: {
+      id: "veritasium_scientific_blueprint",
+      name: "Scientific Blueprint & 3D Isometric (Veritasium / Kurzgesagt)",
+      description: "Cuadrículas isométricas, cotas de medición vectorial, resplandor cian y fórmulas matemáticas animadas.",
+      typography: {
+        fontFamily: "Inter",
+        fontWeight: 700,
+        primaryColor: [0.024, 0.714, 0.831], // Cyan Neon
+        accentColor: [0.976, 0.451, 0.086], // Laser Orange
+        tracking: 5,
+        verticalStretchPct: 100,
+        allCaps: false,
+      },
+      colorGrading: {
+        preset: "clean_commercial",
+        vignetteIntensity: 15,
+        filmGrainEnabled: false,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: false,
+        transitionType: "zoom",
+        defaultDurationSec: 0.35,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.024, 0.714, 0.831],
+        inactiveWordColor: [1.0, 1.0, 1.0],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -3.0,
+        whooshEnabled: true,
+        impactBoomEnabled: false,
+        uiTicksEnabled: true,
+      },
+    },
+
+    lemmino_minimalist_cipher: {
+      id: "lemmino_minimalist_cipher",
+      name: "The Minimalist Cipher (Lemmino / ColdFusion)",
+      description: "Overlays de coordenadas GPS, líneas láser de escaneo vertical y tipografía delgada espacial.",
+      typography: {
+        fontFamily: "DIN",
+        fontWeight: 300,
+        primaryColor: [0.22, 0.741, 0.973], // Ice Blue
+        accentColor: [0.133, 0.773, 0.369], // Radar Green
+        tracking: 35,
+        verticalStretchPct: 100,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "kodak_35mm",
+        vignetteIntensity: 50,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: false,
+        transitionType: "cut",
+        defaultDurationSec: 0.6,
+      },
+      captions: {
+        mode: "static",
+        activeWordColor: [0.22, 0.741, 0.973],
+        inactiveWordColor: [0.941, 0.941, 0.941],
+        backgroundPill: false,
+      },
+      soundDesign: {
+        autoDuckingDb: -4.0,
+        whooshEnabled: false,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    ali_abdaal_productivity: {
+      id: "ali_abdaal_productivity",
+      name: "Productivity Papercraft (Ali Abdaal / Thomas Frank)",
+      description: "Tarjetas flotantes estilo Notion, texturas de papel, animación con resorte elástico y resaltadores pastel.",
+      typography: {
+        fontFamily: "Plus Jakarta Sans",
+        fontWeight: 600,
+        primaryColor: [0.15, 0.15, 0.15], // Pencil Graphite
+        accentColor: [0.996, 0.902, 0.541], // Notion Yellow
+        tracking: -5,
+        verticalStretchPct: 100,
+        allCaps: false,
+      },
+      colorGrading: {
+        preset: "clean_commercial",
+        vignetteIntensity: 10,
+        filmGrainEnabled: false,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "zoom",
+        defaultDurationSec: 0.25,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.996, 0.902, 0.541],
+        inactiveWordColor: [0.15, 0.15, 0.15],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -3.0,
+        whooshEnabled: true,
+        impactBoomEnabled: false,
         uiTicksEnabled: true,
       },
     },
