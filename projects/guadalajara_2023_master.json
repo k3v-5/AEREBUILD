@@ -1,0 +1,68 @@
+{
+  "projectName": "Guadalajara 2023 - Master Editorial",
+  "version": "v3.2.0",
+  "createdAt": "2026-08-28T03:12:17.246Z",
+  "mediaSourceDirectory": "E:/Respaldo/Guadalajara junio 23-20231019T123606Z-001/Guadalajara junio 23",
+  "resolution": {
+    "width": 1080,
+    "height": 1920,
+    "aspectRatio": "9:16"
+  },
+  "durationSec": 35,
+  "frameRate": 60,
+  "masterStyle": "The TIME Editorial News Poster (Flagship Style)",
+  "appliedPresets": [
+    "The TIME Editorial News Poster (Preset #15)",
+    "The Minimalist Cipher (Preset #4 - GPS HUD)",
+    "Cinematic Flow Vlogging (Preset #10 - Speed Ramp & Vibe)",
+    "Dark Noir Business / 3D Parallax (Preset #2 - Photo Cutout)"
+  ],
+  "selectedAssets": [
+    {
+      "id": "clip_day_1",
+      "filename": "20230621_114030.mp4",
+      "startTime": 0,
+      "duration": 8,
+      "label": "Llegada & Día"
+    },
+    {
+      "id": "clip_day_2",
+      "filename": "20230621_120935.mp4",
+      "startTime": 8,
+      "duration": 10,
+      "label": "Recorrido Centro"
+    },
+    {
+      "id": "clip_night_1",
+      "filename": "20230620_210856.mp4",
+      "startTime": 18,
+      "duration": 10,
+      "label": "Noche & Luces"
+    },
+    {
+      "id": "clip_night_2",
+      "filename": "20230620_224844.mp4",
+      "startTime": 28,
+      "duration": 7,
+      "label": "Clímax Nocturno"
+    },
+    {
+      "id": "photo_polaroid",
+      "filename": "20230620_155336.jpg",
+      "startTime": 18,
+      "duration": 8,
+      "label": "Recuerdo Polaroid"
+    }
+  ],
+  "deliverables": [
+    {
+      "type": "After Effects ExtendScript JSX",
+      "path": "F:\\Dev\\after-effects-mcp\\dist\\guadalajara_2023_production.jsx"
+    },
+    {
+      "type": "Social Vertical Package",
+      "format": "9:16 Reels/TikTok",
+      "safeZonesCompliant": true
+    }
+  ]
+}

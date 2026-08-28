@@ -13,6 +13,7 @@
     "conformance": "node scripts/run-conformance.mjs",
     "golden": "node --test build/tests/e2e/GoldenProject.test.js",
     "benchmark:100": "node scripts/run-benchmark100.mjs",
+    "generate:guadalajara": "node scripts/generate-guadalajara-video.mjs",
     "example:phase1": "node build/examples/phase-1-basic.js",
     "example:phase2": "node build/examples/phase-2-elements.js",
     "start": "node build/index.js",

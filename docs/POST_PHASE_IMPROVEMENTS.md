@@ -500,3 +500,25 @@ Cada mejora contiene:
   - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **689/689 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #030: Producción Audiovisual con Metraje Real — 'Guadalajara 2023 // El Arte de Disfrutar' (`generate-guadalajara-video` & `GuadalajaraProduction.test`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `scripts/generate-guadalajara-video.mjs`, `dist/guadalajara_2023_production.jsx`, `projects/guadalajara_2023_master.json`, `src/tests/production/GuadalajaraProduction.test.ts`, `package.json`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para generar un video cinematográfico completo y ejecutable utilizando el metraje real del usuario (`E:\Respaldo\Guadalajara junio 23...`) combinando los motores de estilo insignia desarrollados en el proyecto.
+- **¿Para qué se agregó?:**
+  - Orquesta un video vertical 9:16 (1080x1920, 60fps, 35s) estructurado en 4 capítulos narrativos:
+    1. **Capítulo 1:** Coordenadas GPS de Guadalajara ($20.6597^\circ\text{ N}, 103.3496^\circ\text{ W}$) + HUD Overlay + Entrada cinética masiva.
+    2. **Capítulo 2:** Speed ramping sobre metraje nocturno + dial vectorial de acompañamiento en rotación + texto carmesí `#FF1424` ("VIVE LA NOCHE").
+    3. **Capítulo 3:** Recuerdo 3D Polaroid con sombra proyectada difusa y slow push-in.
+    4. **Capítulo 4:** Marco perimetral carmesí TIME Magazine + titular héroe masivo `Impact` estirado al $140\%$ ("EL ARTE DE DISFRUTAR") con `comp.motionBlur = true`.
+- **Archivos:**
+  - `[NEW]` `scripts/generate-guadalajara-video.mjs`
+  - `[NEW]` `dist/guadalajara_2023_production.jsx`
+  - `[NEW]` `projects/guadalajara_2023_master.json`
+  - `[NEW]` `src/tests/production/GuadalajaraProduction.test.ts`
+  - `[MODIFY]` `package.json`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **692/692 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
