@@ -354,3 +354,21 @@ Cada mejora contiene:
   - `[MODIFY]` `src/mcp/index.ts`
   - `[MODIFY]` `package.json`
 - **Verificación:** **658/658 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #022: Autonomous MCP v2 — Sistema Operativo Audiovisual (`StyleProfileManager`, `ProductionDSL`, `CreativePlanner` & `ProductionJobQueue`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/styles/StyleProfileManager.ts`, `src/dsl/ProductionDSL.ts`, `src/ai-planner/creative/CreativePlanner.ts`, `src/runtime/jobs/ProductionJobQueue.ts`, `src/tests/v2/AutonomousMCPv2.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para evolucionar de un controlador de bajo nivel de After Effects a un **Sistema Operativo Audiovisual Autónomo** enfocado en la calidad profesional humana y en la minimización drástica de llamadas MCP/tokens por video.
+- **¿Para qué se agregó?:**
+  - Provee `StyleProfileManager` con perfiles inmutables (*TIME Editorial Impact*, *TikTok Retention Master*, *Cinematic Luxury*, *Cyberpunk Stage*); `ProductionDSL` para compilar intención declarativa a `ProjectIR` en 1 solo paso; `CreativePlanner` para estructurar narrativa (Hook, Setup, Build-Up, Climax, CTA) y `ProductionJobQueue` para procesar lotes masivos con balanceo de prioridad y métricas de producción (*Human Acceptance Rate $>90\%$, $<30$ MCP calls*).
+- **Archivos:**
+  - `[NEW]` `src/styles/StyleProfileManager.ts`
+  - `[NEW]` `src/dsl/ProductionDSL.ts`
+  - `[NEW]` `src/ai-planner/creative/CreativePlanner.ts`
+  - `[NEW]` `src/runtime/jobs/ProductionJobQueue.ts`
+  - `[NEW]` `src/tests/v2/AutonomousMCPv2.test.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **662/662 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
