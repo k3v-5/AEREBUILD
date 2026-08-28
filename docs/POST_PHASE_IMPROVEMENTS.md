@@ -522,3 +522,30 @@ Cada mejora contiene:
   - `[MODIFY]` `package.json`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **692/692 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #031: Suite de Automatización Total para TikTok y YouTube — Autonomous Content Factory (`src/automation/`)
+- **Fecha:** 2026-08-28
+- **Módulos Afectados:** `src/automation/transcription/LocalWhisperTranscriptionBridge.ts`, `src/automation/clipping/ViralMomentDetector.ts`, `src/automation/reframing/ActiveSpeakerReframingEngine.ts`, `src/automation/voiceover/VoiceoverTimingSynchronizer.ts`, `src/automation/packaging/SocialLaunchPackager.ts`, `src/automation/render/HeadlessRenderOrchestrator.ts`, `src/automation/index.ts`, `src/index.ts`, `src/tests/automation/AutonomousContentFactory.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para transformar el motor en una fábrica 100% autónoma y desatendida de generación de clips para TikTok/Reels y videos de YouTube sin costo adicional de APIs ni intervención humana manual.
+- **¿Para qué se agregó?:**
+  - Implementa los 5 subsistemas de producción desatendida:
+    1. `LocalWhisperTranscriptionBridge`: Transcripción fonética palabra por palabra con Whisper local ($0 costo, 100% offline).
+    2. `ViralMomentDetector`: Detección algorítmica de los mejores 30s-60s evaluando Hook, Pacing/WPM y Climax con scoring predictivo de retención ($0-100$).
+    3. `ActiveSpeakerReframingEngine`: Reencuadre dinámico de 16:9 a 9:16 con zonas muertas anti-jitter y Split-Screen apilado (hablante arriba, B-roll abajo).
+    4. `VoiceoverTimingSynchronizer`: Sincronización de guiones locutados y corte en pausas naturales de respiración.
+    5. `SocialLaunchPackager` & `HeadlessRenderOrchestrator`: Generación de 3 títulos A/B High-CTR, descripción con capítulos automáticos, hashtags para TikTok y comandos de render en segundo plano (`aerender` / FFmpeg).
+- **Archivos:**
+  - `[NEW]` `src/automation/transcription/LocalWhisperTranscriptionBridge.ts`
+  - `[NEW]` `src/automation/clipping/ViralMomentDetector.ts`
+  - `[NEW]` `src/automation/reframing/ActiveSpeakerReframingEngine.ts`
+  - `[NEW]` `src/automation/voiceover/VoiceoverTimingSynchronizer.ts`
+  - `[NEW]` `src/automation/packaging/SocialLaunchPackager.ts`
+  - `[NEW]` `src/automation/render/HeadlessRenderOrchestrator.ts`
+  - `[NEW]` `src/automation/index.ts`
+  - `[NEW]` `src/tests/automation/AutonomousContentFactory.test.ts`
+  - `[MODIFY]` `src/index.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **704/704 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
