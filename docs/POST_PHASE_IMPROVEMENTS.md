@@ -442,3 +442,22 @@ Cada mejora contiene:
   - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **676/676 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #027: Presets Batch #6, #7 y #8 — Agency Luxury, Beast Retention & Hormozi Cashflow (`AgencyLuxuryPreset`, `HyperRetentionBeastPreset`, `HormoziCashflowPreset`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/styles/presets/AgencyLuxuryPreset.ts`, `src/styles/presets/HyperRetentionBeastPreset.ts`, `src/styles/presets/HormoziCashflowPreset.ts`, `src/styles/StyleProfileManager.ts`, `src/tests/styles/PresetsBatch678.test.ts`, `src/tests/v2/AutonomousMCPv2.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para cubrir los formatos virales más demandados de YouTube y redes sociales: alta moda y agencia (*Iman Gadzhi*), adrenalina extrema y retención (*MrBeast*) y subtitulado directo reactivo (*Alex Hormozi*).
+- **¿Para qué se agregó?:**
+  - Provee `AgencyLuxuryPreset` (marcos de película 16mm/35mm y titulares `Bodoni MT`), `HyperRetentionBeastPreset` (títulos 3D con borde negro 14px y flechas con rebote sinusoidal $y(t) = y_0 + 20\sin(12t)$) y `HormoziCashflowPreset` (subtítulos adaptativos `The Bold Font` con resaltado verde/amarillo y punch zooms súbitos).
+- **Archivos:**
+  - `[NEW]` `src/styles/presets/AgencyLuxuryPreset.ts`
+  - `[NEW]` `src/styles/presets/HyperRetentionBeastPreset.ts`
+  - `[NEW]` `src/styles/presets/HormoziCashflowPreset.ts`
+  - `[NEW]` `src/tests/styles/PresetsBatch678.test.ts`
+  - `[MODIFY]` `src/styles/StyleProfileManager.ts`
+  - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **680/680 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).

@@ -9,7 +9,10 @@ export type StylePresetId =
   | "magnates_business_noir"
   | "veritasium_scientific_blueprint"
   | "lemmino_minimalist_cipher"
-  | "ali_abdaal_productivity";
+  | "ali_abdaal_productivity"
+  | "iman_gadzhi_agency_luxury"
+  | "mrbeast_hyper_retention"
+  | "hormozi_cashflow_captions";
 
 export interface StyleProfile {
   id: StylePresetId;
@@ -393,6 +396,120 @@ export class StyleProfileManager {
         autoDuckingDb: -3.0,
         whooshEnabled: true,
         impactBoomEnabled: false,
+        uiTicksEnabled: true,
+      },
+    },
+
+    iman_gadzhi_agency_luxury: {
+      id: "iman_gadzhi_agency_luxury",
+      name: "High-End Agency & Luxury Monocromo (Iman Gadzhi)",
+      description: "Estilo revista de alta moda, marcos de negativo fotográfico 16mm/35mm, tipografía Bodoni y flash frames monocromáticos.",
+      typography: {
+        fontFamily: "Bodoni MT",
+        fontWeight: 700,
+        primaryColor: [0.98, 0.98, 0.98], // Pure White
+        accentColor: [0.063, 0.725, 0.506], // Emerald Green
+        tracking: 20,
+        verticalStretchPct: 105,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "kodak_35mm",
+        vignetteIntensity: 35,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: false,
+        transitionType: "whip",
+        defaultDurationSec: 0.35,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.063, 0.725, 0.506],
+        inactiveWordColor: [0.98, 0.98, 0.98],
+        backgroundPill: false,
+      },
+      soundDesign: {
+        autoDuckingDb: -4.0,
+        whooshEnabled: true,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    mrbeast_hyper_retention: {
+      id: "mrbeast_hyper_retention",
+      name: "Hyper-Retention Beast (MrBeast / Ryan Trahan)",
+      description: "Títulos 3D gigantes con borde negro de 14px, flechas dinámicas de rebote sinusoidal y stickers vectoriales.",
+      typography: {
+        fontFamily: "Impact",
+        fontWeight: 900,
+        primaryColor: [0.98, 0.8, 0.082], // Beast Yellow
+        accentColor: [0.937, 0.267, 0.267], // Beast Red
+        tracking: -5,
+        verticalStretchPct: 120,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "clean_commercial",
+        vignetteIntensity: 10,
+        filmGrainEnabled: false,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "zoom",
+        defaultDurationSec: 0.2,
+      },
+      captions: {
+        mode: "karaoke",
+        activeWordColor: [0.98, 0.8, 0.082],
+        inactiveWordColor: [1.0, 1.0, 1.0],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -4.5,
+        whooshEnabled: true,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    hormozi_cashflow_captions: {
+      id: "hormozi_cashflow_captions",
+      name: "Cashflow Direct-to-Camera (Alex Hormozi)",
+      description: "Subtítulos reactivos de alta retención, cajas adaptativas split-box, resaltado en amarillo/verde y punch zooms súbitos.",
+      typography: {
+        fontFamily: "The Bold Font",
+        fontWeight: 900,
+        primaryColor: [1.0, 1.0, 1.0],
+        accentColor: [0.918, 0.702, 0.031], // Neon Yellow
+        tracking: -5,
+        verticalStretchPct: 115,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "clean_commercial",
+        vignetteIntensity: 15,
+        filmGrainEnabled: false,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: true,
+        transitionType: "zoom",
+        defaultDurationSec: 0.2,
+      },
+      captions: {
+        mode: "karaoke",
+        activeWordColor: [0.918, 0.702, 0.031],
+        inactiveWordColor: [1.0, 1.0, 1.0],
+        backgroundPill: true,
+      },
+      soundDesign: {
+        autoDuckingDb: -3.5,
+        whooshEnabled: true,
+        impactBoomEnabled: true,
         uiTicksEnabled: true,
       },
     },
