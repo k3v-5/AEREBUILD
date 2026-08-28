@@ -406,3 +406,20 @@ Cada mejora contiene:
   - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **668/668 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #025: Preset #2 — Dark Noir Business Empire (`DarkNoirBusinessPreset`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/styles/presets/DarkNoirBusinessPreset.ts`, `src/styles/StyleProfileManager.ts`, `src/tests/styles/DarkNoirBusiness.test.ts`, `src/tests/v2/AutonomousMCPv2.test.ts`, `scripts/run-conformance.mjs`
+- **¿Por qué se agregó?:**
+  - Para implementar de forma determinista el segundo preset maestro para documentales dramáticos de negocios estilo MagnatesMedia y Neo.
+- **¿Para qué se agregó?:**
+  - Provee `DarkNoirBusinessPreset` con efecto *3D Photo Parallax Cutout* (fondo con Fast Blur $28\text{px}$ + Tint $45\%$, sujeto con slow push-in hacia la cámara en $Z$), destello anamórfico (*CC Light Sweep*) sobre títulos dorados (`Cinzel`) y contadores de riqueza con desaceleración cúbica Ease-Out.
+- **Archivos:**
+  - `[NEW]` `src/styles/presets/DarkNoirBusinessPreset.ts`
+  - `[NEW]` `src/tests/styles/DarkNoirBusiness.test.ts`
+  - `[MODIFY]` `src/styles/StyleProfileManager.ts`
+  - `[MODIFY]` `src/tests/v2/AutonomousMCPv2.test.ts`
+  - `[MODIFY]` `scripts/run-conformance.mjs`
+- **Verificación:** **672/672 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).

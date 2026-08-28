@@ -5,7 +5,8 @@ export type StylePresetId =
   | "tiktok_retention_master"
   | "cinematic_luxury"
   | "cyberpunk_stage"
-  | "johnny_harris_investigative";
+  | "johnny_harris_investigative"
+  | "magnates_business_noir";
 
 export interface StyleProfile {
   id: StylePresetId;
@@ -236,6 +237,44 @@ export class StyleProfileManager {
       soundDesign: {
         autoDuckingDb: -3.5,
         whooshEnabled: true,
+        impactBoomEnabled: true,
+        uiTicksEnabled: true,
+      },
+    },
+
+    magnates_business_noir: {
+      id: "magnates_business_noir",
+      name: "Dark Noir Business Empire (MagnatesMedia / Neo)",
+      description: "Documental dramático de negocios, efecto 3D Parallax en fotos, destello anamórfico sobre títulos dorados y viñeta oscura.",
+      typography: {
+        fontFamily: "Cinzel",
+        fontWeight: 900,
+        primaryColor: [0.831, 0.686, 0.216], // Metallic Gold
+        accentColor: [0.62, 0.106, 0.106], // Crimson Blood
+        tracking: 15,
+        verticalStretchPct: 105,
+        allCaps: true,
+      },
+      colorGrading: {
+        preset: "kodak_35mm",
+        vignetteIntensity: 45,
+        filmGrainEnabled: true,
+      },
+      motion: {
+        motionBlur: true,
+        inertiaBounce: false,
+        transitionType: "cut",
+        defaultDurationSec: 0.5,
+      },
+      captions: {
+        mode: "pop_word",
+        activeWordColor: [0.831, 0.686, 0.216],
+        inactiveWordColor: [0.98, 0.98, 0.98],
+        backgroundPill: false,
+      },
+      soundDesign: {
+        autoDuckingDb: -4.0,
+        whooshEnabled: false,
         impactBoomEnabled: true,
         uiTicksEnabled: true,
       },
