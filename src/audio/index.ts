@@ -1,4 +1,5 @@
 export * from "./analysis/AudioAnalyzer.js";
+export * from "./analysis/AudioTransientSyncEngine.js";
 export * from "./core/AudioBuffer.js";
 export * from "./core/AudioClip.js";
 export * from "./core/AudioMath.js";

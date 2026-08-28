@@ -92,3 +92,35 @@ Cada mejora contiene:
   - `[MODIFY]` `src/examples/guadalajara-turrazo-edit.ts`
   - `[MODIFY]` `dist/guadalajara_turrazo/Guadalajara_Turrazo_Master_Edit.jsx`
 - **Verificación:** Renderizado y composición validada en After Effects.
+
+---
+
+### 🛠️ Mejora #006: Motor de Detección Espectral de Transientes y Sincronización Rítmica (`AudioTransientSyncEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/audio/analysis/AudioTransientSyncEngine.ts`, `src/audio/index.ts`
+- **¿Por qué se agregó?:**
+  - Los cortes y *Bass Punches* dependían de BPMs estimados o listas manuales en lugar de alinearse directamente con los impactos acústicos reales de la música.
+- **¿Para qué se agregó?:**
+  - Implementa *Spectral Flux* y primera derivada de energía por bandas de frecuencia (aislando frecuencias Sub-Bass de $20-100\text{ Hz}$ para bombos/bajos y Mid-High para cajas).
+  - Incluye `alignTimelineToTransients(clips, transients)` para auto-alinear los cortes de video a los golpes musicales más cercanos ($\pm 150\text{ ms}$) y `extractBassPunchTimestamps()` para disparar zooms y sacudidas de cámara en el impacto exacto.
+- **Archivos:**
+  - `[NEW]` `src/audio/analysis/AudioTransientSyncEngine.ts`
+  - `[NEW]` `src/tests/audio/AudioTransientSync.test.ts`
+  - `[MODIFY]` `src/audio/index.ts`
+- **Verificación:** 613/613 pruebas unitarias y de integración pasando al 100% (`npm test`).
+
+---
+
+### 🛠️ Mejora #007: Motor de Segmentación y Jerarquía de Profundidad 3D (`SubjectMaskingEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/tracking-rotoscopy/core/SubjectMaskingEngine.ts`, `src/tracking-rotoscopy/index.ts`
+- **¿Por qué se agregó?:**
+  - La composición de texto detrás de sujetos requería armado manual de capas y código frágil en scripts individuales.
+- **¿Para qué se agregó?:**
+  - Provee el método canónico `buildDepthSandwich()` que genera la jerarquía de 3 capas (`[Background, Text, ForegroundCutout]`), con modos adaptativos (*Luma Extract*, *Linear Color Key*, *Depth Matte*), suavizado de bordes (*feather*) y transiciones de desenfoque progresivo (*Fast Blur Shift / Rack Focus*).
+  - Incluye generador determinista de ExtendScript `generateExtendScriptSandwich()`.
+- **Archivos:**
+  - `[NEW]` `src/tracking-rotoscopy/core/SubjectMaskingEngine.ts`
+  - `[NEW]` `src/tests/tracking-rotoscopy/SubjectMaskingEngine.test.ts`
+  - `[MODIFY]` `src/tracking-rotoscopy/index.ts`
+- **Verificación:** 613/613 pruebas en verde (`npm test`).
