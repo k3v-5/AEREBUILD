@@ -5,4 +5,5 @@ export * from "./core/EmbeddingService.js";
 export * from "./core/MediaInspector.js";
 export * from "./core/ShotDetector.js";
 export * from "./ocr/VideoOCREngine.js";
+export * from "./covers/AIHookCoverGenerator.js";
 export * from "./types/index.js";

@@ -22,3 +22,6 @@ export * from "./fcpxml/FCPXMLExporter.js";
 
 // CMX 3600 EDL Exporter
 export * from "./edl/EDLExporter.js";
+
+// Omni-Channel Multi-Platform Exporter
+export * from "./omni/OmniChannelMultiExporter.js";

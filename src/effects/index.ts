@@ -2,6 +2,7 @@ import { BaseEffect } from "./core/BaseEffect.js";
 import { EffectRegistry } from "./core/EffectRegistry.js";
 
 export * from "./builtins/index.js";
+export * from "./color/CinematicColorGradingEngine.js";
 export * from "./core/BaseEffect.js";
 export * from "./core/EffectRegistry.js";
 export * from "./core/EffectStack.js";

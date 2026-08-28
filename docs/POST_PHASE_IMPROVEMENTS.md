@@ -218,4 +218,78 @@ Cada mejora contiene:
   - `[NEW]` `src/captions/animations/WordKaraokeSyncEngine.ts`
   - `[NEW]` `src/tests/captions/WordKaraokeSyncEngine.test.ts`
   - `[MODIFY]` `src/captions/index.ts`
-- **Verificación:** 631/631 pruebas en verde (`npm test`).
+- **Verificación:** 641/641 pruebas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #014: Motor de Gradación de Color Cinemático y LUTs Procedurales (`CinematicColorGradingEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/effects/color/CinematicColorGradingEngine.ts`, `src/effects/index.ts`
+- **¿Por qué se agregó?:**
+  - Los montajes de múltiples clips con diferentes fuentes de luz lucían desconectados cromáticamente.
+- **¿Para qué se agregó?:**
+  - Provee perfiles cinematográficos (*Hollywood Teal & Orange*, *Kodak 35mm Film*, *Cyberpunk Crimson*, *Golden Hour Warmth* y *Clean Commercial*) con balance de sombras/medios tonos/altas luces, viñeteado óptico y levantamiento de pedestal para dar acabado de película.
+- **Archivos:**
+  - `[NEW]` `src/effects/color/CinematicColorGradingEngine.ts`
+  - `[NEW]` `src/tests/effects/CinematicColorGradingEngine.test.ts`
+  - `[MODIFY]` `src/effects/index.ts`
+- **Verificación:** 641/641 pruebas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #015: Motor de Diseño de Sonido y Foley Sync Automático (`AutoSFXSoundDesignEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/audio/mixer/AutoSFXSoundDesignEngine.ts`, `src/audio/index.ts`
+- **¿Por qué se agregó?:**
+  - Los cortes visuales y animaciones tipográficas carecían de impacto acústico sin diseño de sonido foley.
+- **¿Para qué se agregó?:**
+  - Mapea eventos visuales (transiciones, pop-ins de texto, elementos HUD) a efectos de sonido sincronizados (*Whooshes*, *Impact Booms*, *UI Ticks*) y calcula curvas de *Auto-Ducking* de la música de fondo.
+- **Archivos:**
+  - `[NEW]` `src/audio/mixer/AutoSFXSoundDesignEngine.ts`
+  - `[NEW]` `src/tests/audio/AutoSFXSoundDesignEngine.test.ts`
+  - `[MODIFY]` `src/audio/index.ts`
+- **Verificación:** 641/641 pruebas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #016: Motor de Speed Ramping y Remapeo Temporal Dinámico (`DynamicSpeedRampEngine`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/timeline/speed/DynamicSpeedRampEngine.ts`
+- **¿Por qué se agregó?:**
+  - La velocidad constante ($1.0\times$) resultaba monótona en clips largos de acción y conciertos.
+- **¿Para qué se agregó?:**
+  - Calcula curvas no lineales de velocidad (*Whip In $3.0\times$ $\to$ Slow-Mo $0.3\times$ en el beat $\to$ Whip Out $2.5\times$*) con keyframes continuos en `timeRemap` de After Effects.
+- **Archivos:**
+  - `[NEW]` `src/timeline/speed/DynamicSpeedRampEngine.ts`
+  - `[NEW]` `src/tests/timeline/DynamicSpeedRampEngine.test.ts`
+- **Verificación:** 641/641 pruebas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #017: Generador de Portadas y Miniaturas Virales (`AIHookCoverGenerator`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/media-intelligence/covers/AIHookCoverGenerator.ts`, `src/media-intelligence/index.ts`
+- **¿Por qué se agregó?:**
+  - Las miniaturas y portadas requerían diseño manual tras la edición del video.
+- **¿Para qué se agregó?:**
+  - Selecciona el fotograma de mayor energía visual (*Hero Frame*), genera un fotograma congelado en 9:16 y compone un título 3D gigante con resplandor óptico (*Outer Glow*) y badge editorial.
+- **Archivos:**
+  - `[NEW]` `src/media-intelligence/covers/AIHookCoverGenerator.ts`
+  - `[NEW]` `src/tests/media-intelligence/AIHookCoverGenerator.test.ts`
+  - `[MODIFY]` `src/media-intelligence/index.ts`
+- **Verificación:** 641/641 pruebas en verde (`npm test`).
+
+---
+
+### 🛠️ Mejora #018: Exportador Omnicanal Multi-Plataforma en 1-Clic (`OmniChannelMultiExporter`)
+- **Fecha:** 2026-08-27
+- **Módulos Afectados:** `src/exporters/omni/OmniChannelMultiExporter.ts`, `src/exporters/index.ts`
+- **¿Por qué se agregó?:**
+  - Adaptar un proyecto a múltiples redes sociales requería reeditar el proyecto a mano por separado.
+- **¿Para qué se agregó?:**
+  - Compila simultáneamente composiciones optimizadas para Vertical 9:16 (TikTok/Reels), Panorámico 16:9 (YouTube) y Cuadrado 1:1 (Instagram Feed) adaptando fuentes y márgenes seguros.
+- **Archivos:**
+  - `[NEW]` `src/exporters/omni/OmniChannelMultiExporter.ts`
+  - `[NEW]` `src/tests/exporters/OmniChannelMultiExporter.test.ts`
+  - `[MODIFY]` `src/exporters/index.ts`
+- **Verificación:** 641/641 pruebas en verde (`npm test`).

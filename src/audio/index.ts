@@ -6,5 +6,6 @@ export * from "./core/AudioMath.js";
 export * from "./core/AudioSource.js";
 export * from "./core/AudioTrack.js";
 export * from "./mixer/AudioMixer.js";
+export * from "./mixer/AutoSFXSoundDesignEngine.js";
 export * from "./mixer/MasterBus.js";
 export * from "./types/index.js";
