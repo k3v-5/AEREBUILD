@@ -44,13 +44,36 @@ Este documento define la ruta de evolución completa desde las bases matemática
 | **15 Creator Presets** | **v2.1** | 15 Motores de Estilo YouTube & TIME Editorial Insignia | 💎 **COMPLETADO** | 689 tests | `v3.2.0` |
 | **Content Factory Suite**| **v2.2** | Whisper Local, Viral Clipper, Auto-Reframing 9:16 & Social Packager | 🚀 **PRODUCCIÓN** | 704 tests | `v3.3.0` |
 | **1-Click MCP & SFX Bank**| **v2.3** | Herramientas MCP de 1-Paso, Auto-Clip 1-Click CLI & Banco SFX WAV | 💎 **COMPLETADO** | 712 tests | `v3.4.0` |
+| **Vlog Expansion Suite**  | **v3.5** | Autonomous Vlog Engine, 22-Phase DAG, Multilingual TTS, JumpCut & Travel Overlays | 🚀 **PRODUCCIÓN** | 898 tests | `v3.5.0` |
+| **Documentary Editorial** | **v4.0** | Narrative Arc (10 Beats), Attention/Cognitive Load, Match Cut, Evidence, Ken Burns, Credits, Trailers | 💎 **COMPLETADO** | 1,004 tests | `v4.0.0` |
+| **Data Visualization & QA**| **v4.0-DTV**| DataViz Compilers, RFC 4180 CSV, ExtendScript JSX, QA Linter & Semantic Trimming | 💎 **COMPLETADO** | 1,299 tests | `v4.0.0-editorial-master` |
+| **Data Viz Procedural**   | **REQ-025** | Statistical Graphics (Bar, Trend, StatCard, Timeline), PBT, Golden Regression, MCP | 🏆 **PRODUCTION** | 1,316 tests | `v4.0.0-editorial-master` |
+| **Editorial QA & Governance** | **REQ-030/081/082/083** | QA Linter, Human Review Queue, Diff Engine & Impact Analyzer | 🏆 **PRODUCTION** | 1,322 tests | `v4.0.0-editorial-master` |
 
 ---
 
-## 🏆 Hito Histórico: MILESTONE 30 — GOLD MASTER & AUTONOMOUS FACTORY v3.4.0
+## 🏆 Hito Histórico: MOTOR EDITORIAL & CONTENT FACTORY v4.0.0
 
-El proyecto ha completado con éxito sus **27 Fases de Desarrollo**, la suite de **100 Proyectos Reales de Producción**, los **15 Motores de Estilo de Creadores**, la **Suite de Automatización Total** y el **Ecosistema de 1-Clic & Banco SFX**:
-- **712 tests pasando al 100% en verde** en 329 suites (`npm run conformance`).
+El proyecto ha superado la marca histórica de **1,320 pruebas automatizadas**, consolidando la suite **Vlog Intelligence (v3.5.0)**, el **Motor Editorial Documental (v4.0.0)**, el **Data Visualization Engine (REQ-025)** y el **Editorial QA Governance & Diff Engine (REQ-030/081/082/083)** con certificación formal Nivel 5:
+- **1,322 tests pasando al 100% en verde** en 455 suites (`npm run conformance`).
+- **21 Gates de Certificación de Producción** aprobados.
+- **Suite Vlog Intelligence & Multilingüe:**
+  - Orquestador DAG de 22 fases (`vlog:produce` CLI).
+  - Detección de silencios, respiraciones, micro-crossfades y punch-in dinámico.
+  - Generación de overlays de viaje (GeoBadge, LocationCard, RoutePath con Haversine y Polaroid con física de resorte).
+  - Mezcla acústica automática con ducking dinámico en bus y masterización multilingüe.
+  - 5 Herramientas MCP especializadas (`vlog_generate_jump_cut_plan`, `vlog_classify_footage`, `vlog_match_broll`, `vlog_produce`, `vlog_get_status`).
+  - Extensión directa en `ProductionDSL` con directivas de vlog.
+- **Suite Documental Editorial v4.0.0 & Data Visualization Engine (REQ-025):**
+  - Compilador declarativo de 4 familias de visualización: `AnimatedBarChartCompiler`, `TrendLineGraphCompiler`, `BigStatCardGenerator`, `ChronologyTimelineGenerator`.
+  - Parsers RFC 4180 CSV y JSON con stripping de BOM UTF-8 y validación estricta de esquemas.
+  - Transpilador ExtendScript JSX a After Effects con respeto total de Safe Zones y motion blur habilitado.
+  - Sellado criptográfico SHA-256 canónico y verificación de invariantes en 7 capas.
+  - Estructura de 10 beats canónicos con grafo de causalidad y control de spoilers.
+  - Auditoría ontológica de evidencia y generación de tarjetas de citación.
+  - Animación 2D Ken Burns determinista y auditoría de licencias históricas.
+  - Compilador de créditos de orador y rodillo final con estilo `TIME_INSIGNIA`.
+  - Compilador multi-versión (Full, 60s, 30s, 15s, 6s) y empaquetador para YouTube, TikTok, EBU R128 y DCI.
 - **Benchmark de 100 Proyectos Reales:** 100% Human Acceptance Rate con un promedio de solo 11.2 llamadas MCP por video.
 - **Suite de Automatización & 1-Clic:**
   - `transcribe_local_audio`: Transcripción Whisper local $0 costo y offline.
@@ -63,3 +86,31 @@ El proyecto ha completado con éxito sus **27 Fases de Desarrollo**, la suite de
 - **Exportación universal:** Adobe After Effects ExtendScript JSX, Final Cut Pro XML, CMX 3600 EDL y Paquete Social Multi-Aspecto (`9:16`, `16:9`, `1:1`, `4:5`, `21:9`) con normalización de audio integrada y miniaturas automáticas.
 - **Invariante central:** Determinismo estricto e inmutabilidad con verificación de 7 capas.
 - **Equivalencia Distribuida:** $\text{Run}(1\text{ worker}) \equiv \text{Run}(N\text{ workers})$.
+
+---
+
+---
+
+## 🗺️ Estado del Roadmap: Hacia la Autonomía Editorial Total
+
+```
+v4.0.0 / 4H (Completado: 1,004 tests, Gate 18)
+     │
+     ▼
+Editorial Governance: Editorial QA Linter, Audit & Human-in-the-Loop Diff Engine (Completado: 1,202 tests, Gate 19)
+     │  [REQ-030, REQ-081, REQ-082, REQ-083: LEVEL 5 PRODUCTION CERTIFIED]
+     │
+     ▼
+Performance Intelligence: Intelligent Performance & Semantic Trimming Engine (Completado: 1,202 tests, Gate 20)
+     │  [RF-056: LEVEL 5 PRODUCTION CERTIFIED]
+     │
+     ▼
+Data Visualization Engine & Procedural Infographic Compiler (Completado: 1,230 tests, Gate 21)
+     │  [REQ-025: BarChart, TrendLine, BigStat, Chronology, AE JSX Compiler: LEVEL 5 CERTIFIED]
+     │
+     ▼
+Phase 4J: Universal Timeline Exporters (TimelineExportModel ➔ OTIO / FCPXML / EDL)
+     │
+     ▼
+Phase 4K: Multi-Camera Coverage & Sync Engine (Timecode / Waveform Alignment: REQ-021/022/023/024)
+```

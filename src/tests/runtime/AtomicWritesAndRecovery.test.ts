@@ -1,13 +1,14 @@
 import { describe, it, before, after } from "node:test";
 import assert from "node:assert/strict";
 import * as fs from "node:fs/promises";
+import * as os from "node:os";
 import * as path from "node:path";
 import { FileSystemStorageAdapter } from "../../runtime/persistence/FileSystemStorageAdapter.js";
 import { ProjectEnvelopeFactory } from "../../runtime/persistence/ProjectEnvelope.js";
 import { ProjectRecovery } from "../../runtime/ProjectRecovery.js";
 
 describe("Fase 18 — Atomic Writes & Crash Recovery Tests", () => {
-  const testRoot = path.resolve("F:/Dev/after-effects-mcp/storage/test_recovery");
+  const testRoot = path.join(os.tmpdir(), "motion_engine_test_recovery");
 
   before(async () => {
     await fs.mkdir(testRoot, { recursive: true });

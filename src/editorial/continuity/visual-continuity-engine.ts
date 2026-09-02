@@ -50,7 +50,7 @@ export class VisualContinuityEngine {
         const normalizedDelta = deltaAngle > 180 ? 360 - deltaAngle : deltaAngle;
 
         if (normalizedDelta >= 140 && normalizedDelta <= 220) {
-          const issueId = `issue_${i}_axis_${crypto.randomBytes(4).toString("hex")}`;
+          const issueId = `issue_${i}_axis_${crypto.createHash("sha256").update(`${i}_axis_${shotA.shotId}_${shotB.shotId}`).digest("hex").slice(0, 8)}`;
           issues.push(
             ContinuityAuditIssueSchema.parse({
               id: issueId,
@@ -80,7 +80,7 @@ export class VisualContinuityEngine {
         const isBtoRight = shotB.screenMotionDirection === "LEFT_TO_RIGHT";
 
         if ((isAtoRight && isBtoLeft) || (isAtoLeft && isBtoRight)) {
-          const issueId = `issue_${i}_dir_${crypto.randomBytes(4).toString("hex")}`;
+          const issueId = `issue_${i}_dir_${crypto.createHash("sha256").update(`${i}_dir_${shotA.shotId}_${shotB.shotId}`).digest("hex").slice(0, 8)}`;
           issues.push(
             ContinuityAuditIssueSchema.parse({
               id: issueId,
@@ -105,7 +105,7 @@ export class VisualContinuityEngine {
 
         // In shot-reverse-shot dialogue, subjects must look in opposite screen directions to converse
         if ((aLooksRight && bLooksRight) || (aLooksLeft && bLooksLeft)) {
-          const issueId = `issue_${i}_eye_${crypto.randomBytes(4).toString("hex")}`;
+          const issueId = `issue_${i}_eye_${crypto.createHash("sha256").update(`${i}_eye_${shotA.shotId}_${shotB.shotId}`).digest("hex").slice(0, 8)}`;
           issues.push(
             ContinuityAuditIssueSchema.parse({
               id: issueId,
@@ -124,7 +124,7 @@ export class VisualContinuityEngine {
 
       // 4. Audit Scale Jump Disparity (REQ-005)
       if (shotA.scale === shotB.scale && (shotA.scale === "CLOSE_UP" || shotA.scale === "EXTREME_CLOSE")) {
-        const issueId = `issue_${i}_scale_${crypto.randomBytes(4).toString("hex")}`;
+        const issueId = `issue_${i}_scale_${crypto.createHash("sha256").update(`${i}_scale_${shotA.shotId}_${shotB.shotId}`).digest("hex").slice(0, 8)}`;
         issues.push(
           ContinuityAuditIssueSchema.parse({
             id: issueId,
@@ -143,7 +143,7 @@ export class VisualContinuityEngine {
       if (shotA.colorTemperatureK !== undefined && shotB.colorTemperatureK !== undefined) {
         const tempDelta = Math.abs(shotA.colorTemperatureK - shotB.colorTemperatureK);
         if (tempDelta >= colorTempThresholdK) {
-          const issueId = `issue_${i}_color_${crypto.randomBytes(4).toString("hex")}`;
+          const issueId = `issue_${i}_color_${crypto.createHash("sha256").update(`${i}_color_${shotA.shotId}_${shotB.shotId}`).digest("hex").slice(0, 8)}`;
           issues.push(
             ContinuityAuditIssueSchema.parse({
               id: issueId,

@@ -123,6 +123,7 @@ export class OtioExporter {
         profile: ir.metadata.profile,
         checksum: ir.checksum,
         createdAt: ir.createdAt,
+        frameRate,
         width: ir.metadata.width,
         height: ir.metadata.height,
       },

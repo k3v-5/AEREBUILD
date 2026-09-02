@@ -37,6 +37,13 @@ import { handleTranscribeLocalAudio } from "./tools/transcribe-local-audio.js";
 import { handleDetectViralClips } from "./tools/detect-viral-clips.js";
 import { handlePackageSocialRelease } from "./tools/package-social-release.js";
 import { handleAutoReframeVideo } from "./tools/auto-reframe-video.js";
+import {
+  handleVlogClassifyFootage,
+  handleVlogGenerateJumpCutPlan,
+  handleVlogGetStatus,
+  handleVlogMatchBRoll,
+  handleVlogProduce,
+} from "./tools/vlog-tools.js";
 import { z } from "zod";
 
 /**
@@ -384,6 +391,119 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await handleAutoReframeVideo(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE VLOG INTELLIGENCE (Suite v3.5.0) ---
+    server.tool(
+      "vlog_generate_jump_cut_plan",
+      "Calculates silence removal, phonetic word boundary protection, and punch-in keyframes for vlog editing.",
+      {
+        videoPath: z.string(),
+        transcriptText: z.string().optional(),
+        totalDurationSec: z.number().optional(),
+        silenceThresholdSec: z.number().optional(),
+        punchInScale: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleVlogGenerateJumpCutPlan(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "vlog_classify_footage",
+      "Probabilistically classifies raw footage into A-Roll, B-Roll, Timelapse, Action, Photo, or Screen.",
+      {
+        filePath: z.string(),
+        durationSeconds: z.number(),
+        hasSpeech: z.boolean().optional(),
+        hasFace: z.boolean().optional(),
+        hasCameraMotion: z.boolean().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleVlogClassifyFootage(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "vlog_match_broll",
+      "Matches and ranks candidate B-Roll footage against a narrative intent text using multicriteria scoring.",
+      {
+        intentText: z.string(),
+        targetDurationSeconds: z.number().optional(),
+        availableMedia: z.array(
+          z.object({
+            id: z.string().optional(),
+            filePath: z.string(),
+            durationSeconds: z.number(),
+            hasAudio: z.boolean().optional(),
+          })
+        ).optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleVlogMatchBRoll(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "vlog_produce",
+      "Orchestrates complete multi-lingual autonomous vlog production across 22 phases into After Effects JSX.",
+      {
+        projectId: z.string(),
+        sourceLocale: z.enum(["es-MX", "es-ES", "en-US", "en-GB", "pt-BR", "fr-FR", "de-DE"]).optional(),
+        targetLocales: z.array(z.enum(["es-MX", "es-ES", "en-US", "en-GB", "pt-BR", "fr-FR", "de-DE"])).optional(),
+        scriptText: z.string(),
+        assets: z.array(
+          z.object({
+            id: z.string(),
+            name: z.string(),
+            type: z.enum(["A_ROLL", "B_ROLL", "AUDIO_MUSIC", "AUDIO_SFX"]),
+            durationSeconds: z.number(),
+            filePath: z.string(),
+          })
+        ).optional(),
+        aspectRatios: z.array(z.enum(["16:9", "9:16", "1:1", "4:5", "21:9"])).optional(),
+        outputDirectory: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleVlogProduce(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "vlog_get_status",
+      "Retrieves the runtime status, deliverable manifest, and artifacts of a vlog production run.",
+      {
+        runId: z.string().optional(),
+        projectId: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await handleVlogGetStatus(args);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };

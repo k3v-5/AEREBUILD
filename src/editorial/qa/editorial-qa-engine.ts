@@ -27,9 +27,10 @@ export class EditorialQAEngine {
 
       // Check gap before first clip
       if (clips.length > 0 && clips[0].timelineRange.startSeconds > 0.05) {
+        const gapId = `qa_gap_0_${crypto.createHash("sha256").update(`gap_0_${primaryTrack.id}_${clips[0].id}`).digest("hex").slice(0, 8)}`;
         issues.push(
           QAIssueSchema.parse({
-            id: `qa_gap_0_${crypto.randomBytes(3).toString("hex")}`,
+            id: gapId,
             checkType: "TRACK_GAP",
             severity: "BLOCKING",
             trackId: primaryTrack.id,
@@ -49,9 +50,10 @@ export class EditorialQAEngine {
 
         if (gap > 0.04) {
           // More than 1 frame at 24/30fps
+          const gapId = `qa_gap_${i}_${crypto.createHash("sha256").update(`gap_${i}_${clips[i].id}_${clips[i + 1].id}`).digest("hex").slice(0, 8)}`;
           issues.push(
             QAIssueSchema.parse({
-              id: `qa_gap_${i}_${crypto.randomBytes(3).toString("hex")}`,
+              id: gapId,
               checkType: "TRACK_GAP",
               severity: "BLOCKING",
               trackId: primaryTrack.id,
@@ -72,9 +74,10 @@ export class EditorialQAEngine {
 
         // Check empty asset ID
         if (!clip.assetId || clip.assetId.trim() === "") {
+          const missId = `qa_missing_${clip.id}_${crypto.createHash("sha256").update(`missing_${clip.id}_${track.id}`).digest("hex").slice(0, 8)}`;
           issues.push(
             QAIssueSchema.parse({
-              id: `qa_missing_${clip.id}_${crypto.randomBytes(3).toString("hex")}`,
+              id: missId,
               checkType: "MISSING_MEDIA_SOURCE",
               severity: "BLOCKING",
               trackId: track.id,
@@ -88,9 +91,10 @@ export class EditorialQAEngine {
 
         // Check flash frames on video tracks (< 0.10s / 3 frames)
         if (track.type.startsWith("VIDEO") && clip.timelineRange.durationSeconds < 0.10) {
+          const flashId = `qa_flash_${clip.id}_${crypto.createHash("sha256").update(`flash_${clip.id}_${track.id}`).digest("hex").slice(0, 8)}`;
           issues.push(
             QAIssueSchema.parse({
-              id: `qa_flash_${clip.id}_${crypto.randomBytes(3).toString("hex")}`,
+              id: flashId,
               checkType: "FLASH_FRAME",
               severity: "WARNING",
               trackId: track.id,
@@ -104,9 +108,10 @@ export class EditorialQAEngine {
 
         // Check Audio Volume clipping
         if (track.type.startsWith("AUDIO") && clip.volumeDb > 0.0) {
+          const clipVolId = `qa_clip_${clip.id}_${crypto.createHash("sha256").update(`clipvol_${clip.id}_${clip.volumeDb}`).digest("hex").slice(0, 8)}`;
           issues.push(
             QAIssueSchema.parse({
-              id: `qa_clip_${clip.id}_${crypto.randomBytes(3).toString("hex")}`,
+              id: clipVolId,
               checkType: "AUDIO_CLIPPING",
               severity: "WARNING",
               trackId: track.id,

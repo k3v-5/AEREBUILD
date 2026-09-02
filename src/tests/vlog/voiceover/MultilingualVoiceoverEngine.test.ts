@@ -143,7 +143,7 @@ describe("Milestone 4 — Multilingual Voiceover & Offline TTS Engine Suite", ()
       assert.equal(hit.checksumSha256, synthesized.checksumSha256);
       assert.equal(hit.durationSeconds, synthesized.durationSeconds);
     } finally {
-      fs.rmSync(tmpCacheDir, { recursive: true, force: true });
+      fs.rmSync(tmpCacheDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
     }
   });
 
@@ -195,7 +195,7 @@ describe("Milestone 4 — Multilingual Voiceover & Offline TTS Engine Suite", ()
         }
       }
     } finally {
-      fs.rmSync(tmpCacheDir, { recursive: true, force: true });
+      fs.rmSync(tmpCacheDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
     }
   });
 
