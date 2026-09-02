@@ -17,6 +17,8 @@ export * from "./cli/index.js";
 export * from "./sdk/index.js";
 export * from "./mcp/index.js";
 export * from "./automation/index.js";
+export * from "./vlog/index.js";
+export * from "./editorial/index.js";
 
 async function main() {
   const mcpServer = new MotionEngineMcpServer();

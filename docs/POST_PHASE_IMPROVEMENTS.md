@@ -581,3 +581,174 @@ Cada mejora contiene:
   - `[MODIFY]` `package.json`
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **712/712 pruebas automatizadas pasando al 100% en verde** (`npm run conformance`).
+
+---
+
+### 🛠️ Mejora #033: Suite de Producción Vlog / Documental Multilingüe v3.5.0 (Milestones M1 a M9)
+- **Fecha:** 2026-09-01
+- **Módulos Afectados:** `src/vlog/contracts/`, `src/vlog/ingestion/`, `src/vlog/classifier/`, `src/vlog/jumpcut/`, `src/vlog/voiceover/`, `src/vlog/pacing/`, `src/vlog/subtitles/`, `src/vlog/overlays/`, `src/vlog/audio/`, `src/vlog/exporter/`, `src/vlog/orchestrator/`, `src/vlog/index.ts`, `src/tests/vlog/`
+- **¿Por qué se agregó?:**
+  - Para dotar al motor de capacidades nativas completas para producción de vlogs, documentales y videos de viajes multilingües con cero costos mandatorios de API (offline-first), eliminando silencios mediante jump cuts, aplicando dynamic punch-ins, adaptando la línea temporal a la duración de cada locución por idioma, generando subtítulos karaoke en 7 locales, renderizando overlays cartográficos con fórmula Haversine y exportando proyectos ExtendScript JSX completos para Adobe After Effects conforme al estándar de diseño TIME Editorial.
+- **¿Para qué se agregó?:**
+  - Implementa la arquitectura completa de 9 milestones:
+    - **M1 (Contracts):** 17 esquemas Zod e interfaces para clasificación, jump cuts, pacing, subtítulos, overlays, audio y orquestación.
+    - **M2 (Media Intelligence):** Ingesta determinista con hash SHA-256, clasificador semántico A-Roll/B-Roll y matcher de metraje de apoyo.
+    - **M3 (Vlog Editing):** Detección y poda de silencios con micro-crossfades de 10 ms y dynamic punch-in con preservación estricta de la precedencia `B-Roll > Punch-In`.
+    - **M4 (Voiceover TTS):** Síntesis de voz offline para 7 locales (`es-MX`, `es-ES`, `en-US`, `en-GB`, `pt-BR`, `fr-FR`, `de-DE`), normalizador de texto y validador canónico WAV 44.1 kHz 16-bit mono.
+    - **M5 (Adaptive Pacing):** Retiming visual no destructivo, time-stretch vocal acotado $[0.95, 1.05]$ y resolución de anclas narrativas.
+    - **M6 (Subtitles & Overlays):** Subtítulos karaoke sincronizados palabra por palabra, Haversine canónico con $\text{EARTH\_MEAN\_RADIUS\_KM} = 6371.0088$, Polaroid determinista con shutter SFX a $\pm 1\text{ frame}$, y SafeZoneLayoutEngine multi-aspecto protegiendo UI social en 9:16.
+    - **M7 (Audio Mixing & AE JSX):** Buses jerárquicos de audio con Auto-Ducking (-10 dB, 0.12 s ataque, 0.40 s relajación, anti-pumping) y compilador ExtendScript JSX con `comp.motionBlur = true` y estilo TIME Editorial.
+    - **M8 (Production Orchestrator):** FSM y DAG de 22 fases (`P00_INITIALIZE` a `P21_COMPLETE`) emitiendo `VlogManifest` con `productionHash` SHA-256 inmutable.
+    - **M9 (Full Validation):** Pruebas E2E en 5 locales $\times$ 5 aspect ratios (25 composiciones), determinismo byte a byte, aislamiento lingüístico, tolerancia a fallos y PBT con `fast-check`.
+- **Archivos:**
+  - `[NEW]` 17 archivos de contratos en `src/vlog/contracts/`
+  - `[NEW]` Módulos de ingesta y clasificación en `src/vlog/ingestion/` y `src/vlog/classifier/`
+  - `[NEW]` Módulos de edición en `src/vlog/jumpcut/`
+  - `[NEW]` Módulos de locución y TTS en `src/vlog/voiceover/`
+  - `[NEW]` Módulos de pacing adaptativo en `src/vlog/pacing/`
+  - `[NEW]` Módulos de subtítulos en `src/vlog/subtitles/`
+  - `[NEW]` Módulos de overlays y geodesia en `src/vlog/overlays/`
+  - `[NEW]` Módulos de mezcla de audio en `src/vlog/audio/`
+  - `[NEW]` Módulos de exportación JSX en `src/vlog/exporter/`
+  - `[NEW]` Módulos de orquestación en `src/vlog/orchestrator/`
+  - `[NEW]` 40 archivos de suites de pruebas en `src/tests/vlog/`
+  - `[MODIFY]` `src/vlog/index.ts`
+  - `[MODIFY]` `src/index.ts`
+- **Verificación:** **884/884 pruebas automatizadas pasando al 100% en verde** (`npm test`), build limpio con `tsc` strict.
+
+---
+
+### 🛠️ Mejora #034: Fase 4A — Editorial Core & Multi-Format Profiles (v4.0.0)
+- **Fecha:** 2026-09-02
+- **Módulos Afectados:** `src/editorial/contracts/`, `src/editorial/profiles/`, `src/editorial/silence/`, `src/editorial/knowledge/`, `src/editorial/director/`, `src/editorial/index.ts`, `src/index.ts`, `src/tests/editorial/`
+- **¿Por qué se agregó?:**
+  - Para transformar el motor de un ensamblador de vlogs en una plataforma editorial agnóstica al género (v4.0.0), capaz de entender qué tipo de obra audiovisual está editando (Vlog, Documental, Periodismo, Entrevistas, etc.) y aplicar las reglas de montaje correspondientes sin destruir el baseline previo.
+- **¿Para qué se agregó?:**
+  - Implementa el núcleo editorial de la v4.0 según `spec/MASTER-CONTENT-ENGINE-v4.md`:
+    - **Contratos y Esquemas (REQ-001, REQ-002, REQ-003):** `EditorialProfileSchema`, `ProductionIntentSchema`, `ClassifiedSilenceSchema` y `EditorialDecisionGraphSchema`.
+    - **Registro de 10 Perfiles Canónicos (REQ-001):** `VLOG`, `DOCUMENTARY`, `JOURNALISM`, `EDUCATIONAL`, `INTERVIEW`, `NEWS`, `CINEMATIC`, `CORPORATE`, `SHORT_FORM`, `TECHNICAL` con resolución automática e inferencia desde `AUTO`.
+    - **Jerarquía Universal de Precedencia (REQ-076):** Implementación formal de `SAFETY > LEGAL_FACTUAL > EDITOR_LOCK > NARRATIVE > CONTINUITY > AUDIO > VISUAL > STYLE > OPTIMIZATION`.
+    - **Inteligencia de Silencios (REQ-006, REQ-068):** `SilenceIntelligenceEngine` que categoriza pausas (`FILLER`, `BREATH`, `THINKING`, `DRAMATIC`, `ROOM_TONE`) preservando la tensión dramática en documental y podando en vlog.
+    - **Grafo de Conocimiento del Proyecto (REQ-041):** `ProjectKnowledgeGraphEngine` con indexación de personas, lugares, afirmaciones, escenas y planos con checksum SHA-256 inmutable.
+    - **Director Editorial y Explicabilidad (REQ-031, REQ-032):** `EditorialDirectorEngine` que calcula el `EditorialScore` multidimensional y emite el `EditorialDecisionGraph` con justificación causal auditable.
+- **Archivos:**
+  - `[NEW]` `src/editorial/contracts/content-profile.types.ts`
+  - `[NEW]` `src/editorial/contracts/production-intent.types.ts`
+  - `[NEW]` `src/editorial/contracts/silence-intelligence.types.ts`
+  - `[NEW]` `src/editorial/contracts/rule-precedence.types.ts`
+  - `[NEW]` `src/editorial/contracts/decision-graph.types.ts`
+  - `[NEW]` `src/editorial/contracts/knowledge-graph.types.ts`
+  - `[NEW]` `src/editorial/contracts/index.ts`
+  - `[NEW]` `src/editorial/profiles/profile-registry.ts`
+  - `[NEW]` `src/editorial/profiles/index.ts`
+  - `[NEW]` `src/editorial/silence/silence-intelligence-engine.ts`
+  - `[NEW]` `src/editorial/silence/index.ts`
+  - `[NEW]` `src/editorial/knowledge/project-knowledge-graph.ts`
+  - `[NEW]` `src/editorial/knowledge/index.ts`
+  - `[NEW]` `src/editorial/director/editorial-director-engine.ts`
+  - `[NEW]` `src/editorial/director/index.ts`
+  - `[NEW]` `src/editorial/index.ts`
+  - `[NEW]` `src/tests/editorial/EditorialProfileRegistry.test.ts`
+  - `[NEW]` `src/tests/editorial/SilenceIntelligenceEngine.test.ts`
+  - `[NEW]` `src/tests/editorial/ProjectKnowledgeGraph.test.ts`
+  - `[NEW]` `src/tests/editorial/EditorialDirectorEngine.test.ts`
+  - `[MODIFY]` `src/index.ts`
+- **Verificación:** **903/903 pruebas pasando al 100% en verde** (`npm test`), 0 fallos, 0 regresiones sobre los 884 tests del Gold Master v3.5.0.
+
+---
+
+### 🛠️ Mejora #035: Fase 4B — Visual & Acoustic Continuity (v4.0.0)
+- **Fecha:** 2026-09-02
+- **Módulos Afectados:** `src/editorial/continuity/`, `src/editorial/broll/`, `src/editorial/sound/`, `src/editorial/multicam/`, `src/editorial/index.ts`, `src/tests/editorial/`
+- **¿Por qué se agregó?:**
+  - Para dotar a la plataforma v4.0.0 de reglas formales de gramática cinematográfica y diseño acústico profesional, auditando saltos de eje, dirección de pantalla y temperatura de color, evitando clichés en B-roll y sincronizando J-Cuts, L-Cuts y conmutaciones multi-cámara sin desorientar al espectador.
+- **¿Para qué se agregó?:**
+  - Implementa las capacidades de continuidad audiovisual según `spec/MASTER-CONTENT-ENGINE-v4.md`:
+    - **Visual Continuity Engine (REQ-005, REQ-017, REQ-018, REQ-056):** Detección de cruces de eje de $180^\circ$, inversiones de dirección de pantalla, colisiones de mirada (*eyeline*) y saltos de temperatura de color $>800\text{K}$.
+    - **Semantic B-Roll Director 2.0 (REQ-013, REQ-014):** Motor de scoring conceptual y emocional con **penalización exponencial anti-repetición** ($P = 1 - e^{-0.7k}$) para suprimir clips cliché.
+    - **Sound Design & Acoustic Continuity (REQ-020, REQ-062, REQ-063):** Planificación automática de **J-Cuts y L-Cuts** acotados ($0.2\text{--}1.5\text{s}$), parcheo de *Room Tone* en silencios para evitar cero absoluto digital, y puentes sonoros diegéticos.
+    - **Multi-Camera Director (REQ-011, REQ-012):** Conmutación por seguimiento de hablante, **protección estricta de picos emocionales y testimonios clave**, supresión de *ping-pong cuts* rápidos y reseteo espacial periódico con plano general (`WIDE`).
+- **Archivos:**
+  - `[NEW]` `src/editorial/continuity/visual-continuity.types.ts`
+  - `[NEW]` `src/editorial/continuity/visual-continuity-engine.ts`
+  - `[NEW]` `src/editorial/continuity/index.ts`
+  - `[NEW]` `src/editorial/broll/semantic-broll.types.ts`
+  - `[NEW]` `src/editorial/broll/semantic-broll-director.ts`
+  - `[NEW]` `src/editorial/broll/index.ts`
+  - `[NEW]` `src/editorial/sound/sound-design.types.ts`
+  - `[NEW]` `src/editorial/sound/sound-design-engine.ts`
+  - `[NEW]` `src/editorial/sound/index.ts`
+  - `[NEW]` `src/editorial/multicam/multicam.types.ts`
+  - `[NEW]` `src/editorial/multicam/multicam-director.ts`
+  - `[NEW]` `src/editorial/multicam/index.ts`
+  - `[NEW]` `src/tests/editorial/VisualContinuityEngine.test.ts`
+  - `[NEW]` `src/tests/editorial/SemanticBRollDirector.test.ts`
+  - `[NEW]` `src/tests/editorial/SoundDesignEngine.test.ts`
+  - `[NEW]` `src/tests/editorial/MultiCameraDirector.test.ts`
+  - `[MODIFY]` `src/editorial/index.ts`
+- **Verificación:** **924/924 pruebas pasando al 100% en verde** (`npm test`), 0 fallos, 0 regresiones.
+
+---
+
+### 🛠️ Mejora #036: Fase 4C — Editorial Intermediate Representation & Universal Exporter (v4.0.0)
+- **Fecha:** 2026-09-02
+- **Módulos Afectados:** `src/editorial/ir/`, `src/editorial/exporters/`, `src/editorial/qa/`, `src/editorial/index.ts`, `src/tests/editorial/`
+- **¿Por qué se agregó?:**
+  - Para consumar el desacoplamiento total entre la planificación editorial y la renderización en el motor (v4.0.0), convirtiendo la `Editorial IR` en la única fuente de verdad inmutable y permitiendo exportar proyectos nativos sin pérdidas a OpenTimelineIO, Final Cut Pro XML v1.9 (compatible con Premiere y DaVinci Resolve) y After Effects JSX, complementado con un sistema de Quality Assurance automatizado previo a exportación.
+- **¿Para qué se agregó?:**
+  - Implementa la capa de compilación audiovisual universal según `spec/MASTER-CONTENT-ENGINE-v4.md`:
+    - **Editorial IR Core (REQ-021, REQ-022):** Esquema canónico multi-pista (`VIDEO_PRIMARY`, `VIDEO_BROLL`, `VIDEO_GRAPHICS`, `AUDIO_DIALOGUE`, `AUDIO_MUSIC`, `AUDIO_SFX`, `AUDIO_AMBIENCE`, `SUBTITLE`), clips con rangos de tiempo fuente y destino, transiciones (`CROSS_DISSOLVE`, `J_CUT`, `L_CUT`, `DIP_TO_BLACK`, `WIPE`), marcadores y firma inmutable SHA-256 (`EditorialIRBuilder`).
+    - **OpenTimelineIO Exporter (REQ-023):** Transpila la IR a esquemas nativos `Timeline.1` y `Track.1` con tiempos racionales `RationalTime` (`OtioExporter`).
+    - **Final Cut Pro XML Exporter (REQ-024):** Genera XML FCPXML v1.9 con recursos, formatos, assets, spine, clips de audio y vídeo conectados y marcadores para Apple Final Cut Pro, DaVinci Resolve y Adobe Premiere Pro (`FcpxmlExporter`).
+    - **After Effects ExtendScript JSX Exporter v4 (REQ-025):** Compilador multi-formato respetando perfiles y directrices visuales de `USER_DESIGN_PREFERENCES.md` (`comp.motionBlur = true`, alineación centrada de textos y niveles de audio) (`JsxExporterV4`).
+    - **Editorial QA Engine 2.0 (REQ-036, REQ-037, REQ-038):** Verificador previo a exportación que intercepta fotogramas negros inadvertidos (`TRACK_GAP`), flash frames menores a 0.1s (`FLASH_FRAME`) y saturación de audio (`AUDIO_CLIPPING`).
+- **Archivos:**
+  - `[NEW]` `src/editorial/ir/editorial-ir.types.ts`
+  - `[NEW]` `src/editorial/ir/editorial-ir-builder.ts`
+  - `[NEW]` `src/editorial/ir/index.ts`
+  - `[NEW]` `src/editorial/exporters/otio-exporter.ts`
+  - `[NEW]` `src/editorial/exporters/fcpxml-exporter.ts`
+  - `[NEW]` `src/editorial/exporters/jsx-exporter-v4.ts`
+  - `[NEW]` `src/editorial/exporters/index.ts`
+  - `[NEW]` `src/editorial/qa/editorial-qa.types.ts`
+  - `[NEW]` `src/editorial/qa/editorial-qa-engine.ts`
+  - `[NEW]` `src/editorial/qa/index.ts`
+  - `[NEW]` `src/tests/editorial/EditorialIRBuilder.test.ts`
+  - `[NEW]` `src/tests/editorial/OtioExporter.test.ts`
+  - `[NEW]` `src/tests/editorial/FcpxmlExporter.test.ts`
+  - `[NEW]` `src/tests/editorial/EditorialQaEngine.test.ts`
+  - `[MODIFY]` `src/editorial/index.ts`
+- **Verificación:** **936/936 pruebas pasando al 100% en verde** (`npm test`), 0 fallos, 0 regresiones.
+
+---
+
+### 🛠️ Mejora #037: Fase 4D — Multi-Version Editorial Compiler & Platform Packaging (v4.0.0)
+- **Fecha:** 2026-09-02
+- **Módulos Afectados:** `src/editorial/compiler/`, `src/editorial/packaging/`, `src/editorial/localization/`, `src/editorial/index.ts`, `src/tests/editorial/`
+- **¿Por qué se agregó?:**
+  - Para permitir que una única obra audiovisual maestra (`EditorialIR`) se compile de manera no destructiva en múltiples formatos de duración (Full, 60s, 30s, 15s, 6s), múltiples aspect ratios (16:9, 9:16, 1:1, 4:5, 21:9) y se empaquete con los estándares técnicos y de sonoridad específicos de cada plataforma de distribución (YouTube, TikTok/Reels, Broadcast EBU R128, Cinema DCI), coordinando además la localización limpia multi-idioma.
+- **¿Para qué se agregó?:**
+  - Implementa el compilador multi-versión y empaquetador según `spec/MASTER-CONTENT-ENGINE-v4.md`:
+    - **Multi-Version Compiler (REQ-026, REQ-027, REQ-028):** Generación de variantes derivadas respetando cotas de duración y sintaxis narrativa, re-temporizando pistas de forma continua y sellando cada plan con hash SHA-256 (`MultiVersionCompiler`).
+    - **Platform Packager (REQ-029, REQ-030):** Empaquetado formal verificando aspect ratios, aplicando sonoridad LUFS de destino (-16 para YouTube, -14 para TikTok/Reels, -23 para EBU R128, -24 para DCI) y configurando Safe Zones con exclusión de UI social (`PlatformPackager`).
+    - **Localization Orchestrator 2.0 (REQ-071, REQ-072, REQ-073):** Ensamblado de variantes por idioma para 7 locales (`es-MX`, `es-ES`, `en-US`, `en-GB`, `pt-BR`, `fr-FR`, `de-DE`) intercambiando pistas de diálogo y subtítulos sin alterar las pistas visuales ni las músicas (`EditorialLocalizationOrchestrator`).
+- **Archivos:**
+  - `[NEW]` `src/editorial/compiler/multi-version.types.ts`
+  - `[NEW]` `src/editorial/compiler/multi-version-compiler.ts`
+  - `[NEW]` `src/editorial/compiler/index.ts`
+  - `[NEW]` `src/editorial/packaging/platform-packaging.types.ts`
+  - `[NEW]` `src/editorial/packaging/platform-packager.ts`
+  - `[NEW]` `src/editorial/packaging/index.ts`
+  - `[NEW]` `src/editorial/localization/editorial-localization.types.ts`
+  - `[NEW]` `src/editorial/localization/editorial-localization-orchestrator.ts`
+  - `[NEW]` `src/editorial/localization/index.ts`
+  - `[NEW]` `src/tests/editorial/MultiVersionCompiler.test.ts`
+  - `[NEW]` `src/tests/editorial/PlatformPackager.test.ts`
+  - `[NEW]` `src/tests/editorial/EditorialLocalizationOrchestrator.test.ts`
+  - `[MODIFY]` `src/editorial/index.ts`
+- **Verificación:** **946/946 pruebas pasando al 100% en verde** (`npm test`), 0 fallos, 0 regresiones.
+
+
+
+
+
