@@ -1589,6 +1589,32 @@ Cada mejora contiene:
   - `[MODIFY]` `scripts/run-conformance.mjs`
 - **Verificación:** **1,400/1,400 pruebas pasando al 100% en 476 suites** (`npm test`), con cero fallos y cero regresiones. Suite de conformidad `npm run conformance` 100% aprobada con emisión del artefacto final de certificación (`reports/production-certification.json`).
 
+---
+
+### 🛠️ Mejora #042: Motor de Sincronización Rítmica por Transientes de Audio (`BeatSyncEngine`)
+- **Fecha:** 2026-09-02 (v4.1.0)
+- **Módulos Afectados:**
+  - `src/editorial/audio/beat-sync-types.ts`: Esquemas Zod para `AudioTransient`, `BeatGridSpec`, `BeatSyncMode`, `BeatSyncCutDecision` y `BeatSyncPlan`.
+  - `src/editorial/audio/beat-sync-engine.ts`: Motor `BeatSyncEngine` con detección de transientes ODF/RMS adaptativa, generador de cuadrícula BPM (4/4, 3/4), alineador de planos con drift cero ($\Delta t \le 10^{-6}\text{s}$), pulsos reactivos de escala (punch-in al bombo) y generador de marcadores ExtendScript.
+  - `src/editorial/audio/index.ts` & `src/editorial/index.ts`: Re-exportaciones públicas.
+  - `spec/beat-sync-engine.md`: Especificación técnica formal.
+  - `scripts/build-guadalajara-beat-sync.mjs`: Script de montaje rítmico automático a 120 BPM con metraje real de Guadalajara.
+  - `src/tests/editorial/BeatSyncEngine.test.ts`: Suite de pruebas con PBT (`fast-check`) de 7 capas.
+- **¿Por qué se agregó?:**
+  - Para permitir que el motor alinee automáticamente los cortes visuales y los efectos de punch-in con el tempo musical y los golpes de percusión (downbeats/snares) sin desfase temporal.
+- **¿Para qué se agregó?:**
+  - Proporciona montaje rítmico exacto, continuo (zero-gap), respetando la duración mínima de plano y generando marcadores de compás y keyframes de pulsación de escala directamente en After Effects.
+- **Archivos Creados / Modificados:**
+  - `[NEW]` `spec/beat-sync-engine.md`
+  - `[NEW]` `src/editorial/audio/beat-sync-types.ts`
+  - `[NEW]` `src/editorial/audio/beat-sync-engine.ts`
+  - `[NEW]` `src/tests/editorial/BeatSyncEngine.test.ts`
+  - `[NEW]` `scripts/build-guadalajara-beat-sync.mjs`
+  - `[MODIFY]` `src/editorial/audio/index.ts`
+  - `[MODIFY]` `package.json`
+  - `[MODIFY]` `docs/POST_PHASE_IMPROVEMENTS.md`
+- **Verificación:** **1,432/1,432 pruebas pasando al 100% en 482 suites** (`npm test`), 0 fallos, 0 regresiones. Demostración validada con metraje real generando `dist/guadalajara_beat_sync.jsx` y `dist/guadalajara_beat_sync.otio`.
+
 
 
 

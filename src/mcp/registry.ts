@@ -44,6 +44,21 @@ import {
   handleVlogMatchBRoll,
   handleVlogProduce,
 } from "./tools/vlog-tools.js";
+import {
+  editorial_compile_data_visualization,
+  editorial_dataviz_to_jsx,
+  editorial_parse_dataset,
+} from "./tools/dataviz-tools.js";
+import {
+  editorial_run_qa,
+  editorial_compare_revisions,
+  editorial_get_review_queue,
+} from "./tools/qa-tools.js";
+import {
+  editorial_generate_trim_plan,
+  editorial_detect_redundancy,
+  editorial_select_best_take,
+} from "./tools/performance-tools.js";
 import { z } from "zod";
 
 /**
@@ -504,6 +519,126 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await handleVlogGetStatus(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE EDITORIAL INTEL & DATAVIZ (Suite v4.0.0) ---
+    server.tool(
+      "editorial_compile_data_visualization",
+      "Compiles structured datasets into animated After Effects DataViz specifications (Bar charts, Big Stat, Timeline).",
+      {
+        dataset: z.any().optional(),
+        spec: z.any(),
+      },
+      async (args) => {
+        try {
+          const result = await editorial_compile_data_visualization(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "editorial_dataviz_to_jsx",
+      "Transpiles a DataViz IR AST into executable After Effects ExtendScript JSX.",
+      {
+        ir: z.any(),
+      },
+      async (args) => {
+        try {
+          const result = await editorial_dataviz_to_jsx(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "editorial_parse_dataset",
+      "Parses raw CSV or JSON text into a normalized DataSet structure.",
+      {
+        format: z.enum(["CSV", "JSON"]),
+        content: z.string(),
+        title: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await editorial_parse_dataset(args);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "editorial_run_qa",
+      "Audits an Editorial Document against the comprehensive v4 QA rules (structural, pacing, visual, audio).",
+      {
+        document: z.any(),
+        options: z.any().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await editorial_run_qa(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "editorial_compare_revisions",
+      "Performs semantic differential analysis between two editorial revisions.",
+      {
+        before: z.any(),
+        after: z.any(),
+      },
+      async (args) => {
+        try {
+          const result = await editorial_compare_revisions(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "editorial_generate_trim_plan",
+      "Computes intelligent semantic trimming and best take selection across footage segments.",
+      {
+        segments: z.array(z.any()),
+        sourceDurationSeconds: z.number().optional(),
+        profile: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await editorial_generate_trim_plan(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "editorial_detect_redundancy",
+      "Analyzes and flags semantically redundant arguments and repetitive dialogue.",
+      {
+        segments: z.array(z.any()),
+      },
+      async (args) => {
+        try {
+          const result = await editorial_detect_redundancy(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };

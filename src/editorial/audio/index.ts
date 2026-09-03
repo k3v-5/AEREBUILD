@@ -8,3 +8,5 @@ export * from "./loudness-engine.js";
 export * from "./audio-punctuation-engine.js";
 export * from "./soundscape-engine.js";
 export * from "./audio-mix-engine.js";
+export * from "./beat-sync-types.js";
+export * from "./beat-sync-engine.js";

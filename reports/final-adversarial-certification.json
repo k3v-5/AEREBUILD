@@ -1,7 +1,7 @@
 {
-  "certificationId": "CERT_1387C614DE23D74A",
-  "timestamp": "2026-09-02T22:12:29.874Z",
-  "gitCommit": "d65a9f3460fe18ca5e85d5c2fca148571e8ba392",
+  "certificationId": "CERT_CE00524204586FD6",
+  "timestamp": "2026-09-03T04:05:31.839Z",
+  "gitCommit": "e160a4f455ad1aef7840ee312137bf1e74970be1",
   "standard": "ISO/IEC Autonomous Audiovisual Production Protocol & Editorial Operating System",
   "engineVersion": "v4.0.0-editorial-master",
   "certificationLevel": "LEVEL 5 — PRODUCTION CERTIFIED",
