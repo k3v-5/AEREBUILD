@@ -94,6 +94,11 @@ import {
   apply_infinite_zoom_portal,
   compile_spatial_cinematography_plan,
 } from "./tools/spatial-cinematography-tools.js";
+import {
+  apply_centrifugal_gyro_roll,
+  apply_directional_whip_pan,
+  compile_dynamic_mechanics_plan,
+} from "./tools/dynamic-mechanics-tools.js";
 import { z } from "zod";
 
 /**
@@ -1107,6 +1112,68 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_spatial_cinematography_plan(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE FASE 26: MECÁNICA DE CÁMARA & ÓPTICAS DINÁMICAS (GYRO, WHIP-PANS & BREATHING) ---
+    server.tool(
+      "apply_centrifugal_gyro_roll",
+      "Executes continuous 360 degree centrifugal barrel rolls in Z-axis with circumscribed scaling and mirror edge protection.",
+      {
+        gyroRoll: z.any(),
+        fps: z.number().optional(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_centrifugal_gyro_roll(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_directional_whip_pan",
+      "Generates an invisible directional whip-pan match cut with symmetric directional blur and position offset.",
+      {
+        whipPan: z.any(),
+        sourceLayerVarName: z.string().optional(),
+        destLayerVarName: z.string().optional(),
+        compVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_directional_whip_pan(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_dynamic_mechanics_plan",
+      "Consolidates centrifugal gyro rolls, whip-pan match cuts, and procedural lens breathing into an ExtendScript execution plan.",
+      {
+        id: z.string(),
+        fps: z.number().optional(),
+        gyroRoll: z.any().optional(),
+        whipPan: z.any().optional(),
+        lensBreathing: z.any().optional(),
+        compVarName: z.string().optional(),
+        layerVarName: z.string().optional(),
+        sourceLayerVarName: z.string().optional(),
+        destLayerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_dynamic_mechanics_plan(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
