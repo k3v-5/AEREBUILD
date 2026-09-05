@@ -105,6 +105,12 @@ import {
   apply_flir_thermal_vision,
   compile_photonics_plan,
 } from "./tools/photonics-tools.js";
+import {
+  apply_manga_impact_frame,
+  apply_procedural_speed_lines,
+  apply_film_sprocket_holes,
+  compile_mixed_media_plan,
+} from "./tools/mixed-media-tools.js";
 import { z } from "zod";
 
 /**
@@ -1259,6 +1265,85 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_photonics_plan(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE FASE 28: MIXED-MEDIA & ANIME KINETICS ---
+    server.tool(
+      "apply_manga_impact_frame",
+      "Inserts 1-2 frame stroboscopic manga impact cuts (difference inverted or stark threshold) quantized to exact frame grid.",
+      {
+        impactFrame: z.any(),
+        fps: z.number().optional(),
+        compVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_manga_impact_frame(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_procedural_speed_lines",
+      "Generates convergent anime speed lines with central subject exclusion zone and 12fps posterized boil modulation.",
+      {
+        speedLines: z.any(),
+        compVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_procedural_speed_lines(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_film_sprocket_holes",
+      "Simulates 35mm/16mm celluloid film sprocket holes with marginal KeyKode lab text and organic gate weave jitter.",
+      {
+        sprocketHoles: z.any(),
+        compVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_film_sprocket_holes(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_mixed_media_plan",
+      "Consolidates manga impact frames, speed lines, 35mm sprocket holes, paper tear wipes, and doodle boil into an ExtendScript execution plan.",
+      {
+        id: z.string(),
+        fps: z.number().optional(),
+        compVarName: z.string().optional(),
+        layerVarName: z.string().optional(),
+        sourceLayerVarName: z.string().optional(),
+        destLayerVarName: z.string().optional(),
+        impactFrame: z.any().optional(),
+        speedLines: z.any().optional(),
+        sprocketHoles: z.any().optional(),
+        paperTear: z.any().optional(),
+        doodleBoil: z.any().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_mixed_media_plan(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
