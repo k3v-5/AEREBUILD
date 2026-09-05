@@ -79,6 +79,11 @@ import {
   apply_auteur_color_grading,
   compile_film_emulation_plan,
 } from "./tools/film-tools.js";
+import {
+  apply_machine_gun_flash_cuts,
+  apply_blackout_vacuum_drop,
+  compile_syncopated_rhythm_cut,
+} from "./tools/rhythm-tools.js";
 import { z } from "zod";
 
 /**
@@ -917,6 +922,62 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_film_emulation_plan(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE FASE 23: MONTAJE RÍTMICO, FLASH CUTS & BLACKOUT VACUUMS ---
+    server.tool(
+      "apply_machine_gun_flash_cuts",
+      "Generates rapid stroboscopic flash cuts or media interleaving bursts quantized to video frames.",
+      {
+        burst: z.any(),
+        fps: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_machine_gun_flash_cuts(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_blackout_vacuum_drop",
+      "Inserts an absolute blackout vacuum window before a musical beat drop with optional 1-frame impact flash.",
+      {
+        blackout: z.any(),
+        fps: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_blackout_vacuum_drop(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_syncopated_rhythm_cut",
+      "Assembles a complete rhythm editing sequence with flash bursts and pre-drop blackouts in After Effects.",
+      {
+        id: z.string(),
+        bpm: z.number(),
+        fps: z.number().optional(),
+        bursts: z.array(z.any()).optional(),
+        blackouts: z.array(z.any()).optional(),
+        syncopatedCuts: z.array(z.any()).optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_syncopated_rhythm_cut(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
