@@ -74,6 +74,11 @@ import {
   compile_speed_ramp_to_beat,
   compile_temporal_orchestration,
 } from "./tools/temporal-tools.js";
+import {
+  apply_film_grain_and_halation,
+  apply_auteur_color_grading,
+  compile_film_emulation_plan,
+} from "./tools/film-tools.js";
 import { z } from "zod";
 
 /**
@@ -854,6 +859,64 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_temporal_orchestration(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE TEXTURA FÍLMICA Y COLOR DE AUTOR (Fase 22) ---
+    server.tool(
+      "apply_film_grain_and_halation",
+      "Applies organic 16mm/35mm film grain and Kodak Vision3 red antihalation glow to high-contrast edges.",
+      {
+        grain: z.any().optional(),
+        halation: z.any().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_film_grain_and_halation(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_auteur_color_grading",
+      "Applies auteur cinematographic color grading profiles (Tyler Pastel 70s, Kendrick Bleach Bypass BW, Ralphie MiniDV Acid).",
+      {
+        id: z.string(),
+        profile: z.enum(["TYLER_PASTEL_70S", "KENDRICK_BLEACH_BYPASS_BW", "RALPHIE_MINIDV_ACID", "CUSTOM"]),
+        saturation: z.number().optional(),
+        contrast: z.number().optional(),
+        liftPedestal: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_auteur_color_grading(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_film_emulation_plan",
+      "Consolidates organic grain, halation, shutter flicker, gate weave, and auteur color grading into an After Effects ExtendScript plan.",
+      {
+        id: z.string(),
+        grain: z.any().optional(),
+        halation: z.any().optional(),
+        flicker: z.any().optional(),
+        colorGrading: z.any().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_film_emulation_plan(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
