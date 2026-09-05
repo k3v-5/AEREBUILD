@@ -69,6 +69,11 @@ import {
   apply_fisheye_optics,
   compile_dolly_zoom,
 } from "./tools/optics-tools.js";
+import {
+  apply_posterize_time,
+  compile_speed_ramp_to_beat,
+  compile_temporal_orchestration,
+} from "./tools/temporal-tools.js";
 import { z } from "zod";
 
 /**
@@ -789,6 +794,66 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_dolly_zoom(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE MODULACIÓN TEMPORAL (Fase 21) ---
+    server.tool(
+      "apply_posterize_time",
+      "Applies stylized variable frame rates (12fps anime/16mm or 8fps stop-motion) to a target layer.",
+      {
+        id: z.string(),
+        targetFps: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_posterize_time(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_speed_ramp_to_beat",
+      "Builds a smooth C^1 time remapping curve accelerating through tension and landing in slow motion on the beat drop.",
+      {
+        id: z.string(),
+        sourceClipDurationSeconds: z.number(),
+        targetBeatDropTimeSeconds: z.number(),
+        fastMultiplier: z.number().optional(),
+        slowMultiplier: z.number().optional(),
+        transitionDurationSeconds: z.number().optional(),
+        totalTimelineDurationSeconds: z.number(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_speed_ramp_to_beat(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_temporal_orchestration",
+      "Orchestrates Posterize Time, Speed Ramps, and Stutter Freeze into a unified After Effects plan.",
+      {
+        id: z.string(),
+        posterizeTime: z.any().optional(),
+        speedRamps: z.array(z.any()).optional(),
+        stutters: z.array(z.any()).optional(),
+        fps: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_temporal_orchestration(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };

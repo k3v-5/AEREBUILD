@@ -19,6 +19,7 @@
     "generate:guadalajara-beat-sync": "node scripts/build-guadalajara-beat-sync.mjs",
     "demo:subject-compositing": "node scripts/demo-subject-compositing-guadalajara.mjs",
     "demo:optics": "node scripts/demo-phase20-optics-guadalajara.mjs",
+    "demo:temporal": "node scripts/demo-phase21-temporal-guadalajara.mjs",
     "auto-clip": "node bin/auto-clip.js",
     "vlog:produce": "node bin/vlog-cli.js",
     "editorial:data-viz": "node bin/editorial-cli.js data-viz",
