@@ -59,6 +59,11 @@ import {
   editorial_detect_redundancy,
   editorial_select_best_take,
 } from "./tools/performance-tools.js";
+import {
+  compose_text_behind_subject,
+  compose_multi_take_clones,
+  detect_subjects_in_clip,
+} from "./tools/compositing-tools.js";
 import { z } from "zod";
 
 /**
@@ -639,6 +644,82 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await editorial_detect_redundancy(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE COMPOSICIÓN DE SUJETOS Y CLONES (Fase 19) ---
+    server.tool(
+      "compose_text_behind_subject",
+      "Assembles a 3-layer depth sandwich compositing TIME Editorial text physically behind a detected foreground subject with edge feathering.",
+      {
+        id: z.string(),
+        sourceAssetPath: z.string(),
+        text: z.string(),
+        typography: z
+          .object({
+            fontFamily: z.string().optional(),
+            fontSize: z.number().optional(),
+            colorHex: z.string().optional(),
+            verticalStretchPercent: z.number().optional(),
+            tracking: z.number().optional(),
+          })
+          .optional(),
+        position: z.object({ x: z.number(), y: z.number() }),
+        featherPx: z.number().optional(),
+        backgroundBlurPx: z.number().optional(),
+        inTimeSeconds: z.number().optional(),
+        outTimeSeconds: z.number(),
+      },
+      async (args) => {
+        try {
+          const result = await compose_text_behind_subject(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compose_multi_take_clones",
+      "Weaves multiple takes of the same subject across different spatial screen zones into a seamless single-plate clone shot.",
+      {
+        id: z.string(),
+        compWidth: z.number().optional(),
+        compHeight: z.number().optional(),
+        fps: z.number().optional(),
+        takes: z.array(z.any()),
+        edgeFeatherPx: z.number().optional(),
+        totalDurationSeconds: z.number(),
+        audioMode: z.enum(["ACTIVE_SPEAKER", "ALL_MIXED", "MASTER_ONLY"]).optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compose_multi_take_clones(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "detect_subjects_in_clip",
+      "Detects subject bounding boxes and silhouette contour points in a video frame for visual effects anchoring.",
+      {
+        frameIndex: z.number().optional(),
+        timestampSeconds: z.number().optional(),
+        compWidth: z.number().optional(),
+        compHeight: z.number().optional(),
+        zone: z.enum(["LEFT", "CENTER", "RIGHT"]).optional(),
+      },
+      async (args) => {
+        try {
+          const result = await detect_subjects_in_clip(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };

@@ -17,6 +17,7 @@
     "generate:guadalajara-v4": "node scripts/build-guadalajara-v4-masterpiece.mjs",
     "profiles:guadalajara": "node scripts/compare-editorial-profiles-guadalajara.mjs",
     "generate:guadalajara-beat-sync": "node scripts/build-guadalajara-beat-sync.mjs",
+    "demo:subject-compositing": "node scripts/demo-subject-compositing-guadalajara.mjs",
     "auto-clip": "node bin/auto-clip.js",
     "vlog:produce": "node bin/vlog-cli.js",
     "editorial:data-viz": "node bin/editorial-cli.js data-viz",
