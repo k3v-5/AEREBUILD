@@ -64,6 +64,11 @@ import {
   compose_multi_take_clones,
   detect_subjects_in_clip,
 } from "./tools/compositing-tools.js";
+import {
+  apply_snap_zooms_to_timeline,
+  apply_fisheye_optics,
+  compile_dolly_zoom,
+} from "./tools/optics-tools.js";
 import { z } from "zod";
 
 /**
@@ -720,6 +725,70 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await detect_subjects_in_clip(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE ÓPTICA Y CÁMARA (Fase 20) ---
+    server.tool(
+      "apply_snap_zooms_to_timeline",
+      "Applies percussive snap/crash zooms with inertial harmonic bounce to beat accents and musical impacts.",
+      {
+        id: z.string(),
+        targetCompWidth: z.number().optional(),
+        targetCompHeight: z.number().optional(),
+        fps: z.number().optional(),
+        snapZooms: z.array(z.any()).optional(),
+        fisheye: z.any().optional(),
+        dollyZooms: z.array(z.any()).optional(),
+        whipPans: z.array(z.any()).optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_snap_zooms_to_timeline(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_fisheye_optics",
+      "Applies 90s-style vintage fisheye barrel distortion, peripheral chromatic aberration, and anamorphic vignette.",
+      {
+        id: z.string(),
+        distortionFactor: z.number().optional(),
+        chromaticAberrationPx: z.number().optional(),
+        vignetteAmount: z.number().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_fisheye_optics(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_dolly_zoom",
+      "Computes exact scale compensation curves for a virtual Vertigo Dolly Zoom effect.",
+      {
+        id: z.string(),
+        startTimeSeconds: z.number(),
+        durationSeconds: z.number(),
+        initialFovDegrees: z.number().optional(),
+        finalFovDegrees: z.number().optional(),
+        subjectScaleLock: z.boolean().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_dolly_zoom(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
