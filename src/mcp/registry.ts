@@ -84,6 +84,11 @@ import {
   apply_blackout_vacuum_drop,
   compile_syncopated_rhythm_cut,
 } from "./tools/rhythm-tools.js";
+import {
+  apply_brutalist_kinetic_title,
+  apply_liquid_chrome_text_effect,
+  compile_perspective_anchored_typography,
+} from "./tools/kinetic-typography-tools.js";
 import { z } from "zod";
 
 /**
@@ -978,6 +983,65 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_syncopated_rhythm_cut(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE FASE 24: TIPOGRAFÍA CINÉTICA BRUTALISTA, CROMO LÍQUIDO & PERSPECTIVA 3D ---
+    server.tool(
+      "apply_brutalist_kinetic_title",
+      "Creates an ultra-bold brutalist editorial title with anamorphic vertical stretch, centered anchor point and negative tracking.",
+      {
+        brutalist: z.any(),
+        compVarName: z.string().optional(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_brutalist_kinetic_title(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_liquid_chrome_text_effect",
+      "Applies a reflective metallic liquid chrome shader with bevel, turbulent displacement, and specular reflection to text.",
+      {
+        chrome: z.any(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_liquid_chrome_text_effect(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_perspective_anchored_typography",
+      "Consolidates brutalist typography, liquid chrome shader, 3D perspective orientation, and percussive word slam bounce.",
+      {
+        id: z.string(),
+        fps: z.number().optional(),
+        brutalist: z.any(),
+        chrome: z.any().optional(),
+        perspective: z.any().optional(),
+        slam: z.any().optional(),
+        compVarName: z.string().optional(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_perspective_anchored_typography(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };

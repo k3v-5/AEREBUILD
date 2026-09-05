@@ -22,6 +22,7 @@
     "demo:temporal": "node scripts/demo-phase21-temporal-guadalajara.mjs",
     "demo:film": "node scripts/demo-phase22-film-guadalajara.mjs",
     "demo:rhythm": "node scripts/demo-phase23-rhythm-guadalajara.mjs",
+    "demo:kinetic-typography": "node scripts/demo-phase24-typography-guadalajara.mjs",
     "auto-clip": "node bin/auto-clip.js",
     "vlog:produce": "node bin/vlog-cli.js",
     "editorial:data-viz": "node bin/editorial-cli.js data-viz",
