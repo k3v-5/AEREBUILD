@@ -89,6 +89,11 @@ import {
   apply_liquid_chrome_text_effect,
   compile_perspective_anchored_typography,
 } from "./tools/kinetic-typography-tools.js";
+import {
+  apply_snorricam_body_lock,
+  apply_infinite_zoom_portal,
+  compile_spatial_cinematography_plan,
+} from "./tools/spatial-cinematography-tools.js";
 import { z } from "zod";
 
 /**
@@ -1042,6 +1047,66 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_perspective_anchored_typography(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE FASE 25: CINEMATOGRAFÍA ESPACIAL (SNORRICAM, PORTALES & OCCLUSION WIPES) ---
+    server.tool(
+      "apply_snorricam_body_lock",
+      "Locks the subject rigidly to the center of the frame, transferring inertia to the background with motion tile mirror protection.",
+      {
+        snorricam: z.any(),
+        compVarName: z.string().optional(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_snorricam_body_lock(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_infinite_zoom_portal",
+      "Generates super-exponential crash zoom wormhole keyframes converging on a microscopic ROI and breaking into the next scene.",
+      {
+        portal: z.any(),
+        fps: z.number().optional(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_infinite_zoom_portal(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_spatial_cinematography_plan",
+      "Consolidates Snorricam body lock, infinite zoom portals, and parallax occlusion wipes into an ExtendScript execution plan.",
+      {
+        id: z.string(),
+        fps: z.number().optional(),
+        snorricam: z.any().optional(),
+        portal: z.any().optional(),
+        occlusionWipe: z.any().optional(),
+        compVarName: z.string().optional(),
+        sourceLayerVarName: z.string().optional(),
+        destLayerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_spatial_cinematography_plan(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
