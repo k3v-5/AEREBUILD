@@ -99,6 +99,12 @@ import {
   apply_directional_whip_pan,
   compile_dynamic_mechanics_plan,
 } from "./tools/dynamic-mechanics-tools.js";
+import {
+  apply_shutter_drag_echo,
+  apply_anamorphic_streak_flare,
+  apply_flir_thermal_vision,
+  compile_photonics_plan,
+} from "./tools/photonics-tools.js";
 import { z } from "zod";
 
 /**
@@ -1174,6 +1180,85 @@ export class McpRegistry {
       async (args) => {
         try {
           const result = await compile_dynamic_mechanics_plan(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    // --- HERRAMIENTAS DE FASE 27: NOCTURNAL PHOTONICS & OPTICAL ARTEFACTS ---
+    server.tool(
+      "apply_shutter_drag_echo",
+      "Emulates slow 360-degree shutter drag and kinetic ghosting echo trails via native ADBE Echo with exponential decay.",
+      {
+        shutterDrag: z.any(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_shutter_drag_echo(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_anamorphic_streak_flare",
+      "Generates cylindrical anamorphic horizontal light streak flares with specular highlight isolation and chromatic tint.",
+      {
+        anamorphicStreak: z.any(),
+        compVarName: z.string().optional(),
+        layerVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_anamorphic_streak_flare(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "apply_flir_thermal_vision",
+      "Applies military FLIR infrared thermal false-color palette mapping with sensor noise and contour edge enhancement.",
+      {
+        flirThermal: z.any(),
+        layerVarName: z.string().optional(),
+        compVarName: z.string().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await apply_flir_thermal_vision(args as any);
+          return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+        } catch (error: any) {
+          return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
+        }
+      }
+    );
+
+    server.tool(
+      "compile_photonics_plan",
+      "Consolidates shutter drag echo trails, anamorphic flares, prism star diffraction, and FLIR thermal shaders into an ExtendScript execution plan.",
+      {
+        id: z.string(),
+        fps: z.number().optional(),
+        compVarName: z.string().optional(),
+        layerVarName: z.string().optional(),
+        shutterLayerVarName: z.string().optional(),
+        thermalLayerVarName: z.string().optional(),
+        shutterDrag: z.any().optional(),
+        anamorphicStreak: z.any().optional(),
+        prismStar: z.any().optional(),
+        flirThermal: z.any().optional(),
+      },
+      async (args) => {
+        try {
+          const result = await compile_photonics_plan(args as any);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error: any) {
           return { content: [{ type: "text", text: JSON.stringify({ error: error.message }, null, 2) }], isError: true };
